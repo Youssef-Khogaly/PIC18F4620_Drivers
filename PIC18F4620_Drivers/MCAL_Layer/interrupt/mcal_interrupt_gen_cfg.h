@@ -1,0 +1,90 @@
+/* 
+ * File:   mcal_interrupt_gen_cfg.h
+ * Author: yosse
+ *
+ * Created on April 6, 2023, 10:27 PM
+ */
+
+#ifndef MCAL_INTERRUPT_GEN_CFG_H
+#define	MCAL_INTERRUPT_GEN_CFG_H
+
+#include "mcal_interrupt_cfg.h"
+
+
+/*----------includes------------*/
+
+/*--------------Macros---------------*/
+#define INTERRUPT_FEATURE_ENABLE      1U
+#define INTERRUPT_FEATURE_DISABLE     0
+
+#define INTERRUPT_HIGH_PRI            (1)
+#define INTERRUPT_LOW_PRI             (0)
+
+#define INTERRUPT_PRIORITY_LEVELS            INTERRUPT_FEATURE_ENABLE
+#define INTERRUPT_EXTERNAL_INTX_FEATURE      INTERRUPT_FEATURE_DISABLE
+#define INTERRUPT_EXTERNAL_ONCHANGE_FEATURE  INTERRUPT_FEATURE_DISABLE
+
+ /*------ADC---------*/
+#define ADC_INTERRUPT_FEATURE               INTERRUPT_FEATURE_ENABLE
+
+#define TIMER0_INTERRUPT_FEATURE             INTERRUPT_FEATURE_DISABLE
+
+#define TIMER1_INTERRUPT_FEATURE             INTERRUPT_FEATURE_DISABLE
+
+#define TIMER2_INTERRUPT_FEATURE             INTERRUPT_FEATURE_DISABLE
+
+#define TIMER3_INTERRUPT_FEATURE             INTERRUPT_FEATURE_DISABLE
+
+#define CCP1_INTERRUPT_FEATURE               INTERRUPT_FEATURE_DISABLE 
+#define CCP2_INTERRUPT_FEATURE               INTERRUPT_FEATURE_DISABLE   
+
+
+#define EUSART_TX_INTERRUPT_FEATURE               INTERRUPT_FEATURE_DISABLE
+#define EUSART_RX_INTERRUPT_FEATURE               INTERRUPT_FEATURE_DISABLE 
+
+#define SPI_INTERRUPT_FEATURE                       INTERRUPT_FEATURE_DISABLE
+
+#define I2C_MSSP_INTERRUPT_FEATURE                       INTERRUPT_FEATURE_DISABLE
+
+#define I2C_BUS_COLLISION_INTERRUPT_FEATURE             INTERRUPT_FEATURE_DISABLE
+
+#if INTERRUPT_PRIORITY_LEVELS == INTERRUPT_FEATURE_ENABLE
+#define INTERRUPT_RBx_priority          INTERRUPT_LOW_PRI   
+
+#define INTERRUPT_INT1_PRI              INTERRUPT_HIGH_PRI
+
+#define INTERRUPT_INT2_PRI              INTERRUPT_HIGH_PRI  
+
+#define ADC_INTERRUPT_PRI               INTERRUPT_HIGH_PRI
+
+#define TIMER0_INTERRUPT_PRI            INTERRUPT_HIGH_PRI
+
+#define TIMER1_INTERRUPT_PRI            INTERRUPT_LOW_PRI
+
+#define TIMER2_INTERRUPT_PRI            INTERRUPT_LOW_PRI
+
+#define TIMER3_INTERRUPT_PRI            INTERRUPT_HIGH_PRI
+
+#define CCP1_INTERRUPT_PRI              INTERRUPT_HIGH_PRI
+#define CCP2_INTERRUPT_PRI              INTERRUPT_HIGH_PRI
+
+#define EUSART_RX_INTERRUPT_PRI          INTERRUPT_HIGH_PRI
+#define EUSART_TX_INTERRUPT_PRI          INTERRUPT_LOW_PRI
+
+#define SPI_INTERRUPT_PRI               INTERRUPT_HIGH_PRI
+
+#define I2C_MSSP_INTERRUPT_PRI              INTERRUPT_HIGH_PRI
+#define I2C_BUS_COLLISION_INTERRUPT_PRI     INTERRUPT_LOW_PRI
+
+#endif
+
+
+
+
+/*--------function-Macro--------------*/
+
+/*----------user-datatypes------------*/
+
+/*------------interfaces-prototype-----*/
+#endif	/* MCAL_INTERRUPT_GEN_CFG_H */
+

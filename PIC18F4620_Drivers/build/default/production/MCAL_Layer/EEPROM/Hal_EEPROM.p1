@@ -1,0 +1,451 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"3014 MCAL_Layer/EEPROM/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[v _EEADRH `Vuc ~T0 @X0 0 e@4010 ]
+"3007
+[v _EEADR `Vuc ~T0 @X0 0 e@4009 ]
+"2933
+[s S112 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S112 . RD WR WREN WRERR FREE . CFGS EEPGD ]
+"2943
+[s S113 :6 `uc 1 :1 `uc 1 ]
+[n S113 . . EEFS ]
+"2932
+[u S111 `S112 1 `S113 1 ]
+[n S111 . . . ]
+"2948
+[v _EECON1bits `VS111 ~T0 @X0 0 e@4006 ]
+"8 D:/MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\builtins.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
+"3000 MCAL_Layer/EEPROM/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[v _EEDATA `Vuc ~T0 @X0 0 e@4008 ]
+"6381
+[s S266 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S266 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6391
+[s S267 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S267 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6401
+[s S268 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S268 . . GIEL GIEH ]
+"6380
+[u S265 `S266 1 `S267 1 `S268 1 ]
+[n S265 . . . . ]
+"6407
+[v _INTCONbits `VS265 ~T0 @X0 0 e@4082 ]
+"2993
+[v _EECON2 `Vuc ~T0 @X0 0 e@4007 ]
+"55 MCAL_Layer/EEPROM/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[; <" PORTA equ 0F80h ;# ">
+"192
+[; <" PORTB equ 0F81h ;# ">
+"363
+[; <" PORTC equ 0F82h ;# ">
+"538
+[; <" PORTD equ 0F83h ;# ">
+"680
+[; <" PORTE equ 0F84h ;# ">
+"883
+[; <" LATA equ 0F89h ;# ">
+"995
+[; <" LATB equ 0F8Ah ;# ">
+"1107
+[; <" LATC equ 0F8Bh ;# ">
+"1219
+[; <" LATD equ 0F8Ch ;# ">
+"1331
+[; <" LATE equ 0F8Dh ;# ">
+"1383
+[; <" TRISA equ 0F92h ;# ">
+"1388
+[; <" DDRA equ 0F92h ;# ">
+"1605
+[; <" TRISB equ 0F93h ;# ">
+"1610
+[; <" DDRB equ 0F93h ;# ">
+"1827
+[; <" TRISC equ 0F94h ;# ">
+"1832
+[; <" DDRC equ 0F94h ;# ">
+"2049
+[; <" TRISD equ 0F95h ;# ">
+"2054
+[; <" DDRD equ 0F95h ;# ">
+"2271
+[; <" TRISE equ 0F96h ;# ">
+"2276
+[; <" DDRE equ 0F96h ;# ">
+"2435
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2500
+[; <" PIE1 equ 0F9Dh ;# ">
+"2577
+[; <" PIR1 equ 0F9Eh ;# ">
+"2654
+[; <" IPR1 equ 0F9Fh ;# ">
+"2731
+[; <" PIE2 equ 0FA0h ;# ">
+"2797
+[; <" PIR2 equ 0FA1h ;# ">
+"2863
+[; <" IPR2 equ 0FA2h ;# ">
+"2929
+[; <" EECON1 equ 0FA6h ;# ">
+"2995
+[; <" EECON2 equ 0FA7h ;# ">
+"3002
+[; <" EEDATA equ 0FA8h ;# ">
+"3009
+[; <" EEADR equ 0FA9h ;# ">
+"3016
+[; <" EEADRH equ 0FAAh ;# ">
+"3023
+[; <" RCSTA equ 0FABh ;# ">
+"3028
+[; <" RCSTA1 equ 0FABh ;# ">
+"3233
+[; <" TXSTA equ 0FACh ;# ">
+"3238
+[; <" TXSTA1 equ 0FACh ;# ">
+"3489
+[; <" TXREG equ 0FADh ;# ">
+"3494
+[; <" TXREG1 equ 0FADh ;# ">
+"3501
+[; <" RCREG equ 0FAEh ;# ">
+"3506
+[; <" RCREG1 equ 0FAEh ;# ">
+"3513
+[; <" SPBRG equ 0FAFh ;# ">
+"3518
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3525
+[; <" SPBRGH equ 0FB0h ;# ">
+"3532
+[; <" T3CON equ 0FB1h ;# ">
+"3644
+[; <" TMR3 equ 0FB2h ;# ">
+"3651
+[; <" TMR3L equ 0FB2h ;# ">
+"3658
+[; <" TMR3H equ 0FB3h ;# ">
+"3665
+[; <" CMCON equ 0FB4h ;# ">
+"3755
+[; <" CVRCON equ 0FB5h ;# ">
+"3834
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3916
+[; <" PWM1CON equ 0FB7h ;# ">
+"3986
+[; <" BAUDCON equ 0FB8h ;# ">
+"3991
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4158
+[; <" CCP2CON equ 0FBAh ;# ">
+"4237
+[; <" CCPR2 equ 0FBBh ;# ">
+"4244
+[; <" CCPR2L equ 0FBBh ;# ">
+"4251
+[; <" CCPR2H equ 0FBCh ;# ">
+"4258
+[; <" CCP1CON equ 0FBDh ;# ">
+"4355
+[; <" CCPR1 equ 0FBEh ;# ">
+"4362
+[; <" CCPR1L equ 0FBEh ;# ">
+"4369
+[; <" CCPR1H equ 0FBFh ;# ">
+"4376
+[; <" ADCON2 equ 0FC0h ;# ">
+"4447
+[; <" ADCON1 equ 0FC1h ;# ">
+"4532
+[; <" ADCON0 equ 0FC2h ;# ">
+"4651
+[; <" ADRES equ 0FC3h ;# ">
+"4658
+[; <" ADRESL equ 0FC3h ;# ">
+"4665
+[; <" ADRESH equ 0FC4h ;# ">
+"4672
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4734
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4804
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5025
+[; <" SSPADD equ 0FC8h ;# ">
+"5032
+[; <" SSPBUF equ 0FC9h ;# ">
+"5039
+[; <" T2CON equ 0FCAh ;# ">
+"5110
+[; <" PR2 equ 0FCBh ;# ">
+"5115
+[; <" MEMCON equ 0FCBh ;# ">
+"5220
+[; <" TMR2 equ 0FCCh ;# ">
+"5227
+[; <" T1CON equ 0FCDh ;# ">
+"5330
+[; <" TMR1 equ 0FCEh ;# ">
+"5337
+[; <" TMR1L equ 0FCEh ;# ">
+"5344
+[; <" TMR1H equ 0FCFh ;# ">
+"5351
+[; <" RCON equ 0FD0h ;# ">
+"5484
+[; <" WDTCON equ 0FD1h ;# ">
+"5512
+[; <" HLVDCON equ 0FD2h ;# ">
+"5517
+[; <" LVDCON equ 0FD2h ;# ">
+"5782
+[; <" OSCCON equ 0FD3h ;# ">
+"5859
+[; <" T0CON equ 0FD5h ;# ">
+"5936
+[; <" TMR0 equ 0FD6h ;# ">
+"5943
+[; <" TMR0L equ 0FD6h ;# ">
+"5950
+[; <" TMR0H equ 0FD7h ;# ">
+"5957
+[; <" STATUS equ 0FD8h ;# ">
+"6028
+[; <" FSR2 equ 0FD9h ;# ">
+"6035
+[; <" FSR2L equ 0FD9h ;# ">
+"6042
+[; <" FSR2H equ 0FDAh ;# ">
+"6049
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6056
+[; <" PREINC2 equ 0FDCh ;# ">
+"6063
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6070
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6077
+[; <" INDF2 equ 0FDFh ;# ">
+"6084
+[; <" BSR equ 0FE0h ;# ">
+"6091
+[; <" FSR1 equ 0FE1h ;# ">
+"6098
+[; <" FSR1L equ 0FE1h ;# ">
+"6105
+[; <" FSR1H equ 0FE2h ;# ">
+"6112
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6119
+[; <" PREINC1 equ 0FE4h ;# ">
+"6126
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6133
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6140
+[; <" INDF1 equ 0FE7h ;# ">
+"6147
+[; <" WREG equ 0FE8h ;# ">
+"6159
+[; <" FSR0 equ 0FE9h ;# ">
+"6166
+[; <" FSR0L equ 0FE9h ;# ">
+"6173
+[; <" FSR0H equ 0FEAh ;# ">
+"6180
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6187
+[; <" PREINC0 equ 0FECh ;# ">
+"6194
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6201
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6208
+[; <" INDF0 equ 0FEFh ;# ">
+"6215
+[; <" INTCON3 equ 0FF0h ;# ">
+"6307
+[; <" INTCON2 equ 0FF1h ;# ">
+"6377
+[; <" INTCON equ 0FF2h ;# ">
+"6494
+[; <" PROD equ 0FF3h ;# ">
+"6501
+[; <" PRODL equ 0FF3h ;# ">
+"6508
+[; <" PRODH equ 0FF4h ;# ">
+"6515
+[; <" TABLAT equ 0FF5h ;# ">
+"6524
+[; <" TBLPTR equ 0FF6h ;# ">
+"6531
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6538
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6545
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6554
+[; <" PCLAT equ 0FF9h ;# ">
+"6561
+[; <" PC equ 0FF9h ;# ">
+"6568
+[; <" PCL equ 0FF9h ;# ">
+"6575
+[; <" PCLATH equ 0FFAh ;# ">
+"6582
+[; <" PCLATU equ 0FFBh ;# ">
+"6589
+[; <" STKPTR equ 0FFCh ;# ">
+"6695
+[; <" TOS equ 0FFDh ;# ">
+"6702
+[; <" TOSL equ 0FFDh ;# ">
+"6709
+[; <" TOSH equ 0FFEh ;# ">
+"6716
+[; <" TOSU equ 0FFFh ;# ">
+"13 MCAL_Layer/EEPROM/Hal_EEPROM.c
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 13: Std_ReturnType EEPROM_readByte(uint8_t* ret_Bdata , uint16_t addr)
+[v _EEPROM_readByte `(uc ~T0 @X0 1 ef2`*uc`us ]
+"14
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 14: {
+{
+[e :U _EEPROM_readByte ]
+"13
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 13: Std_ReturnType EEPROM_readByte(uint8_t* ret_Bdata , uint16_t addr)
+[v _ret_Bdata `*uc ~T0 @X0 1 r1 ]
+[v _addr `us ~T0 @X0 1 r2 ]
+"14
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 14: {
+[f ]
+"15
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 15:   Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"16
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 16:   if(!ret_Bdata)
+[e $ ! ! != _ret_Bdata -> -> 0 `i `*uc 275  ]
+"17
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 17:     ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+[e $U 276  ]
+"18
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 18:   else
+[e :U 275 ]
+"19
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 19:   {
+{
+"20
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 20:       (EEADRH = (uint8_t)((addr>>8)&0x03));
+[e = _EEADRH -> & >> -> _addr `ui -> 8 `i -> -> 3 `i `ui `uc ]
+"21
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 21:       (EEADR = (uint8_t)(addr & 0xFF));
+[e = _EEADR -> & -> _addr `ui -> -> 255 `i `ui `uc ]
+"22
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 22:       EECON1bits.EEPGD = 0;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+"23
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 23:       EECON1bits.CFGS = 0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+"24
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 24:       EECON1bits.RD = 1; __nop();
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+"25
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 25: 
+[e ( ___nop ..  ]
+"26
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 26:       __nop();
+[e ( ___nop ..  ]
+"27
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 27:       *ret_Bdata = EEDATA;
+[e = *U _ret_Bdata _EEDATA ]
+"28
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 28:       ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"29
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 29:   }
+}
+[e :U 276 ]
+"30
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 30:   return ret;
+[e ) _ret ]
+[e $UE 274  ]
+"31
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 31: }
+[e :UE 274 ]
+}
+"33
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 33: Std_ReturnType EEPROM_writeByte(uint8_t Bdata , uint16_t addr){
+[v _EEPROM_writeByte `(uc ~T0 @X0 1 ef2`uc`us ]
+{
+[e :U _EEPROM_writeByte ]
+[v _Bdata `uc ~T0 @X0 1 r1 ]
+[v _addr `us ~T0 @X0 1 r2 ]
+[f ]
+"34
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 34:   Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"36
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 36:     uint8_t GIE_stat = INTCONbits.GIEH;
+[v _GIE_stat `uc ~T0 @X0 1 a ]
+[e = _GIE_stat . . _INTCONbits 2 2 ]
+"38
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 38:     (EEADRH = (uint8_t)((addr>>8)&0x03));
+[e = _EEADRH -> & >> -> _addr `ui -> 8 `i -> -> 3 `i `ui `uc ]
+"39
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 39:     (EEADR = (uint8_t)(addr & 0xFF));
+[e = _EEADR -> & -> _addr `ui -> -> 255 `i `ui `uc ]
+"40
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 40:     EEDATA = Bdata;
+[e = _EEDATA _Bdata ]
+"41
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 41:     EECON1bits.EEPGD = 0;
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+"42
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 42:     EECON1bits.CFGS = 0;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+"43
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 43:     EECON1bits.WREN = 1 ;
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+"46
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 46:     (INTCONbits.GIEH = 0);
+[e = . . _INTCONbits 2 2 -> -> 0 `i `uc ]
+"51
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 51:     EECON2 = 0x55;
+[e = _EECON2 -> -> 85 `i `uc ]
+"52
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 52:     EECON2 = 0x0AA;
+[e = _EECON2 -> -> 170 `i `uc ]
+"53
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 53:     EECON1bits.WR = 1;
+[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+"54
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 54:     while(0 != EECON1bits.WR);
+[e $U 278  ]
+[e :U 279 ]
+[e :U 278 ]
+[e $ != -> 0 `i -> . . _EECON1bits 0 1 `i 279  ]
+[e :U 280 ]
+"55
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 55:     EECON1bits.WREN = 0;
+[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
+"57
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 57:     INTCONbits.GIEH = GIE_stat;
+[e = . . _INTCONbits 2 2 _GIE_stat ]
+"59
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 59:     ret = (EECON1bits.WRERR) ? ((Std_ReturnType)0x00) : ((Std_ReturnType)0x01);
+[e = _ret -> ? != -> . . _EECON1bits 0 3 `i -> 0 `i : -> -> -> 0 `i `uc `i -> -> -> 1 `i `uc `i `uc ]
+"60
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 60:     return ret;
+[e ) _ret ]
+[e $UE 277  ]
+"61
+[; ;MCAL_Layer/EEPROM/Hal_EEPROM.c: 61: }
+[e :UE 277 ]
+}

@@ -1,0 +1,47 @@
+make -f nbproject/Makefile-defaultActiveCA.mk SUBPROJECTS= .clean-conf
+make[1]: Entering directory 'D:/Yossef/PIC18F4620'
+rm -f  -r .ca/build/defaultActiveCA/production
+rm -f  -r .ca/dist/defaultActiveCA/production
+make[1]: Leaving directory 'D:/Yossef/PIC18F4620'
+[32mCLEAN SUCCESSFUL (total time: 257ms)[0m
+make -f nbproject/Makefile-defaultActiveCA.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory 'D:/Yossef/PIC18F4620'
+make  -f nbproject/Makefile-defaultActiveCA.mk .ca/dist/defaultActiveCA/production/PIC18F4620.production.hex
+make[2]: Entering directory 'D:/Yossef/PIC18F4620'
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18F4620 -c   -mdfp="D:/MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA    -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/ECU_layer/led/ECU_led.p1 ECU_layer/led/ECU_led.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18F4620 -c   -mdfp="D:/MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA    -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/MCAL_Layer/DeviceConfig/DeviceConfig.p1 MCAL_Layer/DeviceConfig/DeviceConfig.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18F4620 -c   -mdfp="D:/MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA    -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/MCAL_Layer/GPIO/HAL_GPIO.p1 MCAL_Layer/GPIO/HAL_GPIO.c 
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18F4620 -c   -mdfp="D:/MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_defaultActiveCA=defaultActiveCA    -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o .ca/build/defaultActiveCA/production/app.p1 app.c 
+In file included from MCAL_Layer/GPIO/HAL_GPIO.c:8In file included from ECU_layer/led/ECU_led.c:1:
+In file included from :
+MCAL_Layer/GPIO/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h:42ECU_layer/led/ECU_led.h:2: :11:
+warning: Header file pic18f4620.h included directly. Use #include <xc.h> instead. [-W#warnings]
+In file included from MCAL_Layer/GPIO/HAL_GPIO.h:11:
+In file included from ECU_layer/led/../../MCAL_Layer/GPIO/HAL_GPIO.h:11:
+ECU_layer/led/../../MCAL_Layer/GPIO/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h:42:2: #warning Header file pic18f4620.h included directly. Use #include <xc.h> instead.warning
+:  ^
+Header file pic18f4620.h included directly. Use #include <xc.h> instead. [-W#warnings]
+#warning Header file pic18f4620.h included directly. Use #include <xc.h> instead.
+ ^
+In file included from app.c:7:
+In file included from ./app.h:11:
+In file included from ./ECU_layer/led/ECU_led.h:11:
+In file included from ./ECU_layer/led/../../MCAL_Layer/GPIO/HAL_GPIO.h:11:
+./ECU_layer/led/../../MCAL_Layer/GPIO/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h:42:2: warning: Header file pic18f4620.h included directly. Use #include <xc.h> instead. [-W#warnings]
+#warning Header file pic18f4620.h included directly. Use #include <xc.h> instead.
+ ^
+1 warning generated.
+1 warning generated.
+1 warning generated.
+"C:\Program Files\Microchip\xc8\v2.40\bin\xc8-cc.exe"  -mcpu=18F4620 -Wl,-Map=.ca/dist/defaultActiveCA/production/PIC18F4620.production.map  -DXPRJ_defaultActiveCA=defaultActiveCA  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="D:/MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto      -Wl,--memorysummary,.ca/dist/defaultActiveCA/production/memoryfile.xml -o .ca/dist/defaultActiveCA/production/PIC18F4620.production.elf  .ca/build/defaultActiveCA/production/ECU_layer/led/ECU_led.p1 .ca/build/defaultActiveCA/production/MCAL_Layer/DeviceConfig/DeviceConfig.p1 .ca/build/defaultActiveCA/production/MCAL_Layer/GPIO/HAL_GPIO.p1 .ca/build/defaultActiveCA/production/app.p1     
+
+Memory Summary:
+    Program space        used    40h (    64) of 10000h bytes   (  0.1%)
+    Data space           used     2h (     2) of   F80h bytes   (  0.1%)
+    Configuration bits   used     7h (     7) of     7h words   (100.0%)
+    EEPROM space         used     0h (     0) of   400h bytes   (  0.0%)
+    ID Location space    used     0h (     0) of     8h bytes   (  0.0%)
+
+make[2]: Leaving directory 'D:/Yossef/PIC18F4620'
+make[1]: Leaving directory 'D:/Yossef/PIC18F4620'
+[32mBUILD SUCCESSFUL (total time: 2s)[0m

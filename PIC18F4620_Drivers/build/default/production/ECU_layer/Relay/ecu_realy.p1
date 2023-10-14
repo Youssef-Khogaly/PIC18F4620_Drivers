@@ -1,0 +1,512 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"19 ECU_layer/Relay/ecu_relay.h
+[; ;ECU_layer/Relay/ecu_relay.h: 19: typedef struct{
+[s S274 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S274 . relay_port relay_pin relay_stat reserved ]
+"52 ECU_layer/Relay/../../MCAL_Layer/GPIO/HAL_GPIO.h
+[; ;ECU_layer/Relay/../../MCAL_Layer/GPIO/HAL_GPIO.h: 52: typedef struct{
+[s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S273 . port pinIndex direction logic ]
+"16 ECU_layer/Relay/ecu_realy.c
+[; ;ECU_layer/Relay/ecu_realy.c: 16:         pinConfig_t pincfg = {
+[c E3387 0 1 .. ]
+[n E3387 . output input  ]
+"103 ECU_layer/Relay/../../MCAL_Layer/GPIO/HAL_GPIO.h
+[; ;ECU_layer/Relay/../../MCAL_Layer/GPIO/HAL_GPIO.h: 103: Std_ReturnType gpio_pin_intialize( const pinConfig_t* pinCon);
+[v _gpio_pin_intialize `(uc ~T0 @X0 0 ef1`*CS273 ]
+"38 ECU_layer/Relay/ecu_realy.c
+[; ;ECU_layer/Relay/ecu_realy.c: 38:         ret_std = gpio_pin_write_logic (&pincfg , 0x01U);
+[c E3383 0 1 .. ]
+[n E3383 . low high  ]
+"81 ECU_layer/Relay/../../MCAL_Layer/GPIO/HAL_GPIO.h
+[; ;ECU_layer/Relay/../../MCAL_Layer/GPIO/HAL_GPIO.h: 81: Std_ReturnType gpio_pin_write_logic( const pinConfig_t* pinConfig ,logic_t logic);
+[v _gpio_pin_write_logic `(uc ~T0 @X0 0 ef2`*CS273`E3383 ]
+"96
+[; ;ECU_layer/Relay/../../MCAL_Layer/GPIO/HAL_GPIO.h: 96: Std_ReturnType gpio_pin_toggle_logic( pinConfig_t* pinConfig);
+[v _gpio_pin_toggle_logic `(uc ~T0 @X0 0 ef1`*S273 ]
+"55 ECU_layer/Relay/../../MCAL_Layer/GPIO/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[; <" PORTA equ 0F80h ;# ">
+"192
+[; <" PORTB equ 0F81h ;# ">
+"363
+[; <" PORTC equ 0F82h ;# ">
+"538
+[; <" PORTD equ 0F83h ;# ">
+"680
+[; <" PORTE equ 0F84h ;# ">
+"883
+[; <" LATA equ 0F89h ;# ">
+"995
+[; <" LATB equ 0F8Ah ;# ">
+"1107
+[; <" LATC equ 0F8Bh ;# ">
+"1219
+[; <" LATD equ 0F8Ch ;# ">
+"1331
+[; <" LATE equ 0F8Dh ;# ">
+"1383
+[; <" TRISA equ 0F92h ;# ">
+"1388
+[; <" DDRA equ 0F92h ;# ">
+"1605
+[; <" TRISB equ 0F93h ;# ">
+"1610
+[; <" DDRB equ 0F93h ;# ">
+"1827
+[; <" TRISC equ 0F94h ;# ">
+"1832
+[; <" DDRC equ 0F94h ;# ">
+"2049
+[; <" TRISD equ 0F95h ;# ">
+"2054
+[; <" DDRD equ 0F95h ;# ">
+"2271
+[; <" TRISE equ 0F96h ;# ">
+"2276
+[; <" DDRE equ 0F96h ;# ">
+"2435
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2500
+[; <" PIE1 equ 0F9Dh ;# ">
+"2577
+[; <" PIR1 equ 0F9Eh ;# ">
+"2654
+[; <" IPR1 equ 0F9Fh ;# ">
+"2731
+[; <" PIE2 equ 0FA0h ;# ">
+"2797
+[; <" PIR2 equ 0FA1h ;# ">
+"2863
+[; <" IPR2 equ 0FA2h ;# ">
+"2929
+[; <" EECON1 equ 0FA6h ;# ">
+"2995
+[; <" EECON2 equ 0FA7h ;# ">
+"3002
+[; <" EEDATA equ 0FA8h ;# ">
+"3009
+[; <" EEADR equ 0FA9h ;# ">
+"3016
+[; <" EEADRH equ 0FAAh ;# ">
+"3023
+[; <" RCSTA equ 0FABh ;# ">
+"3028
+[; <" RCSTA1 equ 0FABh ;# ">
+"3233
+[; <" TXSTA equ 0FACh ;# ">
+"3238
+[; <" TXSTA1 equ 0FACh ;# ">
+"3489
+[; <" TXREG equ 0FADh ;# ">
+"3494
+[; <" TXREG1 equ 0FADh ;# ">
+"3501
+[; <" RCREG equ 0FAEh ;# ">
+"3506
+[; <" RCREG1 equ 0FAEh ;# ">
+"3513
+[; <" SPBRG equ 0FAFh ;# ">
+"3518
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3525
+[; <" SPBRGH equ 0FB0h ;# ">
+"3532
+[; <" T3CON equ 0FB1h ;# ">
+"3644
+[; <" TMR3 equ 0FB2h ;# ">
+"3651
+[; <" TMR3L equ 0FB2h ;# ">
+"3658
+[; <" TMR3H equ 0FB3h ;# ">
+"3665
+[; <" CMCON equ 0FB4h ;# ">
+"3755
+[; <" CVRCON equ 0FB5h ;# ">
+"3834
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3916
+[; <" PWM1CON equ 0FB7h ;# ">
+"3986
+[; <" BAUDCON equ 0FB8h ;# ">
+"3991
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4158
+[; <" CCP2CON equ 0FBAh ;# ">
+"4237
+[; <" CCPR2 equ 0FBBh ;# ">
+"4244
+[; <" CCPR2L equ 0FBBh ;# ">
+"4251
+[; <" CCPR2H equ 0FBCh ;# ">
+"4258
+[; <" CCP1CON equ 0FBDh ;# ">
+"4355
+[; <" CCPR1 equ 0FBEh ;# ">
+"4362
+[; <" CCPR1L equ 0FBEh ;# ">
+"4369
+[; <" CCPR1H equ 0FBFh ;# ">
+"4376
+[; <" ADCON2 equ 0FC0h ;# ">
+"4447
+[; <" ADCON1 equ 0FC1h ;# ">
+"4532
+[; <" ADCON0 equ 0FC2h ;# ">
+"4651
+[; <" ADRES equ 0FC3h ;# ">
+"4658
+[; <" ADRESL equ 0FC3h ;# ">
+"4665
+[; <" ADRESH equ 0FC4h ;# ">
+"4672
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4734
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4804
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5025
+[; <" SSPADD equ 0FC8h ;# ">
+"5032
+[; <" SSPBUF equ 0FC9h ;# ">
+"5039
+[; <" T2CON equ 0FCAh ;# ">
+"5110
+[; <" PR2 equ 0FCBh ;# ">
+"5115
+[; <" MEMCON equ 0FCBh ;# ">
+"5220
+[; <" TMR2 equ 0FCCh ;# ">
+"5227
+[; <" T1CON equ 0FCDh ;# ">
+"5330
+[; <" TMR1 equ 0FCEh ;# ">
+"5337
+[; <" TMR1L equ 0FCEh ;# ">
+"5344
+[; <" TMR1H equ 0FCFh ;# ">
+"5351
+[; <" RCON equ 0FD0h ;# ">
+"5484
+[; <" WDTCON equ 0FD1h ;# ">
+"5512
+[; <" HLVDCON equ 0FD2h ;# ">
+"5517
+[; <" LVDCON equ 0FD2h ;# ">
+"5782
+[; <" OSCCON equ 0FD3h ;# ">
+"5859
+[; <" T0CON equ 0FD5h ;# ">
+"5936
+[; <" TMR0 equ 0FD6h ;# ">
+"5943
+[; <" TMR0L equ 0FD6h ;# ">
+"5950
+[; <" TMR0H equ 0FD7h ;# ">
+"5957
+[; <" STATUS equ 0FD8h ;# ">
+"6028
+[; <" FSR2 equ 0FD9h ;# ">
+"6035
+[; <" FSR2L equ 0FD9h ;# ">
+"6042
+[; <" FSR2H equ 0FDAh ;# ">
+"6049
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6056
+[; <" PREINC2 equ 0FDCh ;# ">
+"6063
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6070
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6077
+[; <" INDF2 equ 0FDFh ;# ">
+"6084
+[; <" BSR equ 0FE0h ;# ">
+"6091
+[; <" FSR1 equ 0FE1h ;# ">
+"6098
+[; <" FSR1L equ 0FE1h ;# ">
+"6105
+[; <" FSR1H equ 0FE2h ;# ">
+"6112
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6119
+[; <" PREINC1 equ 0FE4h ;# ">
+"6126
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6133
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6140
+[; <" INDF1 equ 0FE7h ;# ">
+"6147
+[; <" WREG equ 0FE8h ;# ">
+"6159
+[; <" FSR0 equ 0FE9h ;# ">
+"6166
+[; <" FSR0L equ 0FE9h ;# ">
+"6173
+[; <" FSR0H equ 0FEAh ;# ">
+"6180
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6187
+[; <" PREINC0 equ 0FECh ;# ">
+"6194
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6201
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6208
+[; <" INDF0 equ 0FEFh ;# ">
+"6215
+[; <" INTCON3 equ 0FF0h ;# ">
+"6307
+[; <" INTCON2 equ 0FF1h ;# ">
+"6377
+[; <" INTCON equ 0FF2h ;# ">
+"6494
+[; <" PROD equ 0FF3h ;# ">
+"6501
+[; <" PRODL equ 0FF3h ;# ">
+"6508
+[; <" PRODH equ 0FF4h ;# ">
+"6515
+[; <" TABLAT equ 0FF5h ;# ">
+"6524
+[; <" TBLPTR equ 0FF6h ;# ">
+"6531
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6538
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6545
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6554
+[; <" PCLAT equ 0FF9h ;# ">
+"6561
+[; <" PC equ 0FF9h ;# ">
+"6568
+[; <" PCL equ 0FF9h ;# ">
+"6575
+[; <" PCLATH equ 0FFAh ;# ">
+"6582
+[; <" PCLATU equ 0FFBh ;# ">
+"6589
+[; <" STKPTR equ 0FFCh ;# ">
+"6695
+[; <" TOS equ 0FFDh ;# ">
+"6702
+[; <" TOSL equ 0FFDh ;# ">
+"6709
+[; <" TOSH equ 0FFEh ;# ">
+"6716
+[; <" TOSU equ 0FFFh ;# ">
+"11 ECU_layer/Relay/ecu_realy.c
+[; ;ECU_layer/Relay/ecu_realy.c: 11: Std_ReturnType ecu_relay_inisialize(const relay_t* relay){
+[v _ecu_relay_inisialize `(uc ~T0 @X0 1 ef1`*CS274 ]
+{
+[e :U _ecu_relay_inisialize ]
+[v _relay `*CS274 ~T0 @X0 1 r1 ]
+[f ]
+"12
+[; ;ECU_layer/Relay/ecu_realy.c: 12:   Std_ReturnType ret_std = ((Std_ReturnType)0x01);
+[v _ret_std `uc ~T0 @X0 1 a ]
+[e = _ret_std -> -> 1 `i `uc ]
+"13
+[; ;ECU_layer/Relay/ecu_realy.c: 13:   if((!(relay)) || (relay->relay_port > 4) || (relay->relay_pin > 7))
+[e $ ! || || ! != _relay -> -> 0 `i `*CS274 > -> . *U _relay 0 `i -> 4 `i > -> . *U _relay 1 `i -> 7 `i 276  ]
+"14
+[; ;ECU_layer/Relay/ecu_realy.c: 14:     ret_std = ((Std_ReturnType)0x00);
+[e = _ret_std -> -> 0 `i `uc ]
+[e $U 277  ]
+"15
+[; ;ECU_layer/Relay/ecu_realy.c: 15:   else{
+[e :U 276 ]
+{
+[v F3463 `S273 ~T0 @X0 1 s ]
+[i F3463
+:U ..
+:U ..
+"16
+[; ;ECU_layer/Relay/ecu_realy.c: 16:         pinConfig_t pincfg = {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[v _pincfg `S273 ~T0 @X0 1 a ]
+[e = _pincfg F3463 ]
+[e ; = . _pincfg 0 . *U _relay 0 ; = . _pincfg 1 . *U _relay 1 ; = . _pincfg 2 -> . `E3387 0 `uc = . _pincfg 3 . *U _relay 2 ]
+"21
+[; ;ECU_layer/Relay/ecu_realy.c: 21:       ret_std = gpio_pin_intialize (&pincfg);
+[e = _ret_std ( _gpio_pin_intialize (1 -> &U _pincfg `*CS273 ]
+"22
+[; ;ECU_layer/Relay/ecu_realy.c: 22:     }
+}
+[e :U 277 ]
+"23
+[; ;ECU_layer/Relay/ecu_realy.c: 23:   return ret_std;
+[e ) _ret_std ]
+[e $UE 275  ]
+"24
+[; ;ECU_layer/Relay/ecu_realy.c: 24: }
+[e :UE 275 ]
+}
+"28
+[; ;ECU_layer/Relay/ecu_realy.c: 28: Std_ReturnType ecu_relay_turn_on(const relay_t* relay){
+[v _ecu_relay_turn_on `(uc ~T0 @X0 1 ef1`*CS274 ]
+{
+[e :U _ecu_relay_turn_on ]
+[v _relay `*CS274 ~T0 @X0 1 r1 ]
+[f ]
+"29
+[; ;ECU_layer/Relay/ecu_realy.c: 29:   Std_ReturnType ret_std = ((Std_ReturnType)0x01);
+[v _ret_std `uc ~T0 @X0 1 a ]
+[e = _ret_std -> -> 1 `i `uc ]
+"30
+[; ;ECU_layer/Relay/ecu_realy.c: 30:   if((!(relay)) || (relay->relay_port > 4) || (relay->relay_pin > 7))
+[e $ ! || || ! != _relay -> -> 0 `i `*CS274 > -> . *U _relay 0 `i -> 4 `i > -> . *U _relay 1 `i -> 7 `i 279  ]
+"31
+[; ;ECU_layer/Relay/ecu_realy.c: 31:         ret_std = ((Std_ReturnType)0x00);
+[e = _ret_std -> -> 0 `i `uc ]
+[e $U 280  ]
+"32
+[; ;ECU_layer/Relay/ecu_realy.c: 32:   else{
+[e :U 279 ]
+{
+[v F3468 `S273 ~T0 @X0 1 s ]
+[i F3468
+:U ..
+:U ..
+"33
+[; ;ECU_layer/Relay/ecu_realy.c: 33:         pinConfig_t pincfg = {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[v _pincfg `S273 ~T0 @X0 1 a ]
+[e = _pincfg F3468 ]
+[e ; = . _pincfg 0 . *U _relay 0 ; = . _pincfg 1 . *U _relay 1 ; = . _pincfg 2 -> . `E3387 0 `uc = . _pincfg 3 . *U _relay 2 ]
+"38
+[; ;ECU_layer/Relay/ecu_realy.c: 38:         ret_std = gpio_pin_write_logic (&pincfg , 0x01U);
+[e = _ret_std ( _gpio_pin_write_logic (2 , -> &U _pincfg `*CS273 -> -> 1 `ui `E3383 ]
+"39
+[; ;ECU_layer/Relay/ecu_realy.c: 39:     }
+}
+[e :U 280 ]
+"40
+[; ;ECU_layer/Relay/ecu_realy.c: 40:   return ret_std;
+[e ) _ret_std ]
+[e $UE 278  ]
+"41
+[; ;ECU_layer/Relay/ecu_realy.c: 41: }
+[e :UE 278 ]
+}
+"45
+[; ;ECU_layer/Relay/ecu_realy.c: 45: Std_ReturnType ecu_relay_turn_off(const relay_t* relay){
+[v _ecu_relay_turn_off `(uc ~T0 @X0 1 ef1`*CS274 ]
+{
+[e :U _ecu_relay_turn_off ]
+[v _relay `*CS274 ~T0 @X0 1 r1 ]
+[f ]
+"46
+[; ;ECU_layer/Relay/ecu_realy.c: 46:   Std_ReturnType ret_std = ((Std_ReturnType)0x01);
+[v _ret_std `uc ~T0 @X0 1 a ]
+[e = _ret_std -> -> 1 `i `uc ]
+"47
+[; ;ECU_layer/Relay/ecu_realy.c: 47:   if((!(relay)) || (relay->relay_port > 4) || (relay->relay_pin > 7))
+[e $ ! || || ! != _relay -> -> 0 `i `*CS274 > -> . *U _relay 0 `i -> 4 `i > -> . *U _relay 1 `i -> 7 `i 282  ]
+"48
+[; ;ECU_layer/Relay/ecu_realy.c: 48:         ret_std = ((Std_ReturnType)0x00);
+[e = _ret_std -> -> 0 `i `uc ]
+[e $U 283  ]
+"49
+[; ;ECU_layer/Relay/ecu_realy.c: 49:   else{
+[e :U 282 ]
+{
+[v F3473 `S273 ~T0 @X0 1 s ]
+[i F3473
+:U ..
+:U ..
+"50
+[; ;ECU_layer/Relay/ecu_realy.c: 50:         pinConfig_t pincfg = {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[v _pincfg `S273 ~T0 @X0 1 a ]
+[e = _pincfg F3473 ]
+[e ; = . _pincfg 0 . *U _relay 0 ; = . _pincfg 1 . *U _relay 1 ; = . _pincfg 2 -> . `E3387 0 `uc = . _pincfg 3 . *U _relay 2 ]
+"55
+[; ;ECU_layer/Relay/ecu_realy.c: 55:         ret_std = gpio_pin_write_logic (&pincfg , 0x00U);
+[e = _ret_std ( _gpio_pin_write_logic (2 , -> &U _pincfg `*CS273 -> -> 0 `ui `E3383 ]
+"56
+[; ;ECU_layer/Relay/ecu_realy.c: 56:     }
+}
+[e :U 283 ]
+"57
+[; ;ECU_layer/Relay/ecu_realy.c: 57:   return ret_std;
+[e ) _ret_std ]
+[e $UE 281  ]
+"58
+[; ;ECU_layer/Relay/ecu_realy.c: 58: }
+[e :UE 281 ]
+}
+"62
+[; ;ECU_layer/Relay/ecu_realy.c: 62: Std_ReturnType ecu_relay_toggle(const relay_t* relay){
+[v _ecu_relay_toggle `(uc ~T0 @X0 1 ef1`*CS274 ]
+{
+[e :U _ecu_relay_toggle ]
+[v _relay `*CS274 ~T0 @X0 1 r1 ]
+[f ]
+"63
+[; ;ECU_layer/Relay/ecu_realy.c: 63:   Std_ReturnType ret_std = ((Std_ReturnType)0x01);
+[v _ret_std `uc ~T0 @X0 1 a ]
+[e = _ret_std -> -> 1 `i `uc ]
+"64
+[; ;ECU_layer/Relay/ecu_realy.c: 64:   if((!(relay)) || (relay->relay_port > 4) || (relay->relay_pin > 7))
+[e $ ! || || ! != _relay -> -> 0 `i `*CS274 > -> . *U _relay 0 `i -> 4 `i > -> . *U _relay 1 `i -> 7 `i 285  ]
+"65
+[; ;ECU_layer/Relay/ecu_realy.c: 65:         ret_std = ((Std_ReturnType)0x00);
+[e = _ret_std -> -> 0 `i `uc ]
+[e $U 286  ]
+"66
+[; ;ECU_layer/Relay/ecu_realy.c: 66:   else{
+[e :U 285 ]
+{
+[v F3478 `S273 ~T0 @X0 1 s ]
+[i F3478
+:U ..
+:U ..
+"67
+[; ;ECU_layer/Relay/ecu_realy.c: 67:         pinConfig_t pincfg = {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[v _pincfg `S273 ~T0 @X0 1 a ]
+[e = _pincfg F3478 ]
+[e ; = . _pincfg 0 . *U _relay 0 ; = . _pincfg 1 . *U _relay 1 ; = . _pincfg 2 -> . `E3387 0 `uc = . _pincfg 3 . *U _relay 2 ]
+"72
+[; ;ECU_layer/Relay/ecu_realy.c: 72:         ret_std = gpio_pin_toggle_logic (&pincfg);
+[e = _ret_std ( _gpio_pin_toggle_logic (1 &U _pincfg ]
+"73
+[; ;ECU_layer/Relay/ecu_realy.c: 73:     }
+}
+[e :U 286 ]
+"74
+[; ;ECU_layer/Relay/ecu_realy.c: 74:   return ret_std;
+[e ) _ret_std ]
+[e $UE 284  ]
+"75
+[; ;ECU_layer/Relay/ecu_realy.c: 75: }
+[e :UE 284 ]
+}

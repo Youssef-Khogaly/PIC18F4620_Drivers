@@ -1,0 +1,24 @@
+build/default/production/MCAL_Layer/MCAL_INIT.p1:  \
+MCAL_Layer/MCAL_INIT.c  \
+MCAL_Layer/MCAL_INIT.h  \
+MCAL_Layer/mcal_std_types.h  \
+MCAL_Layer/std_lib.h  \
+MCAL_Layer/compiler.h  \
+MCAL_Layer/timer0/hal_timer0.h  \
+MCAL_Layer/timer0/../GPIO/HAL_GPIO.h  \
+MCAL_Layer/timer0/../GPIO/../DeviceConfig/DeviceConfig.h  \
+MCAL_Layer/timer0/../interrupt/internal_interrupt/mcal_internal_interrupt.h  \
+MCAL_Layer/timer0/../interrupt/internal_interrupt/../mcal_interrupt_cfg.h  \
+MCAL_Layer/timer0/../interrupt/internal_interrupt/../mcal_interrupt_gen_cfg.h  \
+MCAL_Layer/timer1/hal_timer1.h  \
+MCAL_Layer/timer2/hal_timer2.h  \
+MCAL_Layer/timer3/hal_timer3.h  \
+MCAL_Layer/CCP/hal_ccp.h  \
+MCAL_Layer/CCP/hal_ccp_cfg.h  \
+MCAL_Layer/EEPROM/Hal_EEPROM.h  \
+MCAL_Layer/usart/hal_usart.h  \
+MCAL_Layer/usart/hal_usart_cfg.h  \
+MCAL_Layer/SPI/SPI.h  \
+MCAL_Layer/SPI/SPI_cfg.h  \
+MCAL_Layer/I2C/I2C.h  \
+MCAL_Layer/I2C/I2C_cfg.h 

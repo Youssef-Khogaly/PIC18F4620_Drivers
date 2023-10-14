@@ -1,0 +1,306 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta> <reloc>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$.ca/dist/Config_1/production\PIC18F4620.production.o
+cinit CODE 0 FFD4 FFD4 6 1 2
+text0 CODE 0 FFDA FFDA 26 1 2
+cstackCOMRAM COMRAM 1 1 1 2 1 1
+config CONFIG 4 300000 300000 E 1 1
+$.ca/dist/Config_1/production\startup.o
+init CODE 0 0 0 4 1 2
+config CONFIG 4 300000 300000 E 1 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 80-F7F 1
+SFR F80-FFF 1
+BANK0 80-FF 1
+BANK1 100-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 4-FFD3 1
+IDLOC 200000-200007 1
+SMALLCONST 1000-FFD3 1
+CODE 4-FFD3 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK13 D00-DFF 1
+BANK14 E00-EFF 1
+BANK15 F00-F7F 1
+BIGRAM 3-F7F 1
+BIGSFR F80-FFF 1
+COMRAM 3-7F 1
+EEDATA F00000-F003FF 1
+MEDIUMCONST 1000-FFD3 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$.ca/dist/Config_1/production\PIC18F4620.production.o
+FFDA text0 CODE >14:D:\Yossef\PIC18F4620\app.c
+FFDA text0 CODE >15:D:\Yossef\PIC18F4620\app.c
+FFDE text0 CODE >16:D:\Yossef\PIC18F4620\app.c
+FFDE text0 CODE >18:D:\Yossef\PIC18F4620\app.c
+FFE2 text0 CODE >19:D:\Yossef\PIC18F4620\app.c
+FFEA text0 CODE >20:D:\Yossef\PIC18F4620\app.c
+FFFA text0 CODE >21:D:\Yossef\PIC18F4620\app.c
+FFD4 cinit CODE >975:D:\Yossef\PIC18F4620\.ca/dist/Config_1/production\PIC18F4620.production.s
+FFD4 cinit CODE >977:D:\Yossef\PIC18F4620\.ca/dist/Config_1/production\PIC18F4620.production.s
+FFD4 cinit CODE >980:D:\Yossef\PIC18F4620\.ca/dist/Config_1/production\PIC18F4620.production.s
+FFD4 cinit CODE >986:D:\Yossef\PIC18F4620\.ca/dist/Config_1/production\PIC18F4620.production.s
+FFD4 cinit CODE >988:D:\Yossef\PIC18F4620\.ca/dist/Config_1/production\PIC18F4620.production.s
+FFD6 cinit CODE >989:D:\Yossef\PIC18F4620\.ca/dist/Config_1/production\PIC18F4620.production.s
+$.ca/dist/Config_1/production\startup.o
+0 init CODE >95:D:\Yossef\PIC18F4620\.ca/dist/Config_1/production\startup.s
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hspace_0 10000 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hspace_1 3 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hspace_2 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hspace_4 60000E 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hibigdata 0 0 CODE 0 ibigdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst .ca/dist/Config_1/production\startup.o
+__Heeprom_data 0 0 EEDATA 0 eeprom_data .ca/dist/Config_1/production\PIC18F4620.production.o
+main@i 1 0 COMRAM 1 cstackCOMRAM .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lsmallconst 0 0 SMALLCONST 0 smallconst .ca/dist/Config_1/production\PIC18F4620.production.o
+___sp 0 0 STACK 2 stack .ca/dist/Config_1/production\startup.o
+_main FFDA 0 CODE 0 text0 .ca/dist/Config_1/production\PIC18F4620.production.o
+start 0 0 CODE 0 init .ca/dist/Config_1/production\startup.o
+__Hpowerup 0 0 CODE 0 powerup .ca/dist/Config_1/production\PIC18F4620.production.o
+__accesstop 80 0 ABS 0 - .ca/dist/Config_1/production\startup.o
+intlevel0 0 0 CODE 0 text .ca/dist/Config_1/production\startup.o
+intlevel1 0 0 CODE 0 text .ca/dist/Config_1/production\startup.o
+intlevel2 0 0 CODE 0 text .ca/dist/Config_1/production\startup.o
+intlevel3 0 0 CODE 0 text .ca/dist/Config_1/production\startup.o
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hifardata 0 0 CODE 0 ifardata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hclrtext 0 0 ABS 0 clrtext .ca/dist/Config_1/production\PIC18F4620.production.o
+___inthi_sp 0 0 STACK 2 stack .ca/dist/Config_1/production\startup.o
+___intlo_sp 0 0 STACK 2 stack .ca/dist/Config_1/production\startup.o
+__Hintcode_body 0 0 ABS 0 intcode_body .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hintcodelo 0 0 CODE 0 intcodelo .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lintcodelo 0 0 CODE 0 intcodelo .ca/dist/Config_1/production\PIC18F4620.production.o
+start_initialization FFD4 0 CODE 0 cinit .ca/dist/Config_1/production\PIC18F4620.production.o
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM .ca/dist/Config_1/production\PIC18F4620.production.o
+___rparam_used 1 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+isa$xinst 0 0 ABS 0 - .ca/dist/Config_1/production\startup.o
+__Hbank0 0 0 ABS 0 bank0 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank1 0 0 ABS 0 bank1 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank2 0 0 ABS 0 bank2 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank3 0 0 ABS 0 bank3 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank4 0 0 ABS 0 bank4 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank5 0 0 ABS 0 bank5 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank6 0 0 ABS 0 bank6 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank7 0 0 ABS 0 bank7 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank8 0 0 ABS 0 bank8 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank9 0 0 ABS 0 bank9 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hcinit 0 0 ABS 0 cinit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hconst 0 0 CONST 0 const .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hidata 0 0 CODE 0 idata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hidloc 0 0 ABS 0 idloc .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hnvbit 0 0 COMRAM 1 nvbit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hparam 0 0 COMRAM 1 rparam .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hrdata 0 0 COMRAM 1 rdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hstack 0 0 STACK 2 stack .ca/dist/Config_1/production\PIC18F4620.production.o
+__Htext0 0 0 ABS 0 text0 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank10 0 0 ABS 0 bank10 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank11 0 0 ABS 0 bank11 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank12 0 0 ABS 0 bank12 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank13 0 0 ABS 0 bank13 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank14 0 0 ABS 0 bank14 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbank15 0 0 ABS 0 bank15 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbigbss 0 0 BIGRAM 1 bigbss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbigram 0 0 ABS 0 bigram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbigsfr 0 0 ABS 0 bigsfr .ca/dist/Config_1/production\PIC18F4620.production.o
+__smallconst 0 0 SMALLCONST 0 smallconst .ca/dist/Config_1/production\startup.o
+__Hcomram 0 0 ABS 0 comram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hconfig 30000E 0 CONFIG 4 config .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank0 0 0 ABS 0 bank0 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank1 0 0 ABS 0 bank1 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank2 0 0 ABS 0 bank2 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank3 0 0 ABS 0 bank3 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank4 0 0 ABS 0 bank4 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank5 0 0 ABS 0 bank5 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank6 0 0 ABS 0 bank6 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank7 0 0 ABS 0 bank7 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank8 0 0 ABS 0 bank8 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank9 0 0 ABS 0 bank9 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lcinit 0 0 ABS 0 cinit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lconst 0 0 CONST 0 const .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lidata 0 0 CODE 0 idata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lidloc 0 0 ABS 0 idloc .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lnvbit 0 0 COMRAM 1 nvbit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lparam 0 0 COMRAM 1 rparam .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lrdata 0 0 COMRAM 1 rdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lstack 0 0 STACK 2 stack .ca/dist/Config_1/production\PIC18F4620.production.o
+__Ltext0 0 0 ABS 0 text0 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hfarbss 0 0 FARRAM 0 farbss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lintcode_body 0 0 ABS 0 intcode_body .ca/dist/Config_1/production\PIC18F4620.production.o
+__Habs1 0 0 ABS 0 abs1 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hdata 0 0 ABS 0 data .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hheap 0 0 HEAP 7 heap .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hinit 4 0 CODE 0 init .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hrbit 0 0 COMRAM 1 rbit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hrbss 0 0 COMRAM 1 rbss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Htemp 0 0 COMRAM 1 temp .ca/dist/Config_1/production\PIC18F4620.production.o
+__Htext 0 0 ABS 0 text .ca/dist/Config_1/production\PIC18F4620.production.o
+__Labs1 0 0 ABS 0 abs1 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Ldata 0 0 ABS 0 data .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lheap 0 0 HEAP 7 heap .ca/dist/Config_1/production\PIC18F4620.production.o
+__Linit 0 0 CODE 0 init .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lrbit 0 0 COMRAM 1 rbit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lrbss 0 0 COMRAM 1 rbss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Ltemp 0 0 COMRAM 1 temp .ca/dist/Config_1/production\PIC18F4620.production.o
+__Ltext 0 0 ABS 0 text .ca/dist/Config_1/production\PIC18F4620.production.o
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hintret 0 0 ABS 0 intret .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hirdata 0 0 CODE 0 irdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__S0 10000 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__S1 3 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__S4 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__S5 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbigdata 0 0 BIGRAM 1 bigdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hnvrram 0 0 COMRAM 1 nvrram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lintentry 0 0 ABS 0 intentry .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hramtop 1000 0 RAM 0 ramtop .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hrparam 0 0 COMRAM 1 rparam .ca/dist/Config_1/production\PIC18F4620.production.o
+__activetblptr 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hstruct 0 0 COMRAM 1 struct .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank10 0 0 ABS 0 bank10 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank11 0 0 ABS 0 bank11 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank12 0 0 ABS 0 bank12 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank13 0 0 ABS 0 bank13 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank14 0 0 ABS 0 bank14 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbank15 0 0 ABS 0 bank15 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbigbss 0 0 BIGRAM 1 bigbss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbigram 0 0 ABS 0 bigram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbigsfr 0 0 ABS 0 bigsfr .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lcomram 0 0 ABS 0 comram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lconfig 0 0 CONFIG 4 config .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lfarbss 0 0 FARRAM 0 farbss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lfardata 0 0 FARRAM 0 fardata .ca/dist/Config_1/production\PIC18F4620.production.o
+isa$std 1 0 ABS 0 - .ca/dist/Config_1/production\startup.o
+stackhi 0 0 ABS 0 - .ca/dist/Config_1/production\startup.o
+stacklo 0 0 ABS 0 - .ca/dist/Config_1/production\startup.o
+__Lintcode 0 0 CODE 0 intcode .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lintret 0 0 ABS 0 intret .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lirdata 0 0 CODE 0 irdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lspace_0 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lspace_1 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lspace_2 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lspace_4 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM .ca/dist/Config_1/production\PIC18F4620.production.o
+end_of_initialization FFD4 0 CODE 0 cinit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lnvrram 0 0 COMRAM 1 nvrram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hintentry 0 0 ABS 0 intentry .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hreset_vec 0 0 CODE 0 reset_vec .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lramtop 1000 0 RAM 0 ramtop .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lrparam 0 0 COMRAM 1 rparam .ca/dist/Config_1/production\PIC18F4620.production.o
+__pcinit FFD4 0 CODE 0 cinit .ca/dist/Config_1/production\PIC18F4620.production.o
+__ptext0 FFDA 0 CODE 0 text0 .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lstruct 0 0 COMRAM 1 struct .ca/dist/Config_1/production\PIC18F4620.production.o
+__ramtop 1000 0 RAM 0 ramtop .ca/dist/Config_1/production\startup.o
+__Lpowerup 0 0 CODE 0 powerup .ca/dist/Config_1/production\PIC18F4620.production.o
+__Leeprom_data 0 0 EEDATA 0 eeprom_data .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lreset_vec 0 0 CODE 0 reset_vec .ca/dist/Config_1/production\PIC18F4620.production.o
+___heap_hi 0 0 ABS 0 - .ca/dist/Config_1/production\startup.o
+___heap_lo 0 0 ABS 0 - .ca/dist/Config_1/production\startup.o
+___param_bank 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbigdata 0 0 BIGRAM 1 bigdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__end_of__initialization FFD4 0 CODE 0 cinit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Libigdata 0 0 CODE 0 ibigdata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lclrtext 0 0 ABS 0 clrtext .ca/dist/Config_1/production\PIC18F4620.production.o
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM .ca/dist/Config_1/production\PIC18F4620.production.o
+__end_of_main 10000 0 CODE 0 text0 .ca/dist/Config_1/production\PIC18F4620.production.o
+__HRAM 0 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hbss 0 0 RAM 1 bss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hram 0 0 ABS 0 ram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hsfr 0 0 ABS 0 sfr .ca/dist/Config_1/production\PIC18F4620.production.o
+__LRAM 1 0 ABS 0 - .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lbss 0 0 RAM 1 bss .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lram 0 0 ABS 0 ram .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lsfr 0 0 ABS 0 sfr .ca/dist/Config_1/production\PIC18F4620.production.o
+__initialization FFD4 0 CODE 0 cinit .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hfardata 0 0 FARRAM 0 fardata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hsmallconst 0 0 SMALLCONST 0 smallconst .ca/dist/Config_1/production\PIC18F4620.production.o
+__Lifardata 0 0 CODE 0 ifardata .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs .ca/dist/Config_1/production\PIC18F4620.production.o
+__Hintcode 0 0 CODE 0 intcode .ca/dist/Config_1/production\PIC18F4620.production.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cinit 0 FFD4 FFD4 6 1
+text0 0 FFDA FFDA 26 1
+cstackCOMRAM 1 1 1 2 1
+reset_vec 0 0 0 4 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES

@@ -1,0 +1,1635 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[v F3505 `(v ~T0 @X0 0 tf ]
+[v F3506 `(v ~T0 @X0 0 tf ]
+"52 MCAL_Layer/SPI/../interrupt/../../MCAL_Layer/GPIO/HAL_GPIO.h
+[s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S273 . port pinIndex direction logic ]
+"22 MCAL_Layer/SPI/SPI.c
+[; ;MCAL_Layer/SPI/SPI.c: 22: Std_ReturnType SPI_init(const SPI_cfg_t* _spi_cfg)
+[c E3449 0 1 2 3 4 5 .. ]
+[n E3449 . SPI_MASTER_MODE_FOSC_DIV_4 SPI_MASTER_MODE_FOSC_DIV_16 SPI_MASTER_MODE_FOSC_DIV_64 SPI_MASTER_MODE_CLK_TMR2_DIV_2 SPI_SLAVE_MODE_SS_ENABLE SPI_SLAVE_MODE_SS_DISABLE  ]
+"97 MCAL_Layer/SPI/SPI.h
+[; ;MCAL_Layer/SPI/SPI.h: 97: typedef struct {
+[s S274 `S273 -> -> 1 `i `ux `E3449 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S274 . SlaveSelect_pins spi_mode spi_clk_polarity spi_clk_select spi_sample_mode ]
+"4738 MCAL_Layer/SPI/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[s S193 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S193 . SSPM CKP SSPEN SSPOV WCOL ]
+"4745
+[s S194 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S194 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"4737
+[u S192 `S193 1 `S194 1 ]
+[n S192 . . . ]
+"4752
+[v _SSPCON1bits `VS192 ~T0 @X0 0 e@4038 ]
+"15 MCAL_Layer/SPI/SPI.c
+[; ;MCAL_Layer/SPI/SPI.c: 15: static void SPI_MasterMode_init(const SPI_cfg_t* _spi_cfg);
+[v _SPI_MasterMode_init `(v ~T0 @X0 0 sf1`*CS274 ]
+"16
+[; ;MCAL_Layer/SPI/SPI.c: 16: static void SPI_SlaveMode_init(const SPI_cfg_t* _spi_cfg);
+[v _SPI_SlaveMode_init `(v ~T0 @X0 0 sf1`*CS274 ]
+"71
+[; ;MCAL_Layer/SPI/SPI.c: 71:         gpio_pin_write_logic(SlaveSelectPin,low);
+[c E3383 0 1 .. ]
+[n E3383 . low high  ]
+"81 MCAL_Layer/SPI/../interrupt/../../MCAL_Layer/GPIO/HAL_GPIO.h
+[v _gpio_pin_write_logic `(uc ~T0 @X0 0 ef2`*CS273`E3383 ]
+"5030 MCAL_Layer/SPI/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
+"4808
+[s S196 :2 `uc 1 :1 `uc 1 ]
+[n S196 . . R_NOT_W ]
+"4812
+[s S197 :5 `uc 1 :1 `uc 1 ]
+[n S197 . . D_NOT_A ]
+"4816
+[s S198 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S198 . BF UA R_nW S P D_nA CKE SMP ]
+"4826
+[s S199 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S199 . . R . D ]
+"4832
+[s S200 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S200 . . W . A ]
+"4838
+[s S201 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S201 . . nW . nA ]
+"4844
+[s S202 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S202 . . R_W . D_A ]
+"4850
+[s S203 :2 `uc 1 :1 `uc 1 ]
+[n S203 . . NOT_WRITE ]
+"4854
+[s S204 :5 `uc 1 :1 `uc 1 ]
+[n S204 . . NOT_ADDRESS ]
+"4858
+[s S205 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S205 . . nWRITE . nADDRESS ]
+"4864
+[s S206 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S206 . . RW START STOP DA ]
+"4871
+[s S207 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S207 . . NOT_W . NOT_A ]
+"4807
+[u S195 `S196 1 `S197 1 `S198 1 `S199 1 `S200 1 `S201 1 `S202 1 `S203 1 `S204 1 `S205 1 `S206 1 `S207 1 ]
+[n S195 . . . . . . . . . . . . . ]
+"4878
+[v _SSPSTATbits `VS195 ~T0 @X0 0 e@4039 ]
+"1836
+[s S73 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S73 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1846
+[s S74 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S74 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1835
+[u S72 `S73 1 `S74 1 ]
+[n S72 . . . ]
+"1857
+[v _TRISCbits `VS72 ~T0 @X0 0 e@3988 ]
+"245 MCAL_Layer/SPI/SPI.c
+[; ;MCAL_Layer/SPI/SPI.c: 245:         TRISCbits.RC5 = input;
+[c E3387 0 1 .. ]
+[n E3387 . output input  ]
+"65 MCAL_Layer/SPI/../interrupt/../../MCAL_Layer/GPIO/HAL_GPIO.h
+[v _gpio_pin_direction_intialize `(uc ~T0 @X0 0 ef1`*CS273 ]
+"1392 MCAL_Layer/SPI/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S61 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1402
+[s S62 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S62 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"1391
+[u S60 `S61 1 `S62 1 ]
+[n S60 . . . ]
+"1413
+[v _TRISAbits `VS60 ~T0 @X0 0 e@3986 ]
+"55 MCAL_Layer/SPI/../../../../MPLAP/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8/pic/include/proc/pic18f4620.h
+[; <" PORTA equ 0F80h ;# ">
+"192
+[; <" PORTB equ 0F81h ;# ">
+"363
+[; <" PORTC equ 0F82h ;# ">
+"538
+[; <" PORTD equ 0F83h ;# ">
+"680
+[; <" PORTE equ 0F84h ;# ">
+"883
+[; <" LATA equ 0F89h ;# ">
+"995
+[; <" LATB equ 0F8Ah ;# ">
+"1107
+[; <" LATC equ 0F8Bh ;# ">
+"1219
+[; <" LATD equ 0F8Ch ;# ">
+"1331
+[; <" LATE equ 0F8Dh ;# ">
+"1383
+[; <" TRISA equ 0F92h ;# ">
+"1388
+[; <" DDRA equ 0F92h ;# ">
+"1605
+[; <" TRISB equ 0F93h ;# ">
+"1610
+[; <" DDRB equ 0F93h ;# ">
+"1827
+[; <" TRISC equ 0F94h ;# ">
+"1832
+[; <" DDRC equ 0F94h ;# ">
+"2049
+[; <" TRISD equ 0F95h ;# ">
+"2054
+[; <" DDRD equ 0F95h ;# ">
+"2271
+[; <" TRISE equ 0F96h ;# ">
+"2276
+[; <" DDRE equ 0F96h ;# ">
+"2435
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2500
+[; <" PIE1 equ 0F9Dh ;# ">
+"2577
+[; <" PIR1 equ 0F9Eh ;# ">
+"2654
+[; <" IPR1 equ 0F9Fh ;# ">
+"2731
+[; <" PIE2 equ 0FA0h ;# ">
+"2797
+[; <" PIR2 equ 0FA1h ;# ">
+"2863
+[; <" IPR2 equ 0FA2h ;# ">
+"2929
+[; <" EECON1 equ 0FA6h ;# ">
+"2995
+[; <" EECON2 equ 0FA7h ;# ">
+"3002
+[; <" EEDATA equ 0FA8h ;# ">
+"3009
+[; <" EEADR equ 0FA9h ;# ">
+"3016
+[; <" EEADRH equ 0FAAh ;# ">
+"3023
+[; <" RCSTA equ 0FABh ;# ">
+"3028
+[; <" RCSTA1 equ 0FABh ;# ">
+"3233
+[; <" TXSTA equ 0FACh ;# ">
+"3238
+[; <" TXSTA1 equ 0FACh ;# ">
+"3489
+[; <" TXREG equ 0FADh ;# ">
+"3494
+[; <" TXREG1 equ 0FADh ;# ">
+"3501
+[; <" RCREG equ 0FAEh ;# ">
+"3506
+[; <" RCREG1 equ 0FAEh ;# ">
+"3513
+[; <" SPBRG equ 0FAFh ;# ">
+"3518
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3525
+[; <" SPBRGH equ 0FB0h ;# ">
+"3532
+[; <" T3CON equ 0FB1h ;# ">
+"3644
+[; <" TMR3 equ 0FB2h ;# ">
+"3651
+[; <" TMR3L equ 0FB2h ;# ">
+"3658
+[; <" TMR3H equ 0FB3h ;# ">
+"3665
+[; <" CMCON equ 0FB4h ;# ">
+"3755
+[; <" CVRCON equ 0FB5h ;# ">
+"3834
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3916
+[; <" PWM1CON equ 0FB7h ;# ">
+"3986
+[; <" BAUDCON equ 0FB8h ;# ">
+"3991
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4158
+[; <" CCP2CON equ 0FBAh ;# ">
+"4237
+[; <" CCPR2 equ 0FBBh ;# ">
+"4244
+[; <" CCPR2L equ 0FBBh ;# ">
+"4251
+[; <" CCPR2H equ 0FBCh ;# ">
+"4258
+[; <" CCP1CON equ 0FBDh ;# ">
+"4355
+[; <" CCPR1 equ 0FBEh ;# ">
+"4362
+[; <" CCPR1L equ 0FBEh ;# ">
+"4369
+[; <" CCPR1H equ 0FBFh ;# ">
+"4376
+[; <" ADCON2 equ 0FC0h ;# ">
+"4447
+[; <" ADCON1 equ 0FC1h ;# ">
+"4532
+[; <" ADCON0 equ 0FC2h ;# ">
+"4651
+[; <" ADRES equ 0FC3h ;# ">
+"4658
+[; <" ADRESL equ 0FC3h ;# ">
+"4665
+[; <" ADRESH equ 0FC4h ;# ">
+"4672
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4734
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4804
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5025
+[; <" SSPADD equ 0FC8h ;# ">
+"5032
+[; <" SSPBUF equ 0FC9h ;# ">
+"5039
+[; <" T2CON equ 0FCAh ;# ">
+"5110
+[; <" PR2 equ 0FCBh ;# ">
+"5115
+[; <" MEMCON equ 0FCBh ;# ">
+"5220
+[; <" TMR2 equ 0FCCh ;# ">
+"5227
+[; <" T1CON equ 0FCDh ;# ">
+"5330
+[; <" TMR1 equ 0FCEh ;# ">
+"5337
+[; <" TMR1L equ 0FCEh ;# ">
+"5344
+[; <" TMR1H equ 0FCFh ;# ">
+"5351
+[; <" RCON equ 0FD0h ;# ">
+"5484
+[; <" WDTCON equ 0FD1h ;# ">
+"5512
+[; <" HLVDCON equ 0FD2h ;# ">
+"5517
+[; <" LVDCON equ 0FD2h ;# ">
+"5782
+[; <" OSCCON equ 0FD3h ;# ">
+"5859
+[; <" T0CON equ 0FD5h ;# ">
+"5936
+[; <" TMR0 equ 0FD6h ;# ">
+"5943
+[; <" TMR0L equ 0FD6h ;# ">
+"5950
+[; <" TMR0H equ 0FD7h ;# ">
+"5957
+[; <" STATUS equ 0FD8h ;# ">
+"6028
+[; <" FSR2 equ 0FD9h ;# ">
+"6035
+[; <" FSR2L equ 0FD9h ;# ">
+"6042
+[; <" FSR2H equ 0FDAh ;# ">
+"6049
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6056
+[; <" PREINC2 equ 0FDCh ;# ">
+"6063
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6070
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6077
+[; <" INDF2 equ 0FDFh ;# ">
+"6084
+[; <" BSR equ 0FE0h ;# ">
+"6091
+[; <" FSR1 equ 0FE1h ;# ">
+"6098
+[; <" FSR1L equ 0FE1h ;# ">
+"6105
+[; <" FSR1H equ 0FE2h ;# ">
+"6112
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6119
+[; <" PREINC1 equ 0FE4h ;# ">
+"6126
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6133
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6140
+[; <" INDF1 equ 0FE7h ;# ">
+"6147
+[; <" WREG equ 0FE8h ;# ">
+"6159
+[; <" FSR0 equ 0FE9h ;# ">
+"6166
+[; <" FSR0L equ 0FE9h ;# ">
+"6173
+[; <" FSR0H equ 0FEAh ;# ">
+"6180
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6187
+[; <" PREINC0 equ 0FECh ;# ">
+"6194
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6201
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6208
+[; <" INDF0 equ 0FEFh ;# ">
+"6215
+[; <" INTCON3 equ 0FF0h ;# ">
+"6307
+[; <" INTCON2 equ 0FF1h ;# ">
+"6377
+[; <" INTCON equ 0FF2h ;# ">
+"6494
+[; <" PROD equ 0FF3h ;# ">
+"6501
+[; <" PRODL equ 0FF3h ;# ">
+"6508
+[; <" PRODH equ 0FF4h ;# ">
+"6515
+[; <" TABLAT equ 0FF5h ;# ">
+"6524
+[; <" TBLPTR equ 0FF6h ;# ">
+"6531
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6538
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6545
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6554
+[; <" PCLAT equ 0FF9h ;# ">
+"6561
+[; <" PC equ 0FF9h ;# ">
+"6568
+[; <" PCL equ 0FF9h ;# ">
+"6575
+[; <" PCLATH equ 0FFAh ;# ">
+"6582
+[; <" PCLATU equ 0FFBh ;# ">
+"6589
+[; <" STKPTR equ 0FFCh ;# ">
+"6695
+[; <" TOS equ 0FFDh ;# ">
+"6702
+[; <" TOSL equ 0FFDh ;# ">
+"6709
+[; <" TOSH equ 0FFEh ;# ">
+"6716
+[; <" TOSU equ 0FFFh ;# ">
+"5 MCAL_Layer/SPI/SPI.c
+[; ;MCAL_Layer/SPI/SPI.c: 5: static SPI_InterruptHandler_t SPI_InterruptHandler_CBF = ((void*)0);
+[v _SPI_InterruptHandler_CBF `*F3505 ~T0 @X0 1 s ]
+[i _SPI_InterruptHandler_CBF
+-> -> -> 0 `i `*v `*F3506
+]
+"22
+[; ;MCAL_Layer/SPI/SPI.c: 22: Std_ReturnType SPI_init(const SPI_cfg_t* _spi_cfg)
+[v _SPI_init `(uc ~T0 @X0 1 ef1`*CS274 ]
+"23
+[; ;MCAL_Layer/SPI/SPI.c: 23: {
+{
+[e :U _SPI_init ]
+"22
+[; ;MCAL_Layer/SPI/SPI.c: 22: Std_ReturnType SPI_init(const SPI_cfg_t* _spi_cfg)
+[v __spi_cfg `*CS274 ~T0 @X0 1 r1 ]
+"23
+[; ;MCAL_Layer/SPI/SPI.c: 23: {
+[f ]
+"24
+[; ;MCAL_Layer/SPI/SPI.c: 24:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"25
+[; ;MCAL_Layer/SPI/SPI.c: 25:     if(_spi_cfg != ((void*)0))
+[e $ ! != __spi_cfg -> -> -> 0 `i `*v `*CS274 276  ]
+"26
+[; ;MCAL_Layer/SPI/SPI.c: 26:     {
+{
+"27
+[; ;MCAL_Layer/SPI/SPI.c: 27:         (SSPCON1bits.SSPEN = 0);
+[e = . . _SSPCON1bits 0 2 -> -> 0 `i `uc ]
+"29
+[; ;MCAL_Layer/SPI/SPI.c: 29:         if(_spi_cfg->spi_mode == SPI_MASTER_MODE_FOSC_DIV_4 || _spi_cfg->spi_mode == SPI_MASTER_MODE_FOSC_DIV_16 || _spi_cfg->spi_mode == SPI_MASTER_MODE_FOSC_DIV_64 || _spi_cfg->spi_mode == SPI_MASTER_MODE_CLK_TMR2_DIV_2)
+[e $ ! || || || == -> . *U __spi_cfg 1 `ui -> . `E3449 0 `ui == -> . *U __spi_cfg 1 `ui -> . `E3449 1 `ui == -> . *U __spi_cfg 1 `ui -> . `E3449 2 `ui == -> . *U __spi_cfg 1 `ui -> . `E3449 3 `ui 277  ]
+"30
+[; ;MCAL_Layer/SPI/SPI.c: 30:         {
+{
+"31
+[; ;MCAL_Layer/SPI/SPI.c: 31:             SPI_MasterMode_init(_spi_cfg);
+[e ( _SPI_MasterMode_init (1 __spi_cfg ]
+"32
+[; ;MCAL_Layer/SPI/SPI.c: 32:         }
+}
+[e $U 278  ]
+"33
+[; ;MCAL_Layer/SPI/SPI.c: 33:         else if(_spi_cfg->spi_mode == SPI_SLAVE_MODE_SS_ENABLE || _spi_cfg->spi_mode == SPI_SLAVE_MODE_SS_DISABLE )
+[e :U 277 ]
+[e $ ! || == -> . *U __spi_cfg 1 `ui -> . `E3449 4 `ui == -> . *U __spi_cfg 1 `ui -> . `E3449 5 `ui 279  ]
+"34
+[; ;MCAL_Layer/SPI/SPI.c: 34:         {
+{
+"35
+[; ;MCAL_Layer/SPI/SPI.c: 35:             SPI_SlaveMode_init(_spi_cfg);
+[e ( _SPI_SlaveMode_init (1 __spi_cfg ]
+"36
+[; ;MCAL_Layer/SPI/SPI.c: 36:         }
+}
+[e $U 280  ]
+"37
+[; ;MCAL_Layer/SPI/SPI.c: 37:         else { }
+[e :U 279 ]
+{
+}
+[e :U 280 ]
+[e :U 278 ]
+"47
+[; ;MCAL_Layer/SPI/SPI.c: 47:         (SSPCON1bits.SSPEN = 1);
+[e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
+"48
+[; ;MCAL_Layer/SPI/SPI.c: 48:          ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"49
+[; ;MCAL_Layer/SPI/SPI.c: 49:     }
+}
+[e $U 281  ]
+"50
+[; ;MCAL_Layer/SPI/SPI.c: 50:     else
+[e :U 276 ]
+"51
+[; ;MCAL_Layer/SPI/SPI.c: 51:     {
+{
+"52
+[; ;MCAL_Layer/SPI/SPI.c: 52:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"53
+[; ;MCAL_Layer/SPI/SPI.c: 53:     }
+}
+[e :U 281 ]
+"55
+[; ;MCAL_Layer/SPI/SPI.c: 55:     return ret;
+[e ) _ret ]
+[e $UE 275  ]
+"56
+[; ;MCAL_Layer/SPI/SPI.c: 56: }
+[e :UE 275 ]
+}
+"58
+[; ;MCAL_Layer/SPI/SPI.c: 58: Std_ReturnType SPI_deInit(void)
+[v _SPI_deInit `(uc ~T0 @X0 1 ef ]
+"59
+[; ;MCAL_Layer/SPI/SPI.c: 59: {
+{
+[e :U _SPI_deInit ]
+[f ]
+"60
+[; ;MCAL_Layer/SPI/SPI.c: 60:     Std_ReturnType ret = ((Std_ReturnType)0x01);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"61
+[; ;MCAL_Layer/SPI/SPI.c: 61:     (SSPCON1bits.SSPEN = 0);
+[e = . . _SSPCON1bits 0 2 -> -> 0 `i `uc ]
+"62
+[; ;MCAL_Layer/SPI/SPI.c: 62:     return ret;
+[e ) _ret ]
+[e $UE 282  ]
+"63
+[; ;MCAL_Layer/SPI/SPI.c: 63: }
+[e :UE 282 ]
+}
+"65
+[; ;MCAL_Layer/SPI/SPI.c: 65: Std_ReturnType SPI_Transceive_SlaveSelect(const uint8_t Transmit_data , uint8_t* Rec_data , const pinConfig_t* SlaveSelectPin)
+[v _SPI_Transceive_SlaveSelect `(uc ~T0 @X0 1 ef3`Cuc`*uc`*CS273 ]
+"66
+[; ;MCAL_Layer/SPI/SPI.c: 66: {
+{
+[e :U _SPI_Transceive_SlaveSelect ]
+"65
+[; ;MCAL_Layer/SPI/SPI.c: 65: Std_ReturnType SPI_Transceive_SlaveSelect(const uint8_t Transmit_data , uint8_t* Rec_data , const pinConfig_t* SlaveSelectPin)
+[v _Transmit_data `Cuc ~T0 @X0 1 r1 ]
+[v _Rec_data `*uc ~T0 @X0 1 r2 ]
+[v _SlaveSelectPin `*CS273 ~T0 @X0 1 r3 ]
+"66
+[; ;MCAL_Layer/SPI/SPI.c: 66: {
+[f ]
+"67
+[; ;MCAL_Layer/SPI/SPI.c: 67:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"68
+[; ;MCAL_Layer/SPI/SPI.c: 68:     if(Rec_data && SlaveSelectPin )
+[e $ ! && != _Rec_data -> -> 0 `i `*uc != _SlaveSelectPin -> -> 0 `i `*CS273 284  ]
+"69
+[; ;MCAL_Layer/SPI/SPI.c: 69:     {
+{
+"71
+[; ;MCAL_Layer/SPI/SPI.c: 71:         gpio_pin_write_logic(SlaveSelectPin,low);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 0 ]
+"73
+[; ;MCAL_Layer/SPI/SPI.c: 73:         SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"74
+[; ;MCAL_Layer/SPI/SPI.c: 74:         while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $U 285  ]
+[e :U 286 ]
+"75
+[; ;MCAL_Layer/SPI/SPI.c: 75:         {
+{
+"76
+[; ;MCAL_Layer/SPI/SPI.c: 76:             (SSPCON1bits.WCOL = 0);
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+"77
+[; ;MCAL_Layer/SPI/SPI.c: 77:             SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"78
+[; ;MCAL_Layer/SPI/SPI.c: 78:         }
+}
+[e :U 285 ]
+"74
+[; ;MCAL_Layer/SPI/SPI.c: 74:         while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $ == -> . . _SSPCON1bits 0 4 `i -> -> -> 1 `i `uc `i 286  ]
+[e :U 287 ]
+"80
+[; ;MCAL_Layer/SPI/SPI.c: 80:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 288  ]
+[e :U 289 ]
+"81
+[; ;MCAL_Layer/SPI/SPI.c: 81:             ;
+[e :U 288 ]
+"80
+[; ;MCAL_Layer/SPI/SPI.c: 80:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 289  ]
+[e :U 290 ]
+"82
+[; ;MCAL_Layer/SPI/SPI.c: 82:         *Rec_data = SSPBUF;
+[e = *U _Rec_data _SSPBUF ]
+"85
+[; ;MCAL_Layer/SPI/SPI.c: 85:        gpio_pin_write_logic(SlaveSelectPin,high);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 1 ]
+"87
+[; ;MCAL_Layer/SPI/SPI.c: 87:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"88
+[; ;MCAL_Layer/SPI/SPI.c: 88:     }
+}
+[e $U 291  ]
+"89
+[; ;MCAL_Layer/SPI/SPI.c: 89:     else
+[e :U 284 ]
+"90
+[; ;MCAL_Layer/SPI/SPI.c: 90:     {
+{
+"91
+[; ;MCAL_Layer/SPI/SPI.c: 91:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"92
+[; ;MCAL_Layer/SPI/SPI.c: 92:     }
+}
+[e :U 291 ]
+"93
+[; ;MCAL_Layer/SPI/SPI.c: 93:     return ret;
+[e ) _ret ]
+[e $UE 283  ]
+"94
+[; ;MCAL_Layer/SPI/SPI.c: 94: }
+[e :UE 283 ]
+}
+"96
+[; ;MCAL_Layer/SPI/SPI.c: 96: Std_ReturnType SPI_Transceive(const uint8_t Transmit_data , uint8_t* Rec_data)
+[v _SPI_Transceive `(uc ~T0 @X0 1 ef2`Cuc`*uc ]
+"97
+[; ;MCAL_Layer/SPI/SPI.c: 97: {
+{
+[e :U _SPI_Transceive ]
+"96
+[; ;MCAL_Layer/SPI/SPI.c: 96: Std_ReturnType SPI_Transceive(const uint8_t Transmit_data , uint8_t* Rec_data)
+[v _Transmit_data `Cuc ~T0 @X0 1 r1 ]
+[v _Rec_data `*uc ~T0 @X0 1 r2 ]
+"97
+[; ;MCAL_Layer/SPI/SPI.c: 97: {
+[f ]
+"98
+[; ;MCAL_Layer/SPI/SPI.c: 98:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"99
+[; ;MCAL_Layer/SPI/SPI.c: 99:     if(Rec_data)
+[e $ ! != _Rec_data -> -> 0 `i `*uc 293  ]
+"100
+[; ;MCAL_Layer/SPI/SPI.c: 100:     {
+{
+"101
+[; ;MCAL_Layer/SPI/SPI.c: 101:         SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"102
+[; ;MCAL_Layer/SPI/SPI.c: 102:         while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $U 294  ]
+[e :U 295 ]
+"103
+[; ;MCAL_Layer/SPI/SPI.c: 103:         {
+{
+"104
+[; ;MCAL_Layer/SPI/SPI.c: 104:             (SSPCON1bits.WCOL = 0);
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+"105
+[; ;MCAL_Layer/SPI/SPI.c: 105:             SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"106
+[; ;MCAL_Layer/SPI/SPI.c: 106:         }
+}
+[e :U 294 ]
+"102
+[; ;MCAL_Layer/SPI/SPI.c: 102:         while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $ == -> . . _SSPCON1bits 0 4 `i -> -> -> 1 `i `uc `i 295  ]
+[e :U 296 ]
+"108
+[; ;MCAL_Layer/SPI/SPI.c: 108:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 297  ]
+[e :U 298 ]
+"109
+[; ;MCAL_Layer/SPI/SPI.c: 109:             ;
+[e :U 297 ]
+"108
+[; ;MCAL_Layer/SPI/SPI.c: 108:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 298  ]
+[e :U 299 ]
+"110
+[; ;MCAL_Layer/SPI/SPI.c: 110:         *Rec_data = SSPBUF;
+[e = *U _Rec_data _SSPBUF ]
+"112
+[; ;MCAL_Layer/SPI/SPI.c: 112:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"113
+[; ;MCAL_Layer/SPI/SPI.c: 113:     }
+}
+[e $U 300  ]
+"114
+[; ;MCAL_Layer/SPI/SPI.c: 114:     else
+[e :U 293 ]
+"115
+[; ;MCAL_Layer/SPI/SPI.c: 115:     {
+{
+"116
+[; ;MCAL_Layer/SPI/SPI.c: 116:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"117
+[; ;MCAL_Layer/SPI/SPI.c: 117:     }
+}
+[e :U 300 ]
+"118
+[; ;MCAL_Layer/SPI/SPI.c: 118:     return ret;
+[e ) _ret ]
+[e $UE 292  ]
+"119
+[; ;MCAL_Layer/SPI/SPI.c: 119: }
+[e :UE 292 ]
+}
+"121
+[; ;MCAL_Layer/SPI/SPI.c: 121: Std_ReturnType SPI_Transceive_string(uint8_t* Transmit_data ,uint8_t Transmit_arrLen ,uint8_t* Rec_data)
+[v _SPI_Transceive_string `(uc ~T0 @X0 1 ef3`*uc`uc`*uc ]
+"122
+[; ;MCAL_Layer/SPI/SPI.c: 122: {
+{
+[e :U _SPI_Transceive_string ]
+"121
+[; ;MCAL_Layer/SPI/SPI.c: 121: Std_ReturnType SPI_Transceive_string(uint8_t* Transmit_data ,uint8_t Transmit_arrLen ,uint8_t* Rec_data)
+[v _Transmit_data `*uc ~T0 @X0 1 r1 ]
+[v _Transmit_arrLen `uc ~T0 @X0 1 r2 ]
+[v _Rec_data `*uc ~T0 @X0 1 r3 ]
+"122
+[; ;MCAL_Layer/SPI/SPI.c: 122: {
+[f ]
+"123
+[; ;MCAL_Layer/SPI/SPI.c: 123:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"124
+[; ;MCAL_Layer/SPI/SPI.c: 124:     int l_trans_counter = 0;
+[v _l_trans_counter `i ~T0 @X0 1 a ]
+[e = _l_trans_counter -> 0 `i ]
+"125
+[; ;MCAL_Layer/SPI/SPI.c: 125:     if(Rec_data && Transmit_data )
+[e $ ! && != _Rec_data -> -> 0 `i `*uc != _Transmit_data -> -> 0 `i `*uc 302  ]
+"126
+[; ;MCAL_Layer/SPI/SPI.c: 126:     {
+{
+"127
+[; ;MCAL_Layer/SPI/SPI.c: 127:         while ( l_trans_counter < Transmit_arrLen )
+[e $U 303  ]
+[e :U 304 ]
+"128
+[; ;MCAL_Layer/SPI/SPI.c: 128:         {
+{
+"129
+[; ;MCAL_Layer/SPI/SPI.c: 129:             SSPBUF = Transmit_data[l_trans_counter];
+[e = _SSPBUF *U + _Transmit_data * -> _l_trans_counter `x -> -> # *U _Transmit_data `i `x ]
+"130
+[; ;MCAL_Layer/SPI/SPI.c: 130:             while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $U 306  ]
+[e :U 307 ]
+"131
+[; ;MCAL_Layer/SPI/SPI.c: 131:             {
+{
+"132
+[; ;MCAL_Layer/SPI/SPI.c: 132:                 (SSPCON1bits.WCOL = 0);
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+"133
+[; ;MCAL_Layer/SPI/SPI.c: 133:                 SSPBUF = Transmit_data[l_trans_counter];
+[e = _SSPBUF *U + _Transmit_data * -> _l_trans_counter `x -> -> # *U _Transmit_data `i `x ]
+"134
+[; ;MCAL_Layer/SPI/SPI.c: 134:             }
+}
+[e :U 306 ]
+"130
+[; ;MCAL_Layer/SPI/SPI.c: 130:             while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $ == -> . . _SSPCON1bits 0 4 `i -> -> -> 1 `i `uc `i 307  ]
+[e :U 308 ]
+"135
+[; ;MCAL_Layer/SPI/SPI.c: 135:             while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 309  ]
+[e :U 310 ]
+"136
+[; ;MCAL_Layer/SPI/SPI.c: 136:                 ;
+[e :U 309 ]
+"135
+[; ;MCAL_Layer/SPI/SPI.c: 135:             while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 310  ]
+[e :U 311 ]
+"137
+[; ;MCAL_Layer/SPI/SPI.c: 137:             if(Rec_data == ((void*)0))
+[e $ ! == _Rec_data -> -> -> 0 `i `*v `*uc 312  ]
+"138
+[; ;MCAL_Layer/SPI/SPI.c: 138:             {
+{
+"139
+[; ;MCAL_Layer/SPI/SPI.c: 139:                 ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"140
+[; ;MCAL_Layer/SPI/SPI.c: 140:                 return ret;
+[e ) _ret ]
+[e $UE 301  ]
+"141
+[; ;MCAL_Layer/SPI/SPI.c: 141:             }
+}
+[e :U 312 ]
+"142
+[; ;MCAL_Layer/SPI/SPI.c: 142:             *Rec_data++ = SSPBUF;
+[e = *U ++ _Rec_data * -> -> 1 `i `x -> -> # *U _Rec_data `i `x _SSPBUF ]
+"143
+[; ;MCAL_Layer/SPI/SPI.c: 143:             ++l_trans_counter;
+[e =+ _l_trans_counter -> 1 `i ]
+"144
+[; ;MCAL_Layer/SPI/SPI.c: 144:         }
+}
+[e :U 303 ]
+"127
+[; ;MCAL_Layer/SPI/SPI.c: 127:         while ( l_trans_counter < Transmit_arrLen )
+[e $ < _l_trans_counter -> _Transmit_arrLen `i 304  ]
+[e :U 305 ]
+"147
+[; ;MCAL_Layer/SPI/SPI.c: 147:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"148
+[; ;MCAL_Layer/SPI/SPI.c: 148:     }
+}
+[e $U 313  ]
+"149
+[; ;MCAL_Layer/SPI/SPI.c: 149:     else
+[e :U 302 ]
+"150
+[; ;MCAL_Layer/SPI/SPI.c: 150:     {
+{
+"151
+[; ;MCAL_Layer/SPI/SPI.c: 151:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"152
+[; ;MCAL_Layer/SPI/SPI.c: 152:     }
+}
+[e :U 313 ]
+"153
+[; ;MCAL_Layer/SPI/SPI.c: 153:     return ret;
+[e ) _ret ]
+[e $UE 301  ]
+"154
+[; ;MCAL_Layer/SPI/SPI.c: 154: }
+[e :UE 301 ]
+}
+"157
+[; ;MCAL_Layer/SPI/SPI.c: 157: Std_ReturnType SPI_Transmit(const uint8_t Transmit_data)
+[v _SPI_Transmit `(uc ~T0 @X0 1 ef1`Cuc ]
+"158
+[; ;MCAL_Layer/SPI/SPI.c: 158: {
+{
+[e :U _SPI_Transmit ]
+"157
+[; ;MCAL_Layer/SPI/SPI.c: 157: Std_ReturnType SPI_Transmit(const uint8_t Transmit_data)
+[v _Transmit_data `Cuc ~T0 @X0 1 r1 ]
+"158
+[; ;MCAL_Layer/SPI/SPI.c: 158: {
+[f ]
+"159
+[; ;MCAL_Layer/SPI/SPI.c: 159:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"160
+[; ;MCAL_Layer/SPI/SPI.c: 160:     uint8_t l_spi_tempRead = 0;
+[v _l_spi_tempRead `uc ~T0 @X0 1 a ]
+[e = _l_spi_tempRead -> -> 0 `i `uc ]
+"162
+[; ;MCAL_Layer/SPI/SPI.c: 162:     SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"163
+[; ;MCAL_Layer/SPI/SPI.c: 163:     while( (SSPCON1bits.WCOL) == ((uint8_t)0x01) )
+[e $U 315  ]
+[e :U 316 ]
+"164
+[; ;MCAL_Layer/SPI/SPI.c: 164:     {
+{
+"165
+[; ;MCAL_Layer/SPI/SPI.c: 165:          (SSPCON1bits.WCOL = 0);
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+"166
+[; ;MCAL_Layer/SPI/SPI.c: 166:          SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"167
+[; ;MCAL_Layer/SPI/SPI.c: 167:      }
+}
+[e :U 315 ]
+"163
+[; ;MCAL_Layer/SPI/SPI.c: 163:     while( (SSPCON1bits.WCOL) == ((uint8_t)0x01) )
+[e $ == -> . . _SSPCON1bits 0 4 `i -> -> -> 1 `i `uc `i 316  ]
+[e :U 317 ]
+"168
+[; ;MCAL_Layer/SPI/SPI.c: 168:     while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 318  ]
+[e :U 319 ]
+"169
+[; ;MCAL_Layer/SPI/SPI.c: 169:             ;
+[e :U 318 ]
+"168
+[; ;MCAL_Layer/SPI/SPI.c: 168:     while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 319  ]
+[e :U 320 ]
+"170
+[; ;MCAL_Layer/SPI/SPI.c: 170:     l_spi_tempRead = SSPBUF;
+[e = _l_spi_tempRead _SSPBUF ]
+"171
+[; ;MCAL_Layer/SPI/SPI.c: 171:     ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"172
+[; ;MCAL_Layer/SPI/SPI.c: 172:     return ret;
+[e ) _ret ]
+[e $UE 314  ]
+"173
+[; ;MCAL_Layer/SPI/SPI.c: 173: }
+[e :UE 314 ]
+}
+"175
+[; ;MCAL_Layer/SPI/SPI.c: 175: Std_ReturnType SPI_Transmit_string(uint8_t* Transmit_data , uint8_t transArr_len)
+[v _SPI_Transmit_string `(uc ~T0 @X0 1 ef2`*uc`uc ]
+"176
+[; ;MCAL_Layer/SPI/SPI.c: 176: {
+{
+[e :U _SPI_Transmit_string ]
+"175
+[; ;MCAL_Layer/SPI/SPI.c: 175: Std_ReturnType SPI_Transmit_string(uint8_t* Transmit_data , uint8_t transArr_len)
+[v _Transmit_data `*uc ~T0 @X0 1 r1 ]
+[v _transArr_len `uc ~T0 @X0 1 r2 ]
+"176
+[; ;MCAL_Layer/SPI/SPI.c: 176: {
+[f ]
+"177
+[; ;MCAL_Layer/SPI/SPI.c: 177:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"178
+[; ;MCAL_Layer/SPI/SPI.c: 178:     int l_trans_counter = 0;
+[v _l_trans_counter `i ~T0 @X0 1 a ]
+[e = _l_trans_counter -> 0 `i ]
+"179
+[; ;MCAL_Layer/SPI/SPI.c: 179:     for(; l_trans_counter < transArr_len ; ++l_trans_counter)
+{
+[e $U 325  ]
+[e :U 322 ]
+"180
+[; ;MCAL_Layer/SPI/SPI.c: 180:     {
+{
+"181
+[; ;MCAL_Layer/SPI/SPI.c: 181:         SPI_Transmit(Transmit_data[l_trans_counter]);
+[e ( _SPI_Transmit (1 *U + _Transmit_data * -> _l_trans_counter `x -> -> # *U _Transmit_data `i `x ]
+"182
+[; ;MCAL_Layer/SPI/SPI.c: 182:         if(Transmit_data[l_trans_counter] == '\0')
+[e $ ! == -> *U + _Transmit_data * -> _l_trans_counter `x -> -> # *U _Transmit_data `i `x `ui -> 0 `ui 326  ]
+"183
+[; ;MCAL_Layer/SPI/SPI.c: 183:             break;
+[e $U 323  ]
+[e :U 326 ]
+"184
+[; ;MCAL_Layer/SPI/SPI.c: 184:     }
+}
+[e =+ _l_trans_counter -> 1 `i ]
+[e :U 325 ]
+[e $ < _l_trans_counter -> _transArr_len `i 322  ]
+[e :U 323 ]
+}
+"185
+[; ;MCAL_Layer/SPI/SPI.c: 185:     ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"186
+[; ;MCAL_Layer/SPI/SPI.c: 186:     return ret;
+[e ) _ret ]
+[e $UE 321  ]
+"187
+[; ;MCAL_Layer/SPI/SPI.c: 187: }
+[e :UE 321 ]
+}
+"188
+[; ;MCAL_Layer/SPI/SPI.c: 188: Std_ReturnType SPI_Transmit_SlaveSelect(const uint8_t Transmit_data , const pinConfig_t* SlaveSelectPin)
+[v _SPI_Transmit_SlaveSelect `(uc ~T0 @X0 1 ef2`Cuc`*CS273 ]
+"189
+[; ;MCAL_Layer/SPI/SPI.c: 189: {
+{
+[e :U _SPI_Transmit_SlaveSelect ]
+"188
+[; ;MCAL_Layer/SPI/SPI.c: 188: Std_ReturnType SPI_Transmit_SlaveSelect(const uint8_t Transmit_data , const pinConfig_t* SlaveSelectPin)
+[v _Transmit_data `Cuc ~T0 @X0 1 r1 ]
+[v _SlaveSelectPin `*CS273 ~T0 @X0 1 r2 ]
+"189
+[; ;MCAL_Layer/SPI/SPI.c: 189: {
+[f ]
+"190
+[; ;MCAL_Layer/SPI/SPI.c: 190:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"191
+[; ;MCAL_Layer/SPI/SPI.c: 191:     uint8_t l_spi_tempRead = 0;
+[v _l_spi_tempRead `uc ~T0 @X0 1 a ]
+[e = _l_spi_tempRead -> -> 0 `i `uc ]
+"192
+[; ;MCAL_Layer/SPI/SPI.c: 192:     if(SlaveSelectPin)
+[e $ ! != _SlaveSelectPin -> -> 0 `i `*CS273 328  ]
+"193
+[; ;MCAL_Layer/SPI/SPI.c: 193:     {
+{
+"194
+[; ;MCAL_Layer/SPI/SPI.c: 194:         gpio_pin_write_logic(SlaveSelectPin,low);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 0 ]
+"195
+[; ;MCAL_Layer/SPI/SPI.c: 195:         SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"196
+[; ;MCAL_Layer/SPI/SPI.c: 196:         while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $U 329  ]
+[e :U 330 ]
+"197
+[; ;MCAL_Layer/SPI/SPI.c: 197:         {
+{
+"198
+[; ;MCAL_Layer/SPI/SPI.c: 198:             (SSPCON1bits.WCOL = 0);
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+"199
+[; ;MCAL_Layer/SPI/SPI.c: 199:             SSPBUF = Transmit_data;
+[e = _SSPBUF _Transmit_data ]
+"200
+[; ;MCAL_Layer/SPI/SPI.c: 200:         }
+}
+[e :U 329 ]
+"196
+[; ;MCAL_Layer/SPI/SPI.c: 196:         while( (SSPCON1bits.WCOL) == ((uint8_t)0x01))
+[e $ == -> . . _SSPCON1bits 0 4 `i -> -> -> 1 `i `uc `i 330  ]
+[e :U 331 ]
+"202
+[; ;MCAL_Layer/SPI/SPI.c: 202:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 332  ]
+[e :U 333 ]
+"203
+[; ;MCAL_Layer/SPI/SPI.c: 203:             ;
+[e :U 332 ]
+"202
+[; ;MCAL_Layer/SPI/SPI.c: 202:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 333  ]
+[e :U 334 ]
+"204
+[; ;MCAL_Layer/SPI/SPI.c: 204:         l_spi_tempRead = SSPBUF;
+[e = _l_spi_tempRead _SSPBUF ]
+"205
+[; ;MCAL_Layer/SPI/SPI.c: 205:         gpio_pin_write_logic(SlaveSelectPin,high);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 1 ]
+"206
+[; ;MCAL_Layer/SPI/SPI.c: 206:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"207
+[; ;MCAL_Layer/SPI/SPI.c: 207:     }
+}
+[e $U 335  ]
+"208
+[; ;MCAL_Layer/SPI/SPI.c: 208:     else
+[e :U 328 ]
+"209
+[; ;MCAL_Layer/SPI/SPI.c: 209:     {
+{
+"210
+[; ;MCAL_Layer/SPI/SPI.c: 210:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"211
+[; ;MCAL_Layer/SPI/SPI.c: 211:     }
+}
+[e :U 335 ]
+"212
+[; ;MCAL_Layer/SPI/SPI.c: 212:     return ret;
+[e ) _ret ]
+[e $UE 327  ]
+"213
+[; ;MCAL_Layer/SPI/SPI.c: 213: }
+[e :UE 327 ]
+}
+"214
+[; ;MCAL_Layer/SPI/SPI.c: 214: Std_ReturnType SPI_TransmitString_SlaveSelect(const uint8_t* Transmit_data ,uint8_t transArr_len , const pinConfig_t* SlaveSelectPin)
+[v _SPI_TransmitString_SlaveSelect `(uc ~T0 @X0 1 ef3`*Cuc`uc`*CS273 ]
+"215
+[; ;MCAL_Layer/SPI/SPI.c: 215: {
+{
+[e :U _SPI_TransmitString_SlaveSelect ]
+"214
+[; ;MCAL_Layer/SPI/SPI.c: 214: Std_ReturnType SPI_TransmitString_SlaveSelect(const uint8_t* Transmit_data ,uint8_t transArr_len , const pinConfig_t* SlaveSelectPin)
+[v _Transmit_data `*Cuc ~T0 @X0 1 r1 ]
+[v _transArr_len `uc ~T0 @X0 1 r2 ]
+[v _SlaveSelectPin `*CS273 ~T0 @X0 1 r3 ]
+"215
+[; ;MCAL_Layer/SPI/SPI.c: 215: {
+[f ]
+"216
+[; ;MCAL_Layer/SPI/SPI.c: 216:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"217
+[; ;MCAL_Layer/SPI/SPI.c: 217:     uint8_t l_transCounter = 0;
+[v _l_transCounter `uc ~T0 @X0 1 a ]
+[e = _l_transCounter -> -> 0 `i `uc ]
+"218
+[; ;MCAL_Layer/SPI/SPI.c: 218:     if(Transmit_data && Transmit_data)
+[e $ ! && != _Transmit_data -> -> 0 `i `*Cuc != _Transmit_data -> -> 0 `i `*Cuc 337  ]
+"219
+[; ;MCAL_Layer/SPI/SPI.c: 219:     {
+{
+"220
+[; ;MCAL_Layer/SPI/SPI.c: 220:         gpio_pin_write_logic(SlaveSelectPin,low);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 0 ]
+"221
+[; ;MCAL_Layer/SPI/SPI.c: 221:         for(; l_transCounter < transArr_len ; ++l_transCounter)
+{
+[e $U 341  ]
+[e :U 338 ]
+"222
+[; ;MCAL_Layer/SPI/SPI.c: 222:         {
+{
+"223
+[; ;MCAL_Layer/SPI/SPI.c: 223:             SPI_Transmit(Transmit_data[l_transCounter]);
+[e ( _SPI_Transmit (1 *U + _Transmit_data * -> _l_transCounter `ux -> -> # *U _Transmit_data `ui `ux ]
+"224
+[; ;MCAL_Layer/SPI/SPI.c: 224:         }
+}
+[e =+ _l_transCounter -> -> 1 `i `uc ]
+[e :U 341 ]
+[e $ < -> _l_transCounter `i -> _transArr_len `i 338  ]
+[e :U 339 ]
+}
+"225
+[; ;MCAL_Layer/SPI/SPI.c: 225:         gpio_pin_write_logic(SlaveSelectPin,high);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 1 ]
+"226
+[; ;MCAL_Layer/SPI/SPI.c: 226:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"227
+[; ;MCAL_Layer/SPI/SPI.c: 227:     }
+}
+[e $U 342  ]
+"228
+[; ;MCAL_Layer/SPI/SPI.c: 228:     else
+[e :U 337 ]
+"229
+[; ;MCAL_Layer/SPI/SPI.c: 229:     {
+{
+"230
+[; ;MCAL_Layer/SPI/SPI.c: 230:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"231
+[; ;MCAL_Layer/SPI/SPI.c: 231:     }
+}
+[e :U 342 ]
+"233
+[; ;MCAL_Layer/SPI/SPI.c: 233:     return ret;
+[e ) _ret ]
+[e $UE 336  ]
+"235
+[; ;MCAL_Layer/SPI/SPI.c: 235: }
+[e :UE 336 ]
+}
+"237
+[; ;MCAL_Layer/SPI/SPI.c: 237: Std_ReturnType SPI_Master_Recieve( uint8_t* Rec_data)
+[v _SPI_Master_Recieve `(uc ~T0 @X0 1 ef1`*uc ]
+"238
+[; ;MCAL_Layer/SPI/SPI.c: 238: {
+{
+[e :U _SPI_Master_Recieve ]
+"237
+[; ;MCAL_Layer/SPI/SPI.c: 237: Std_ReturnType SPI_Master_Recieve( uint8_t* Rec_data)
+[v _Rec_data `*uc ~T0 @X0 1 r1 ]
+"238
+[; ;MCAL_Layer/SPI/SPI.c: 238: {
+[f ]
+"239
+[; ;MCAL_Layer/SPI/SPI.c: 239:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"240
+[; ;MCAL_Layer/SPI/SPI.c: 240:     if(Rec_data)
+[e $ ! != _Rec_data -> -> 0 `i `*uc 344  ]
+"241
+[; ;MCAL_Layer/SPI/SPI.c: 241:     {
+{
+"245
+[; ;MCAL_Layer/SPI/SPI.c: 245:         TRISCbits.RC5 = input;
+[e = . . _TRISCbits 1 5 -> . `E3387 1 `uc ]
+"246
+[; ;MCAL_Layer/SPI/SPI.c: 246:         SSPBUF = 0;
+[e = _SSPBUF -> -> 0 `i `uc ]
+"247
+[; ;MCAL_Layer/SPI/SPI.c: 247:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 345  ]
+[e :U 346 ]
+"248
+[; ;MCAL_Layer/SPI/SPI.c: 248:             ;
+[e :U 345 ]
+"247
+[; ;MCAL_Layer/SPI/SPI.c: 247:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 346  ]
+[e :U 347 ]
+"249
+[; ;MCAL_Layer/SPI/SPI.c: 249:         *Rec_data = SSPBUF;
+[e = *U _Rec_data _SSPBUF ]
+"250
+[; ;MCAL_Layer/SPI/SPI.c: 250:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"254
+[; ;MCAL_Layer/SPI/SPI.c: 254:         TRISCbits.RC5 = output;
+[e = . . _TRISCbits 1 5 -> . `E3387 0 `uc ]
+"255
+[; ;MCAL_Layer/SPI/SPI.c: 255:     }
+}
+[e $U 348  ]
+"256
+[; ;MCAL_Layer/SPI/SPI.c: 256:     else
+[e :U 344 ]
+"257
+[; ;MCAL_Layer/SPI/SPI.c: 257:     {
+{
+"258
+[; ;MCAL_Layer/SPI/SPI.c: 258:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"259
+[; ;MCAL_Layer/SPI/SPI.c: 259:     }
+}
+[e :U 348 ]
+"260
+[; ;MCAL_Layer/SPI/SPI.c: 260:     return ret;
+[e ) _ret ]
+[e $UE 343  ]
+"261
+[; ;MCAL_Layer/SPI/SPI.c: 261: }
+[e :UE 343 ]
+}
+"263
+[; ;MCAL_Layer/SPI/SPI.c: 263: Std_ReturnType SPI_RecieveString( uint8_t* Rec_data , uint8_t Rec_dataSize)
+[v _SPI_RecieveString `(uc ~T0 @X0 1 ef2`*uc`uc ]
+"264
+[; ;MCAL_Layer/SPI/SPI.c: 264: {
+{
+[e :U _SPI_RecieveString ]
+"263
+[; ;MCAL_Layer/SPI/SPI.c: 263: Std_ReturnType SPI_RecieveString( uint8_t* Rec_data , uint8_t Rec_dataSize)
+[v _Rec_data `*uc ~T0 @X0 1 r1 ]
+[v _Rec_dataSize `uc ~T0 @X0 1 r2 ]
+"264
+[; ;MCAL_Layer/SPI/SPI.c: 264: {
+[f ]
+"265
+[; ;MCAL_Layer/SPI/SPI.c: 265:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"266
+[; ;MCAL_Layer/SPI/SPI.c: 266:     int l_recCounter = 0;
+[v _l_recCounter `i ~T0 @X0 1 a ]
+[e = _l_recCounter -> 0 `i ]
+"267
+[; ;MCAL_Layer/SPI/SPI.c: 267:     if(Rec_data)
+[e $ ! != _Rec_data -> -> 0 `i `*uc 350  ]
+"268
+[; ;MCAL_Layer/SPI/SPI.c: 268:     {
+{
+"269
+[; ;MCAL_Layer/SPI/SPI.c: 269:         for( ; l_recCounter < Rec_dataSize ; ++l_recCounter )
+{
+[e $U 354  ]
+[e :U 351 ]
+"270
+[; ;MCAL_Layer/SPI/SPI.c: 270:         {
+{
+"271
+[; ;MCAL_Layer/SPI/SPI.c: 271:           while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 355  ]
+[e :U 356 ]
+"272
+[; ;MCAL_Layer/SPI/SPI.c: 272:             ;
+[e :U 355 ]
+"271
+[; ;MCAL_Layer/SPI/SPI.c: 271:           while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 356  ]
+[e :U 357 ]
+"273
+[; ;MCAL_Layer/SPI/SPI.c: 273:           Rec_data[l_recCounter] = SSPBUF;
+[e = *U + _Rec_data * -> _l_recCounter `x -> -> # *U _Rec_data `i `x _SSPBUF ]
+"274
+[; ;MCAL_Layer/SPI/SPI.c: 274:           if(Rec_data[l_recCounter] == '\0')
+[e $ ! == -> *U + _Rec_data * -> _l_recCounter `x -> -> # *U _Rec_data `i `x `ui -> 0 `ui 358  ]
+"275
+[; ;MCAL_Layer/SPI/SPI.c: 275:               break;
+[e $U 352  ]
+[e :U 358 ]
+"276
+[; ;MCAL_Layer/SPI/SPI.c: 276:         }
+}
+[e =+ _l_recCounter -> 1 `i ]
+[e :U 354 ]
+[e $ < _l_recCounter -> _Rec_dataSize `i 351  ]
+[e :U 352 ]
+}
+"277
+[; ;MCAL_Layer/SPI/SPI.c: 277:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"278
+[; ;MCAL_Layer/SPI/SPI.c: 278:     }
+}
+[e $U 359  ]
+"279
+[; ;MCAL_Layer/SPI/SPI.c: 279:     else
+[e :U 350 ]
+"280
+[; ;MCAL_Layer/SPI/SPI.c: 280:     {
+{
+"281
+[; ;MCAL_Layer/SPI/SPI.c: 281:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"282
+[; ;MCAL_Layer/SPI/SPI.c: 282:     }
+}
+[e :U 359 ]
+"283
+[; ;MCAL_Layer/SPI/SPI.c: 283:     return ret;
+[e ) _ret ]
+[e $UE 349  ]
+"284
+[; ;MCAL_Layer/SPI/SPI.c: 284: }
+[e :UE 349 ]
+}
+"285
+[; ;MCAL_Layer/SPI/SPI.c: 285: Std_ReturnType SPI_Slave_Recieve( uint8_t* Rec_data)
+[v _SPI_Slave_Recieve `(uc ~T0 @X0 1 ef1`*uc ]
+"286
+[; ;MCAL_Layer/SPI/SPI.c: 286: {
+{
+[e :U _SPI_Slave_Recieve ]
+"285
+[; ;MCAL_Layer/SPI/SPI.c: 285: Std_ReturnType SPI_Slave_Recieve( uint8_t* Rec_data)
+[v _Rec_data `*uc ~T0 @X0 1 r1 ]
+"286
+[; ;MCAL_Layer/SPI/SPI.c: 286: {
+[f ]
+"287
+[; ;MCAL_Layer/SPI/SPI.c: 287:     Std_ReturnType ret = ((Std_ReturnType)0x01);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"288
+[; ;MCAL_Layer/SPI/SPI.c: 288:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 361  ]
+[e :U 362 ]
+"289
+[; ;MCAL_Layer/SPI/SPI.c: 289:             ;
+[e :U 361 ]
+"288
+[; ;MCAL_Layer/SPI/SPI.c: 288:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 362  ]
+[e :U 363 ]
+"290
+[; ;MCAL_Layer/SPI/SPI.c: 290:         *Rec_data = SSPBUF;
+[e = *U _Rec_data _SSPBUF ]
+"291
+[; ;MCAL_Layer/SPI/SPI.c: 291:         return ret;
+[e ) _ret ]
+[e $UE 360  ]
+"292
+[; ;MCAL_Layer/SPI/SPI.c: 292: }
+[e :UE 360 ]
+}
+"293
+[; ;MCAL_Layer/SPI/SPI.c: 293: Std_ReturnType SPI_Master_Recieve_SlaveSelect( uint8_t* Rec_data , const pinConfig_t* SlaveSelectPin)
+[v _SPI_Master_Recieve_SlaveSelect `(uc ~T0 @X0 1 ef2`*uc`*CS273 ]
+"294
+[; ;MCAL_Layer/SPI/SPI.c: 294: {
+{
+[e :U _SPI_Master_Recieve_SlaveSelect ]
+"293
+[; ;MCAL_Layer/SPI/SPI.c: 293: Std_ReturnType SPI_Master_Recieve_SlaveSelect( uint8_t* Rec_data , const pinConfig_t* SlaveSelectPin)
+[v _Rec_data `*uc ~T0 @X0 1 r1 ]
+[v _SlaveSelectPin `*CS273 ~T0 @X0 1 r2 ]
+"294
+[; ;MCAL_Layer/SPI/SPI.c: 294: {
+[f ]
+"295
+[; ;MCAL_Layer/SPI/SPI.c: 295:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"296
+[; ;MCAL_Layer/SPI/SPI.c: 296:     if(Rec_data && SlaveSelectPin)
+[e $ ! && != _Rec_data -> -> 0 `i `*uc != _SlaveSelectPin -> -> 0 `i `*CS273 365  ]
+"297
+[; ;MCAL_Layer/SPI/SPI.c: 297:     {
+{
+"298
+[; ;MCAL_Layer/SPI/SPI.c: 298:          gpio_pin_write_logic(SlaveSelectPin,low);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 0 ]
+"303
+[; ;MCAL_Layer/SPI/SPI.c: 303:         TRISCbits.RC5 = input;
+[e = . . _TRISCbits 1 5 -> . `E3387 1 `uc ]
+"304
+[; ;MCAL_Layer/SPI/SPI.c: 304:         SSPBUF = 0;
+[e = _SSPBUF -> -> 0 `i `uc ]
+"305
+[; ;MCAL_Layer/SPI/SPI.c: 305:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 366  ]
+[e :U 367 ]
+"306
+[; ;MCAL_Layer/SPI/SPI.c: 306:             ;
+[e :U 366 ]
+"305
+[; ;MCAL_Layer/SPI/SPI.c: 305:         while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 367  ]
+[e :U 368 ]
+"307
+[; ;MCAL_Layer/SPI/SPI.c: 307:         *Rec_data = SSPBUF;
+[e = *U _Rec_data _SSPBUF ]
+"308
+[; ;MCAL_Layer/SPI/SPI.c: 308:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"312
+[; ;MCAL_Layer/SPI/SPI.c: 312:         TRISCbits.RC5 = output;
+[e = . . _TRISCbits 1 5 -> . `E3387 0 `uc ]
+"314
+[; ;MCAL_Layer/SPI/SPI.c: 314:          gpio_pin_write_logic(SlaveSelectPin,high);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 1 ]
+"315
+[; ;MCAL_Layer/SPI/SPI.c: 315:     }
+}
+[e $U 369  ]
+"316
+[; ;MCAL_Layer/SPI/SPI.c: 316:     else
+[e :U 365 ]
+"317
+[; ;MCAL_Layer/SPI/SPI.c: 317:     {
+{
+"318
+[; ;MCAL_Layer/SPI/SPI.c: 318:         ret = ((Std_ReturnType)0x01);
+[e = _ret -> -> 1 `i `uc ]
+"319
+[; ;MCAL_Layer/SPI/SPI.c: 319:     }
+}
+[e :U 369 ]
+"320
+[; ;MCAL_Layer/SPI/SPI.c: 320:     return ret;
+[e ) _ret ]
+[e $UE 364  ]
+"321
+[; ;MCAL_Layer/SPI/SPI.c: 321: }
+[e :UE 364 ]
+}
+"322
+[; ;MCAL_Layer/SPI/SPI.c: 322: Std_ReturnType SPI_Master_RecieveString_SlaveSelect( uint8_t* Rec_data, uint8_t Rec_dataArrSize , const pinConfig_t* SlaveSelectPin)
+[v _SPI_Master_RecieveString_SlaveSelect `(uc ~T0 @X0 1 ef3`*uc`uc`*CS273 ]
+"323
+[; ;MCAL_Layer/SPI/SPI.c: 323: {
+{
+[e :U _SPI_Master_RecieveString_SlaveSelect ]
+"322
+[; ;MCAL_Layer/SPI/SPI.c: 322: Std_ReturnType SPI_Master_RecieveString_SlaveSelect( uint8_t* Rec_data, uint8_t Rec_dataArrSize , const pinConfig_t* SlaveSelectPin)
+[v _Rec_data `*uc ~T0 @X0 1 r1 ]
+[v _Rec_dataArrSize `uc ~T0 @X0 1 r2 ]
+[v _SlaveSelectPin `*CS273 ~T0 @X0 1 r3 ]
+"323
+[; ;MCAL_Layer/SPI/SPI.c: 323: {
+[f ]
+"324
+[; ;MCAL_Layer/SPI/SPI.c: 324:     Std_ReturnType ret = ((Std_ReturnType)0x00);
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"325
+[; ;MCAL_Layer/SPI/SPI.c: 325:     int l_recCounter = 0;
+[v _l_recCounter `i ~T0 @X0 1 a ]
+[e = _l_recCounter -> 0 `i ]
+"326
+[; ;MCAL_Layer/SPI/SPI.c: 326:     if(Rec_data && SlaveSelectPin )
+[e $ ! && != _Rec_data -> -> 0 `i `*uc != _SlaveSelectPin -> -> 0 `i `*CS273 371  ]
+"327
+[; ;MCAL_Layer/SPI/SPI.c: 327:     {
+{
+"328
+[; ;MCAL_Layer/SPI/SPI.c: 328:          gpio_pin_write_logic(SlaveSelectPin,low);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 0 ]
+"332
+[; ;MCAL_Layer/SPI/SPI.c: 332:         TRISCbits.RC5 = input;
+[e = . . _TRISCbits 1 5 -> . `E3387 1 `uc ]
+"334
+[; ;MCAL_Layer/SPI/SPI.c: 334:         for(; l_recCounter < Rec_dataArrSize ; ++l_recCounter)
+{
+[e $U 375  ]
+[e :U 372 ]
+"335
+[; ;MCAL_Layer/SPI/SPI.c: 335:         {
+{
+"336
+[; ;MCAL_Layer/SPI/SPI.c: 336:             SSPBUF = 0;
+[e = _SSPBUF -> -> 0 `i `uc ]
+"337
+[; ;MCAL_Layer/SPI/SPI.c: 337:             while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $U 376  ]
+[e :U 377 ]
+"338
+[; ;MCAL_Layer/SPI/SPI.c: 338:                 ;
+[e :U 376 ]
+"337
+[; ;MCAL_Layer/SPI/SPI.c: 337:             while((SSPSTATbits.BF) == ((uint8_t)0x00))
+[e $ == -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `uc `i 377  ]
+[e :U 378 ]
+"339
+[; ;MCAL_Layer/SPI/SPI.c: 339:             Rec_data[l_recCounter] = SSPBUF;
+[e = *U + _Rec_data * -> _l_recCounter `x -> -> # *U _Rec_data `i `x _SSPBUF ]
+"340
+[; ;MCAL_Layer/SPI/SPI.c: 340:             if(Rec_data[l_recCounter] == '\0')
+[e $ ! == -> *U + _Rec_data * -> _l_recCounter `x -> -> # *U _Rec_data `i `x `ui -> 0 `ui 379  ]
+"341
+[; ;MCAL_Layer/SPI/SPI.c: 341:                 break;
+[e $U 373  ]
+[e :U 379 ]
+"342
+[; ;MCAL_Layer/SPI/SPI.c: 342:         }
+}
+[e =+ _l_recCounter -> 1 `i ]
+[e :U 375 ]
+[e $ < _l_recCounter -> _Rec_dataArrSize `i 372  ]
+[e :U 373 ]
+}
+"347
+[; ;MCAL_Layer/SPI/SPI.c: 347:         TRISCbits.RC5 = output;
+[e = . . _TRISCbits 1 5 -> . `E3387 0 `uc ]
+"348
+[; ;MCAL_Layer/SPI/SPI.c: 348:          gpio_pin_write_logic(SlaveSelectPin,high);
+[e ( _gpio_pin_write_logic (2 , _SlaveSelectPin . `E3383 1 ]
+"349
+[; ;MCAL_Layer/SPI/SPI.c: 349:     }
+}
+[e $U 380  ]
+"350
+[; ;MCAL_Layer/SPI/SPI.c: 350:     else
+[e :U 371 ]
+"351
+[; ;MCAL_Layer/SPI/SPI.c: 351:     {
+{
+"352
+[; ;MCAL_Layer/SPI/SPI.c: 352:         ret = ((Std_ReturnType)0x00);
+[e = _ret -> -> 0 `i `uc ]
+"353
+[; ;MCAL_Layer/SPI/SPI.c: 353:     }
+}
+[e :U 380 ]
+"354
+[; ;MCAL_Layer/SPI/SPI.c: 354:     return ret;
+[e ) _ret ]
+[e $UE 370  ]
+"355
+[; ;MCAL_Layer/SPI/SPI.c: 355: }
+[e :UE 370 ]
+}
+"357
+[; ;MCAL_Layer/SPI/SPI.c: 357: static void SPI_MasterMode_init(const SPI_cfg_t* _spi_cfg)
+[v _SPI_MasterMode_init `(v ~T0 @X0 1 sf1`*CS274 ]
+"358
+[; ;MCAL_Layer/SPI/SPI.c: 358: {
+{
+[e :U _SPI_MasterMode_init ]
+"357
+[; ;MCAL_Layer/SPI/SPI.c: 357: static void SPI_MasterMode_init(const SPI_cfg_t* _spi_cfg)
+[v __spi_cfg `*CS274 ~T0 @X0 1 r1 ]
+"358
+[; ;MCAL_Layer/SPI/SPI.c: 358: {
+[f ]
+"361
+[; ;MCAL_Layer/SPI/SPI.c: 361:     int l_counter = 0;
+[v _l_counter `i ~T0 @X0 1 a ]
+[e = _l_counter -> 0 `i ]
+"362
+[; ;MCAL_Layer/SPI/SPI.c: 362:     for( ;l_counter < 1 ; ++l_counter )
+{
+[e $ < _l_counter -> 1 `i 382  ]
+[e $U 383  ]
+[e :U 382 ]
+"363
+[; ;MCAL_Layer/SPI/SPI.c: 363:     {
+{
+"364
+[; ;MCAL_Layer/SPI/SPI.c: 364:         gpio_pin_direction_intialize(&_spi_cfg->SlaveSelect_pins[l_counter]);
+[e ( _gpio_pin_direction_intialize (1 &U *U + &U . *U __spi_cfg 0 * -> -> _l_counter `ui `ux -> -> # *U &U . *U __spi_cfg 0 `ui `ux ]
+"365
+[; ;MCAL_Layer/SPI/SPI.c: 365:         gpio_pin_write_logic(&_spi_cfg->SlaveSelect_pins[l_counter] , high);
+[e ( _gpio_pin_write_logic (2 , &U *U + &U . *U __spi_cfg 0 * -> -> _l_counter `ui `ux -> -> # *U &U . *U __spi_cfg 0 `ui `ux . `E3383 1 ]
+"366
+[; ;MCAL_Layer/SPI/SPI.c: 366:     }
+}
+[e =+ _l_counter -> 1 `i ]
+[e $ < _l_counter -> 1 `i 382  ]
+[e :U 383 ]
+}
+"369
+[; ;MCAL_Layer/SPI/SPI.c: 369:     TRISCbits.RC3 = output;
+[e = . . _TRISCbits 1 3 -> . `E3387 0 `uc ]
+"370
+[; ;MCAL_Layer/SPI/SPI.c: 370:     TRISCbits.RC5 = output;
+[e = . . _TRISCbits 1 5 -> . `E3387 0 `uc ]
+"371
+[; ;MCAL_Layer/SPI/SPI.c: 371:     (SSPSTATbits.SMP = _spi_cfg->spi_sample_mode);
+[e = . . _SSPSTATbits 2 7 . *U __spi_cfg 4 ]
+"372
+[; ;MCAL_Layer/SPI/SPI.c: 372:     (SSPSTATbits.CKE = _spi_cfg->spi_clk_select);
+[e = . . _SSPSTATbits 2 6 . *U __spi_cfg 3 ]
+"373
+[; ;MCAL_Layer/SPI/SPI.c: 373:     (SSPCON1bits.CKP = _spi_cfg->spi_clk_polarity);
+[e = . . _SSPCON1bits 0 1 . *U __spi_cfg 2 ]
+"374
+[; ;MCAL_Layer/SPI/SPI.c: 374:     (SSPCON1bits.SSPM = _spi_cfg->spi_mode );
+[e = . . _SSPCON1bits 0 0 -> . *U __spi_cfg 1 `uc ]
+"376
+[; ;MCAL_Layer/SPI/SPI.c: 376: }
+[e :UE 381 ]
+}
+"377
+[; ;MCAL_Layer/SPI/SPI.c: 377: static void SPI_SlaveMode_init(const SPI_cfg_t* _spi_cfg)
+[v _SPI_SlaveMode_init `(v ~T0 @X0 1 sf1`*CS274 ]
+"378
+[; ;MCAL_Layer/SPI/SPI.c: 378: {
+{
+[e :U _SPI_SlaveMode_init ]
+"377
+[; ;MCAL_Layer/SPI/SPI.c: 377: static void SPI_SlaveMode_init(const SPI_cfg_t* _spi_cfg)
+[v __spi_cfg `*CS274 ~T0 @X0 1 r1 ]
+"378
+[; ;MCAL_Layer/SPI/SPI.c: 378: {
+[f ]
+"379
+[; ;MCAL_Layer/SPI/SPI.c: 379:     TRISCbits.RC3 = input;
+[e = . . _TRISCbits 1 3 -> . `E3387 1 `uc ]
+"380
+[; ;MCAL_Layer/SPI/SPI.c: 380:     TRISCbits.RC5 = output;
+[e = . . _TRISCbits 1 5 -> . `E3387 0 `uc ]
+"381
+[; ;MCAL_Layer/SPI/SPI.c: 381:     TRISAbits.RA5 = input;
+[e = . . _TRISAbits 1 5 -> . `E3387 1 `uc ]
+"382
+[; ;MCAL_Layer/SPI/SPI.c: 382:     if(_spi_cfg->spi_mode == SPI_SLAVE_MODE_SS_ENABLE )
+[e $ ! == -> . *U __spi_cfg 1 `ui -> . `E3449 4 `ui 386  ]
+"383
+[; ;MCAL_Layer/SPI/SPI.c: 383:     {
+{
+"385
+[; ;MCAL_Layer/SPI/SPI.c: 385:         TRISAbits.RA5 = input;
+[e = . . _TRISAbits 1 5 -> . `E3387 1 `uc ]
+"386
+[; ;MCAL_Layer/SPI/SPI.c: 386:     }
+}
+[e :U 386 ]
+"387
+[; ;MCAL_Layer/SPI/SPI.c: 387:     (SSPSTATbits.SMP = ((uint8_t)0x00));
+[e = . . _SSPSTATbits 2 7 -> -> 0 `i `uc ]
+"388
+[; ;MCAL_Layer/SPI/SPI.c: 388:     (SSPSTATbits.CKE = _spi_cfg->spi_clk_select);
+[e = . . _SSPSTATbits 2 6 . *U __spi_cfg 3 ]
+"389
+[; ;MCAL_Layer/SPI/SPI.c: 389:     (SSPCON1bits.CKP = _spi_cfg->spi_clk_polarity);
+[e = . . _SSPCON1bits 0 1 . *U __spi_cfg 2 ]
+"390
+[; ;MCAL_Layer/SPI/SPI.c: 390:     (SSPCON1bits.SSPM = _spi_cfg->spi_mode );
+[e = . . _SSPCON1bits 0 0 -> . *U __spi_cfg 1 `uc ]
+"391
+[; ;MCAL_Layer/SPI/SPI.c: 391: }
+[e :UE 385 ]
+}

@@ -1,0 +1,1442 @@
+Disassembly Listing for Applicatio
+Generated From:
+D:/Yossef/PIC18F4620/dist/default/production/PIC18F4620.production.elf
+Feb 11, 2023 6:49:57 PM
+
+---  D:/Yossef/PIC18F4620/app.c  ------------------------------------------------------------------------
+1:             /* 
+2:              * File:   app.c
+3:              * Author: yossef
+4:              *
+5:              * Created on January 30, 2023, 11:16 PM
+6:              */
+7:             #include "app.h"
+8:             led_t led1 = {
+9:              .port_idx = PORTC_INDEX,
+10:             .pin_idx = pin0,
+11:             .led_stat = LED_OFF
+12:            };
+13:            led_t led2 = {
+14:             .port_idx = PORTC_INDEX,
+15:             .pin_idx = pin1,
+16:             .led_stat = LED_OFF
+17:            };
+18:            button_t btn_high = {
+19:              .button.port = PORTD_INDEX,
+20:              .button.pinIndex = pin0,
+21:              .button.logic = low,
+22:              .button.direction = input,
+23:              .btn_stat = BUTTON_RELAISED,
+24:              .button_connection = BUTTON_ACTIVE_HIGH
+25:            };
+26:            button_t btn_low = {
+27:              .button.port = PORTD_INDEX,
+28:              .button.pinIndex = pin1,
+29:              .button.logic = low,
+30:              .button.direction = input,
+31:              .btn_stat = BUTTON_RELAISED,
+32:              .button_connection = BUTTON_ACTIVE_LOW
+33:            };
+34:            inline  Std_ReturnType  buttons_inis(void)
+35:            {
+36:              Std_ReturnType ret = E_OK;
+37:              ret = button_inisialize (&btn_high);
+F788  0E22     MOVLW 0x22
+F78A  6E2E     MOVWF ret, ACCESS
+F78C  EC06     CALL 0xF80C, 0
+F78E  F07C     NOP
+38:              ret = button_inisialize (&btn_low);
+F790  0E1F     MOVLW 0x1F
+F792  6E2E     MOVWF ret, ACCESS
+F794  EC06     CALL 0xF80C, 0
+F796  F07C     NOP
+F798  6E31     MOVWF ret, ACCESS
+39:              return ret;
+F79A  5031     MOVF ret, W, ACCESS
+40:            }
+F79C  0012     RETURN 0
+41:            inline Std_ReturnType  leds_inis(void)
+42:            {
+43:              Std_ReturnType ret = E_OK;
+44:              ret = ecu_led_inistialize (&led1);
+F79E  0E26     MOVLW 0x26
+F7A0  6E32     MOVWF dir, ACCESS
+F7A2  ECA2     CALL 0xFB44, 0
+F7A4  F07D     NOP
+45:              ret = ecu_led_inistialize (&led2);
+F7A6  0E25     MOVLW 0x25
+F7A8  6E32     MOVWF dir, ACCESS
+F7AA  ECA2     CALL 0xFB44, 0
+F7AC  F07D     NOP
+F7AE  6E36     MOVWF ret, ACCESS
+46:              return ret;
+F7B0  5036     MOVF ret, W, ACCESS
+47:            }
+F7B2  0012     RETURN 0
+48:            
+49:            
+50:            void main(){
+51:              Std_ReturnType ret = E_OK;
+52:               ret = leds_inis ();
+F8A8  ECCF     CALL 0xF79E, 0
+F8AA  F07B     NOP
+53:               ret = buttons_inis ();
+F8AC  ECC4     CALL 0xF788, 0
+F8AE  F07B     NOP
+54:               button_stat_t btn_high_stat = BUTTON_RELAISED;
+F8B0  0E00     MOVLW 0x0
+F8B2  6E3A     MOVWF btn_high_stat, ACCESS
+55:               button_stat_t btn_low_stat = BUTTON_RELAISED;
+F8B4  0E00     MOVLW 0x0
+F8B6  6E3B     MOVWF btn_low_stat, ACCESS
+56:              while(1)
+57:                {
+58:                  ret = button_read_stat (&btn_high , &btn_high_stat);
+F8B8  0E22     MOVLW 0x22
+F8BA  6E2E     MOVWF ret, ACCESS
+F8BC  0E3A     MOVLW 0x3A
+F8BE  6E2F     MOVWF pinCon, ACCESS
+F8C0  EC54     CALL 0xFAA8, 0
+F8C2  F07D     NOP
+59:                  if (btn_high_stat == BUTTON_PRESSED)
+F8C4  043A     DECF btn_high_stat, W, ACCESS
+F8C6  A4D8     BTFSS STATUS, 2, ACCESS
+F8C8  D004     BRA 0xF8D2
+60:                     ret = ecu_led_toggle (&led1);
+F8CA  0E26     MOVLW 0x26
+F8CC  6E2E     MOVWF ret, ACCESS
+F8CE  ECA4     CALL 0xFD48, 0
+F8D0  F07E     NOP
+61:                  
+62:                  ret = button_read_stat (&btn_low , &btn_low_stat);
+F8D2  0E1F     MOVLW 0x1F
+F8D4  6E2E     MOVWF ret, ACCESS
+F8D6  0E3B     MOVLW 0x3B
+F8D8  6E2F     MOVWF pinCon, ACCESS
+F8DA  EC54     CALL 0xFAA8, 0
+F8DC  F07D     NOP
+63:                  ret =(btn_low_stat == BUTTON_PRESSED) ? ecu_led_turn_on (&led2): ecu_led_turn_off (&led2);
+F8DE  043B     DECF btn_low_stat, W, ACCESS
+F8E0  B4D8     BTFSC STATUS, 2, ACCESS
+F8E2  D009     BRA 0xF8F6
+F8E4  0E25     MOVLW 0x25
+F8E6  6E2F     MOVWF pinCon, ACCESS
+F8E8  ECF4     CALL 0xFBE8, 0
+F8EA  F07D     NOP
+F8EC  6E37     MOVWF 0x37, ACCESS
+F8EE  5037     MOVF 0x37, W, ACCESS
+F8F0  6E38     MOVWF 0x38, ACCESS
+F8F2  6A39     CLRF 0x39, ACCESS
+F8F4  D7E1     BRA 0xF8B8
+F8F6  0E25     MOVLW 0x25
+F8F8  6E2F     MOVWF pinCon, ACCESS
+F8FA  EC4C     CALL 0xFC98, 0
+F8FC  F07E     NOP
+F8FE  D7F6     BRA 0xF8EC
+64:                }
+65:            }
+---  D:/Yossef/PIC18F4620/MCAL_Layer/ecu_button.c  ------------------------------------------------------
+1:             /* 
+2:              * File:   ecu_button.c
+3:              * Author: yossef
+4:              *
+5:              * Created on February 11, 2023, 1:51 AM
+6:              */
+7:             #include "../ECU_layer/Button/ecu_button.h"
+8:             
+9:             Std_ReturnType button_inisialize(const button_t* btn){
+10:              Std_ReturnType ret = E_OK;
+F80C  0E01     MOVLW 0x1
+F80E  6E30     MOVWF ret, ACCESS
+11:              if(!(btn) || btn->button.port > MAX_PORT_INDEX || btn->button.pinIndex > MAX_PIN_INDEX)
+F810  502E     MOVF ret, W, ACCESS
+F812  B4D8     BTFSC STATUS, 2, ACCESS
+F814  D014     BRA 0xF83E
+F816  502E     MOVF ret, W, ACCESS
+F818  6ED9     MOVWF FSR2, ACCESS
+F81A  6ADA     CLRF FSR2H, ACCESS
+F81C  50DF     MOVF INDF2, W, ACCESS
+F81E  0B07     ANDLW 0x7
+F820  6E2F     MOVWF pinCon, ACCESS
+F822  0E05     MOVLW 0x5
+F824  602F     CPFSLT pinCon, ACCESS
+F826  D00B     BRA 0xF83E
+F828  502E     MOVF ret, W, ACCESS
+F82A  6ED9     MOVWF FSR2, ACCESS
+F82C  6ADA     CLRF FSR2H, ACCESS
+F82E  30DF     RRCF INDF2, W, ACCESS
+F830  32E8     RRCF WREG, F, ACCESS
+F832  32E8     RRCF WREG, F, ACCESS
+F834  0B07     ANDLW 0x7
+F836  6E2F     MOVWF pinCon, ACCESS
+F838  0E07     MOVLW 0x7
+F83A  642F     CPFSGT pinCon, ACCESS
+F83C  D003     BRA 0xF844
+12:                ret = E_NOT;
+F83E  0E00     MOVLW 0x0
+F840  6E30     MOVWF ret, ACCESS
+F842  D004     BRA 0xF84C
+13:              else
+14:                  gpio_pin_direction_intialize (&(btn->button));
+F844  C02E     MOVFF ret, __pcstackCOMRAM
+F846  F027     NOP
+F848  EC7D     CALL 0xFEFA, 0
+F84A  F07F     NOP
+15:                  
+16:              return ret;
+F84C  5030     MOVF ret, W, ACCESS
+17:            }
+F84E  0012     RETURN 0
+18:            Std_ReturnType button_read_stat(const button_t * btn , button_stat_t* btn_stat)
+19:            {
+20:              Std_ReturnType ret = E_OK;
+21:              direction_t dir;
+22:              logic_t read_pin_logic = low;
+FAA8  0E00     MOVLW 0x0
+FAAA  6E33     MOVWF read_pin_logic, ACCESS
+23:              ret =  gpio_pin_get_direction (&(btn->button) , &dir);
+FAAC  C02E     MOVFF ret, __pcstackCOMRAM
+FAAE  F027     NOP
+FAB0  0E32     MOVLW 0x32
+FAB2  6E28     MOVWF logic, ACCESS
+FAB4  ECC2     CALL 0xF984, 0
+FAB6  F07C     NOP
+24:              if(!(btn) || (btn->button.port > MAX_PORT_INDEX) || (btn->button.pinIndex > MAX_PIN_INDEX) || (dir == output))
+FAB8  502E     MOVF ret, W, ACCESS
+FABA  B4D8     BTFSC STATUS, 2, ACCESS
+FABC  D017     BRA 0xFAEC
+FABE  502E     MOVF ret, W, ACCESS
+FAC0  6ED9     MOVWF FSR2, ACCESS
+FAC2  6ADA     CLRF FSR2H, ACCESS
+FAC4  50DF     MOVF INDF2, W, ACCESS
+FAC6  0B07     ANDLW 0x7
+FAC8  6E30     MOVWF ret, ACCESS
+FACA  0E05     MOVLW 0x5
+FACC  6030     CPFSLT ret, ACCESS
+FACE  D00E     BRA 0xFAEC
+FAD0  502E     MOVF ret, W, ACCESS
+FAD2  6ED9     MOVWF FSR2, ACCESS
+FAD4  6ADA     CLRF FSR2H, ACCESS
+FAD6  30DF     RRCF INDF2, W, ACCESS
+FAD8  32E8     RRCF WREG, F, ACCESS
+FADA  32E8     RRCF WREG, F, ACCESS
+FADC  0B07     ANDLW 0x7
+FADE  6E30     MOVWF ret, ACCESS
+FAE0  0E08     MOVLW 0x8
+FAE2  6030     CPFSLT ret, ACCESS
+FAE4  D003     BRA 0xFAEC
+FAE6  5032     MOVF dir, W, ACCESS
+FAE8  A4D8     BTFSS STATUS, 2, ACCESS
+FAEA  D003     BRA 0xFAF2
+25:                ret = E_NOT;
+FAEC  0E00     MOVLW 0x0
+FAEE  6E31     MOVWF ret, ACCESS
+FAF0  D027     BRA 0xFB40
+26:              else
+27:                {
+28:                  ret = gpio_pin_read_logic (&(btn->button) ,  &read_pin_logic);
+FAF2  C02E     MOVFF ret, __pcstackCOMRAM
+FAF4  F027     NOP
+FAF6  0E33     MOVLW 0x33
+FAF8  6E28     MOVWF logic, ACCESS
+FAFA  EC0B     CALL 0xFA16, 0
+FAFC  F07D     NOP
+FAFE  6E31     MOVWF ret, ACCESS
+29:                  if(BUTTON_ACTIVE_HIGH == btn->button_connection){
+FB00  502E     MOVF ret, W, ACCESS
+FB02  6ED9     MOVWF FSR2, ACCESS
+FB04  6ADA     CLRF FSR2H, ACCESS
+FB06  0E02     MOVLW 0x2
+FB08  26D9     ADDWF FSR2, F, ACCESS
+FB0A  04DE     DECF POSTINC2, W, ACCESS
+FB0C  A4D8     BTFSS STATUS, 2, ACCESS
+FB0E  D008     BRA 0xFB20
+30:                      *btn_stat = (read_pin_logic == high) ? BUTTON_PRESSED : BUTTON_RELAISED;
+FB10  502F     MOVF pinCon, W, ACCESS
+FB12  6ED9     MOVWF FSR2, ACCESS
+FB14  6ADA     CLRF FSR2H, ACCESS
+FB16  0433     DECF read_pin_logic, W, ACCESS
+FB18  A4D8     BTFSS STATUS, 2, ACCESS
+FB1A  D010     BRA 0xFB3C
+FB1C  0E01     MOVLW 0x1
+FB1E  D00F     BRA 0xFB3E
+31:                    }
+32:                  else if (BUTTON_ACTIVE_LOW == btn->button_connection){
+FB20  502E     MOVF ret, W, ACCESS
+FB22  6ED9     MOVWF FSR2, ACCESS
+FB24  6ADA     CLRF FSR2H, ACCESS
+FB26  0E02     MOVLW 0x2
+FB28  26D9     ADDWF FSR2, F, ACCESS
+FB2A  50DF     MOVF INDF2, W, ACCESS
+FB2C  A4D8     BTFSS STATUS, 2, ACCESS
+FB2E  D7DE     BRA 0xFAEC
+33:                      *btn_stat = (read_pin_logic == low) ? BUTTON_PRESSED : BUTTON_RELAISED;
+FB30  502F     MOVF pinCon, W, ACCESS
+FB32  6ED9     MOVWF FSR2, ACCESS
+FB34  6ADA     CLRF FSR2H, ACCESS
+FB36  5033     MOVF read_pin_logic, W, ACCESS
+FB38  B4D8     BTFSC STATUS, 2, ACCESS
+FB3A  D7F0     BRA 0xFB1C
+FB3C  0E00     MOVLW 0x0
+FB3E  6EDF     MOVWF INDF2, ACCESS
+34:                    }
+35:                  else
+36:                    ret = E_NOT;
+37:                }
+38:              return ret;  
+FB40  5031     MOVF ret, W, ACCESS
+39:            }
+FB42  0012     RETURN 0
+---  D:/Yossef/PIC18F4620/MCAL_Layer/GPIO/HAL_GPIO.c  ---------------------------------------------------
+1:             /* 
+2:              * File:   HAL_GPIO.c
+3:              * Author: yossef 
+4:              *
+5:              * Created on January 30, 2023, 11:26 PM
+6:              */
+7:             /*---------------includes---------------*/
+8:             #include"HAL_GPIO.h"
+9:             
+10:            /*-------------REGEISTERS----------------*/
+11:            /* PORTS ADDRESSES*/
+12:            /*@ref to port status reg*/
+13:            volatile uint8_t* port_reg[] = {&PORTA,&PORTB,&PORTC,&PORTD,&PORTE};
+14:            /*@ref to data latch reg (read and write logic)*/
+15:            volatile uint8_t* lat_reg[] = {&LATA,&LATB,&LATC,&LATD,&LATE};
+16:            /*@ref to data direction reg (input/output)*/
+17:            volatile uint8_t* tris_reg[] = {&TRISA,&TRISB,&TRISC,&TRISD,&TRISE};
+18:            
+19:            
+20:            
+21:            
+22:            
+23:            
+24:            /*--------------------------functions def----------------------------*/
+25:            /*-----------pins------------------------ */
+26:            Std_ReturnType gpio_pin_direction_intialize( const pinConfig_t* pinCon){
+27:                Std_ReturnType ret = E_NOT;
+FEFA  0E00     MOVLW 0x0
+FEFC  6E2D     MOVWF ret, ACCESS
+28:                if(!(pinCon) || (pinCon->port > MAX_PORT_INDEX) || (pinCon->pinIndex > MAX_PIN_INDEX))
+FEFE  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FF00  B4D8     BTFSC STATUS, 2, ACCESS
+FF02  D014     BRA 0xFF2C
+FF04  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FF06  6ED9     MOVWF FSR2, ACCESS
+FF08  6ADA     CLRF FSR2H, ACCESS
+FF0A  50DF     MOVF INDF2, W, ACCESS
+FF0C  0B07     ANDLW 0x7
+FF0E  6E28     MOVWF logic, ACCESS
+FF10  0E05     MOVLW 0x5
+FF12  6028     CPFSLT logic, ACCESS
+FF14  D00B     BRA 0xFF2C
+FF16  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FF18  6ED9     MOVWF FSR2, ACCESS
+FF1A  6ADA     CLRF FSR2H, ACCESS
+FF1C  30DF     RRCF INDF2, W, ACCESS
+FF1E  32E8     RRCF WREG, F, ACCESS
+FF20  32E8     RRCF WREG, F, ACCESS
+FF22  0B07     ANDLW 0x7
+FF24  6E28     MOVWF logic, ACCESS
+FF26  0E07     MOVLW 0x7
+FF28  6428     CPFSGT logic, ACCESS
+FF2A  D052     BRA 0xFFD0
+29:                {
+30:                    ret = E_OK;
+FF2C  0E01     MOVLW 0x1
+FF2E  D04E     BRA 0xFFCC
+31:                }
+32:                else
+33:                {
+34:                    switch (pinCon->direction){
+35:                            case output:
+36:                              BIT_CLEAR(*tris_reg[pinCon->port], pinCon->pinIndex);
+FF30  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FF32  6ED9     MOVWF FSR2, ACCESS
+FF34  6ADA     CLRF FSR2H, ACCESS
+FF36  30DF     RRCF INDF2, W, ACCESS
+FF38  32E8     RRCF WREG, F, ACCESS
+FF3A  32E8     RRCF WREG, F, ACCESS
+FF3C  0B07     ANDLW 0x7
+FF3E  6E28     MOVWF logic, ACCESS
+FF40  0E01     MOVLW 0x1
+FF42  6E29     MOVWF 0x29, ACCESS
+FF44  2A28     INCF logic, F, ACCESS
+FF46  D002     BRA 0xFF4C
+FF48  90D8     BCF STATUS, 0, ACCESS
+FF4A  3629     RLCF 0x29, F, ACCESS
+FF4C  2E28     DECFSZ logic, F, ACCESS
+FF4E  D7FC     BRA 0xFF48
+FF50  5029     MOVF 0x29, W, ACCESS
+FF52  0AFF     XORLW 0xFF
+FF54  6E2A     MOVWF 0x2A, ACCESS
+FF56  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FF58  6ED9     MOVWF FSR2, ACCESS
+FF5A  6ADA     CLRF FSR2H, ACCESS
+FF5C  50DF     MOVF INDF2, W, ACCESS
+FF5E  0B07     ANDLW 0x7
+FF60  0D02     MULLW 0x2
+FF62  50F3     MOVF PROD, W, ACCESS
+FF64  0F01     ADDLW 0x1
+FF66  6ED9     MOVWF FSR2, ACCESS
+FF68  6ADA     CLRF FSR2H, ACCESS
+FF6A  CFDE     MOVFF POSTINC2, 0x2B
+FF6C  F02B     NOP
+FF6E  CFDD     MOVFF POSTDEC2, ret
+FF70  F02C     NOP
+FF72  C02B     MOVFF 0x2B, FSR2
+FF74  FFD9     NOP
+FF76  C02C     MOVFF ret, FSR2H
+FF78  FFDA     NOP
+FF7A  502A     MOVF 0x2A, W, ACCESS
+FF7C  16DF     ANDWF INDF2, F, ACCESS
+37:                             break;
+FF7E  D03E     BRA 0xFFFC
+38:                            case input:
+39:                              BIT_SET(*tris_reg[pinCon->port], pinCon->pinIndex);
+FF80  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FF82  6ED9     MOVWF FSR2, ACCESS
+FF84  6ADA     CLRF FSR2H, ACCESS
+FF86  30DF     RRCF INDF2, W, ACCESS
+FF88  32E8     RRCF WREG, F, ACCESS
+FF8A  32E8     RRCF WREG, F, ACCESS
+FF8C  0B07     ANDLW 0x7
+FF8E  6E28     MOVWF logic, ACCESS
+FF90  0E01     MOVLW 0x1
+FF92  6E29     MOVWF 0x29, ACCESS
+FF94  2A28     INCF logic, F, ACCESS
+FF96  D002     BRA 0xFF9C
+FF98  90D8     BCF STATUS, 0, ACCESS
+FF9A  3629     RLCF 0x29, F, ACCESS
+FF9C  2E28     DECFSZ logic, F, ACCESS
+FF9E  D7FC     BRA 0xFF98
+FFA0  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FFA2  6ED9     MOVWF FSR2, ACCESS
+FFA4  6ADA     CLRF FSR2H, ACCESS
+FFA6  50DF     MOVF INDF2, W, ACCESS
+FFA8  0B07     ANDLW 0x7
+FFAA  0D02     MULLW 0x2
+FFAC  50F3     MOVF PROD, W, ACCESS
+FFAE  0F01     ADDLW 0x1
+FFB0  6ED9     MOVWF FSR2, ACCESS
+FFB2  6ADA     CLRF FSR2H, ACCESS
+FFB4  CFDE     MOVFF POSTINC2, 0x2A
+FFB6  F02A     NOP
+FFB8  CFDD     MOVFF POSTDEC2, 0x2B
+FFBA  F02B     NOP
+FFBC  C02A     MOVFF 0x2A, FSR2
+FFBE  FFD9     NOP
+FFC0  C02B     MOVFF 0x2B, FSR2H
+FFC2  FFDA     NOP
+FFC4  5029     MOVF 0x29, W, ACCESS
+FFC6  12DF     IORWF INDF2, F, ACCESS
+40:                            break;
+FFC8  D019     BRA 0xFFFC
+41:                            default: ret = E_NOT;
+FFCA  0E00     MOVLW 0x0
+FFCC  6E2D     MOVWF ret, ACCESS
+42:                      }
+FFCE  D016     BRA 0xFFFC
+FFD0  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FFD2  6ED9     MOVWF FSR2, ACCESS
+FFD4  6ADA     CLRF FSR2H, ACCESS
+FFD6  ACDF     BTFSS INDF2, 6, ACCESS
+FFD8  D002     BRA 0xFFDE
+FFDA  0E01     MOVLW 0x1
+FFDC  D001     BRA 0xFFE0
+FFDE  0E00     MOVLW 0x0
+FFE0  6E28     MOVWF logic, ACCESS
+FFE2  6A29     CLRF 0x29, ACCESS
+FFE4  5029     MOVF 0x29, W, ACCESS
+FFE6  0A00     XORLW 0x0
+FFE8  A4D8     BTFSS STATUS, 2, ACCESS
+FFEA  D7EF     BRA 0xFFCA
+FFEC  5028     MOVF logic, W, ACCESS
+FFEE  0A00     XORLW 0x0
+FFF0  B4D8     BTFSC STATUS, 2, ACCESS
+FFF2  D79E     BRA 0xFF30
+FFF4  0A01     XORLW 0x1
+FFF6  B4D8     BTFSC STATUS, 2, ACCESS
+FFF8  D7C3     BRA 0xFF80
+FFFA  D7E7     BRA 0xFFCA
+43:                }
+44:                return ret;
+FFFC  502D     MOVF ret, W, ACCESS
+45:            }
+FFFE  0012     RETURN 0
+46:            Std_ReturnType gpio_pin_get_direction(const pinConfig_t* pinCon ,direction_t* dir_status){
+47:                Std_ReturnType ret = E_NOT;
+F984  0E00     MOVLW 0x0
+F986  6E2D     MOVWF ret, ACCESS
+48:                if(!(pinCon) || !(dir_status)|| (pinCon->port > MAX_PORT_INDEX) || (pinCon->pinIndex > MAX_PIN_INDEX))
+F988  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F98A  B4D8     BTFSC STATUS, 2, ACCESS
+F98C  D017     BRA 0xF9BC
+F98E  5028     MOVF logic, W, ACCESS
+F990  B4D8     BTFSC STATUS, 2, ACCESS
+F992  D014     BRA 0xF9BC
+F994  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F996  6ED9     MOVWF FSR2, ACCESS
+F998  6ADA     CLRF FSR2H, ACCESS
+F99A  50DF     MOVF INDF2, W, ACCESS
+F99C  0B07     ANDLW 0x7
+F99E  6E29     MOVWF 0x29, ACCESS
+F9A0  0E05     MOVLW 0x5
+F9A2  6029     CPFSLT 0x29, ACCESS
+F9A4  D00B     BRA 0xF9BC
+F9A6  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F9A8  6ED9     MOVWF FSR2, ACCESS
+F9AA  6ADA     CLRF FSR2H, ACCESS
+F9AC  30DF     RRCF INDF2, W, ACCESS
+F9AE  32E8     RRCF WREG, F, ACCESS
+F9B0  32E8     RRCF WREG, F, ACCESS
+F9B2  0B07     ANDLW 0x7
+F9B4  6E29     MOVWF 0x29, ACCESS
+F9B6  0E07     MOVLW 0x7
+F9B8  6429     CPFSGT 0x29, ACCESS
+F9BA  D003     BRA 0xF9C2
+49:                {
+50:                    ret = E_OK;
+F9BC  0E01     MOVLW 0x1
+F9BE  6E2D     MOVWF ret, ACCESS
+51:                }
+F9C0  D028     BRA 0xFA12
+52:                else
+53:                {
+54:                  *dir_status = BIT_READ(*tris_reg[pinCon->port],pinCon->pinIndex);
+F9C2  5028     MOVF logic, W, ACCESS
+F9C4  6ED9     MOVWF FSR2, ACCESS
+F9C6  6ADA     CLRF FSR2H, ACCESS
+F9C8  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F9CA  6EE1     MOVWF FSR1, ACCESS
+F9CC  6AE2     CLRF FSR1H, ACCESS
+F9CE  30E7     RRCF INDF1, W, ACCESS
+F9D0  32E8     RRCF WREG, F, ACCESS
+F9D2  32E8     RRCF WREG, F, ACCESS
+F9D4  0B07     ANDLW 0x7
+F9D6  6E29     MOVWF 0x29, ACCESS
+F9D8  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F9DA  6EE1     MOVWF FSR1, ACCESS
+F9DC  6AE2     CLRF FSR1H, ACCESS
+F9DE  50E7     MOVF INDF1, W, ACCESS
+F9E0  0B07     ANDLW 0x7
+F9E2  0D02     MULLW 0x2
+F9E4  50F3     MOVF PROD, W, ACCESS
+F9E6  0F01     ADDLW 0x1
+F9E8  6EE1     MOVWF FSR1, ACCESS
+F9EA  6AE2     CLRF FSR1H, ACCESS
+F9EC  CFE6     MOVFF POSTINC1, 0x2A
+F9EE  F02A     NOP
+F9F0  CFE5     MOVFF POSTDEC1, 0x2B
+F9F2  F02B     NOP
+F9F4  C02A     MOVFF 0x2A, FSR1
+F9F6  FFE1     NOP
+F9F8  C02B     MOVFF 0x2B, FSR1H
+F9FA  FFE2     NOP
+F9FC  50E7     MOVF INDF1, W, ACCESS
+F9FE  6E2C     MOVWF ret, ACCESS
+FA00  2A29     INCF 0x29, F, ACCESS
+FA02  D002     BRA 0xFA08
+FA04  90D8     BCF STATUS, 0, ACCESS
+FA06  322C     RRCF ret, F, ACCESS
+FA08  2E29     DECFSZ 0x29, F, ACCESS
+FA0A  D7FC     BRA 0xFA04
+FA0C  502C     MOVF ret, W, ACCESS
+FA0E  0B01     ANDLW 0x1
+FA10  6EDF     MOVWF INDF2, ACCESS
+55:                }
+56:                return ret;
+FA12  502D     MOVF ret, W, ACCESS
+57:            }
+FA14  0012     RETURN 0
+58:            Std_ReturnType gpio_pin_write_logic(const pinConfig_t* pinCon ,logic_t logic){
+59:                Std_ReturnType ret = E_NOT;
+FE02  0E00     MOVLW 0x0
+FE04  6E2E     MOVWF ret, ACCESS
+60:                if(!(pinCon) || (pinCon->port > MAX_PORT_INDEX) || (pinCon->pinIndex > MAX_PIN_INDEX))
+FE06  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FE08  B4D8     BTFSC STATUS, 2, ACCESS
+FE0A  D014     BRA 0xFE34
+FE0C  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FE0E  6ED9     MOVWF FSR2, ACCESS
+FE10  6ADA     CLRF FSR2H, ACCESS
+FE12  50DF     MOVF INDF2, W, ACCESS
+FE14  0B07     ANDLW 0x7
+FE16  6E29     MOVWF 0x29, ACCESS
+FE18  0E05     MOVLW 0x5
+FE1A  6029     CPFSLT 0x29, ACCESS
+FE1C  D00B     BRA 0xFE34
+FE1E  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FE20  6ED9     MOVWF FSR2, ACCESS
+FE22  6ADA     CLRF FSR2H, ACCESS
+FE24  30DF     RRCF INDF2, W, ACCESS
+FE26  32E8     RRCF WREG, F, ACCESS
+FE28  32E8     RRCF WREG, F, ACCESS
+FE2A  0B07     ANDLW 0x7
+FE2C  6E29     MOVWF 0x29, ACCESS
+FE2E  0E07     MOVLW 0x7
+FE30  6429     CPFSGT 0x29, ACCESS
+FE32  D052     BRA 0xFED8
+61:                {
+62:                    ret = E_OK;
+FE34  0E01     MOVLW 0x1
+FE36  D04E     BRA 0xFED4
+63:                }
+64:                else
+65:                {
+66:                    switch (logic){
+67:                      case low:
+68:                        BIT_CLEAR(*lat_reg[pinCon->port] , pinCon->pinIndex);
+FE38  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FE3A  6ED9     MOVWF FSR2, ACCESS
+FE3C  6ADA     CLRF FSR2H, ACCESS
+FE3E  30DF     RRCF INDF2, W, ACCESS
+FE40  32E8     RRCF WREG, F, ACCESS
+FE42  32E8     RRCF WREG, F, ACCESS
+FE44  0B07     ANDLW 0x7
+FE46  6E29     MOVWF 0x29, ACCESS
+FE48  0E01     MOVLW 0x1
+FE4A  6E2A     MOVWF 0x2A, ACCESS
+FE4C  2A29     INCF 0x29, F, ACCESS
+FE4E  D002     BRA 0xFE54
+FE50  90D8     BCF STATUS, 0, ACCESS
+FE52  362A     RLCF 0x2A, F, ACCESS
+FE54  2E29     DECFSZ 0x29, F, ACCESS
+FE56  D7FC     BRA 0xFE50
+FE58  502A     MOVF 0x2A, W, ACCESS
+FE5A  0AFF     XORLW 0xFF
+FE5C  6E2B     MOVWF 0x2B, ACCESS
+FE5E  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FE60  6ED9     MOVWF FSR2, ACCESS
+FE62  6ADA     CLRF FSR2H, ACCESS
+FE64  50DF     MOVF INDF2, W, ACCESS
+FE66  0B07     ANDLW 0x7
+FE68  0D02     MULLW 0x2
+FE6A  50F3     MOVF PROD, W, ACCESS
+FE6C  0F0B     ADDLW 0xB
+FE6E  6ED9     MOVWF FSR2, ACCESS
+FE70  6ADA     CLRF FSR2H, ACCESS
+FE72  CFDE     MOVFF POSTINC2, ret
+FE74  F02C     NOP
+FE76  CFDD     MOVFF POSTDEC2, ret
+FE78  F02D     NOP
+FE7A  C02C     MOVFF ret, FSR2
+FE7C  FFD9     NOP
+FE7E  C02D     MOVFF ret, FSR2H
+FE80  FFDA     NOP
+FE82  502B     MOVF 0x2B, W, ACCESS
+FE84  16DF     ANDWF INDF2, F, ACCESS
+69:                        break;
+FE86  D037     BRA 0xFEF6
+70:                      case high:
+71:                        BIT_SET(*lat_reg[pinCon->port] , pinCon->pinIndex);
+FE88  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FE8A  6ED9     MOVWF FSR2, ACCESS
+FE8C  6ADA     CLRF FSR2H, ACCESS
+FE8E  30DF     RRCF INDF2, W, ACCESS
+FE90  32E8     RRCF WREG, F, ACCESS
+FE92  32E8     RRCF WREG, F, ACCESS
+FE94  0B07     ANDLW 0x7
+FE96  6E29     MOVWF 0x29, ACCESS
+FE98  0E01     MOVLW 0x1
+FE9A  6E2A     MOVWF 0x2A, ACCESS
+FE9C  2A29     INCF 0x29, F, ACCESS
+FE9E  D002     BRA 0xFEA4
+FEA0  90D8     BCF STATUS, 0, ACCESS
+FEA2  362A     RLCF 0x2A, F, ACCESS
+FEA4  2E29     DECFSZ 0x29, F, ACCESS
+FEA6  D7FC     BRA 0xFEA0
+FEA8  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FEAA  6ED9     MOVWF FSR2, ACCESS
+FEAC  6ADA     CLRF FSR2H, ACCESS
+FEAE  50DF     MOVF INDF2, W, ACCESS
+FEB0  0B07     ANDLW 0x7
+FEB2  0D02     MULLW 0x2
+FEB4  50F3     MOVF PROD, W, ACCESS
+FEB6  0F0B     ADDLW 0xB
+FEB8  6ED9     MOVWF FSR2, ACCESS
+FEBA  6ADA     CLRF FSR2H, ACCESS
+FEBC  CFDE     MOVFF POSTINC2, 0x2B
+FEBE  F02B     NOP
+FEC0  CFDD     MOVFF POSTDEC2, ret
+FEC2  F02C     NOP
+FEC4  C02B     MOVFF 0x2B, FSR2
+FEC6  FFD9     NOP
+FEC8  C02C     MOVFF ret, FSR2H
+FECA  FFDA     NOP
+FECC  502A     MOVF 0x2A, W, ACCESS
+FECE  12DF     IORWF INDF2, F, ACCESS
+72:                        break;
+FED0  D012     BRA 0xFEF6
+73:                      default: ret = E_NOT;
+FED2  0E00     MOVLW 0x0
+FED4  6E2E     MOVWF ret, ACCESS
+74:                      }
+FED6  D00F     BRA 0xFEF6
+FED8  5028     MOVF logic, W, ACCESS
+FEDA  6E29     MOVWF 0x29, ACCESS
+FEDC  6A2A     CLRF 0x2A, ACCESS
+FEDE  502A     MOVF 0x2A, W, ACCESS
+FEE0  0A00     XORLW 0x0
+FEE2  A4D8     BTFSS STATUS, 2, ACCESS
+FEE4  D7F6     BRA 0xFED2
+FEE6  5029     MOVF 0x29, W, ACCESS
+FEE8  0A00     XORLW 0x0
+FEEA  B4D8     BTFSC STATUS, 2, ACCESS
+FEEC  D7A5     BRA 0xFE38
+FEEE  0A01     XORLW 0x1
+FEF0  B4D8     BTFSC STATUS, 2, ACCESS
+FEF2  D7CA     BRA 0xFE88
+FEF4  D7EE     BRA 0xFED2
+75:                }
+76:                return ret;
+FEF6  502E     MOVF ret, W, ACCESS
+77:            }
+FEF8  0012     RETURN 0
+78:            Std_ReturnType gpio_pin_read_logic(const pinConfig_t* pinCon ,logic_t* ret_logic){
+79:                Std_ReturnType ret = E_NOT;
+FA16  0E00     MOVLW 0x0
+FA18  6E2D     MOVWF ret, ACCESS
+80:                if(!(pinCon) || !(ret_logic)  || (pinCon->port > MAX_PORT_INDEX) || ( pinCon->pinIndex > MAX_PIN_INDEX))
+FA1A  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FA1C  B4D8     BTFSC STATUS, 2, ACCESS
+FA1E  D017     BRA 0xFA4E
+FA20  5028     MOVF logic, W, ACCESS
+FA22  B4D8     BTFSC STATUS, 2, ACCESS
+FA24  D014     BRA 0xFA4E
+FA26  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FA28  6ED9     MOVWF FSR2, ACCESS
+FA2A  6ADA     CLRF FSR2H, ACCESS
+FA2C  50DF     MOVF INDF2, W, ACCESS
+FA2E  0B07     ANDLW 0x7
+FA30  6E29     MOVWF 0x29, ACCESS
+FA32  0E05     MOVLW 0x5
+FA34  6029     CPFSLT 0x29, ACCESS
+FA36  D00B     BRA 0xFA4E
+FA38  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FA3A  6ED9     MOVWF FSR2, ACCESS
+FA3C  6ADA     CLRF FSR2H, ACCESS
+FA3E  30DF     RRCF INDF2, W, ACCESS
+FA40  32E8     RRCF WREG, F, ACCESS
+FA42  32E8     RRCF WREG, F, ACCESS
+FA44  0B07     ANDLW 0x7
+FA46  6E29     MOVWF 0x29, ACCESS
+FA48  0E07     MOVLW 0x7
+FA4A  6429     CPFSGT 0x29, ACCESS
+FA4C  D003     BRA 0xFA54
+81:                {
+82:                    ret = E_OK;
+FA4E  0E01     MOVLW 0x1
+FA50  6E2D     MOVWF ret, ACCESS
+83:                }
+FA52  D028     BRA 0xFAA4
+84:                else
+85:                {
+86:                    *ret_logic = BIT_READ(*port_reg[pinCon->port] , pinCon->pinIndex);
+FA54  5028     MOVF logic, W, ACCESS
+FA56  6ED9     MOVWF FSR2, ACCESS
+FA58  6ADA     CLRF FSR2H, ACCESS
+FA5A  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FA5C  6EE1     MOVWF FSR1, ACCESS
+FA5E  6AE2     CLRF FSR1H, ACCESS
+FA60  30E7     RRCF INDF1, W, ACCESS
+FA62  32E8     RRCF WREG, F, ACCESS
+FA64  32E8     RRCF WREG, F, ACCESS
+FA66  0B07     ANDLW 0x7
+FA68  6E29     MOVWF 0x29, ACCESS
+FA6A  5027     MOVF __pcstackCOMRAM, W, ACCESS
+FA6C  6EE1     MOVWF FSR1, ACCESS
+FA6E  6AE2     CLRF FSR1H, ACCESS
+FA70  50E7     MOVF INDF1, W, ACCESS
+FA72  0B07     ANDLW 0x7
+FA74  0D02     MULLW 0x2
+FA76  50F3     MOVF PROD, W, ACCESS
+FA78  0F15     ADDLW 0x15
+FA7A  6EE1     MOVWF FSR1, ACCESS
+FA7C  6AE2     CLRF FSR1H, ACCESS
+FA7E  CFE6     MOVFF POSTINC1, 0x2A
+FA80  F02A     NOP
+FA82  CFE5     MOVFF POSTDEC1, 0x2B
+FA84  F02B     NOP
+FA86  C02A     MOVFF 0x2A, FSR1
+FA88  FFE1     NOP
+FA8A  C02B     MOVFF 0x2B, FSR1H
+FA8C  FFE2     NOP
+FA8E  50E7     MOVF INDF1, W, ACCESS
+FA90  6E2C     MOVWF ret, ACCESS
+FA92  2A29     INCF 0x29, F, ACCESS
+FA94  D002     BRA 0xFA9A
+FA96  90D8     BCF STATUS, 0, ACCESS
+FA98  322C     RRCF ret, F, ACCESS
+FA9A  2E29     DECFSZ 0x29, F, ACCESS
+FA9C  D7FC     BRA 0xFA96
+FA9E  502C     MOVF ret, W, ACCESS
+FAA0  0B01     ANDLW 0x1
+FAA2  6EDF     MOVWF INDF2, ACCESS
+87:                }
+88:                return ret;
+FAA4  502D     MOVF ret, W, ACCESS
+89:            }
+FAA6  0012     RETURN 0
+90:            Std_ReturnType gpio_pin_toggle_logic( pinConfig_t* pinCon){
+91:                Std_ReturnType ret = E_NOT;
+F900  0E00     MOVLW 0x0
+F902  6E2C     MOVWF ret, ACCESS
+92:                if(!(pinCon) || (pinCon->port > MAX_PORT_INDEX ) || pinCon->pinIndex > MAX_PIN_INDEX)
+F904  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F906  B4D8     BTFSC STATUS, 2, ACCESS
+F908  D014     BRA 0xF932
+F90A  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F90C  6ED9     MOVWF FSR2, ACCESS
+F90E  6ADA     CLRF FSR2H, ACCESS
+F910  50DF     MOVF INDF2, W, ACCESS
+F912  0B07     ANDLW 0x7
+F914  6E28     MOVWF logic, ACCESS
+F916  0E05     MOVLW 0x5
+F918  6028     CPFSLT logic, ACCESS
+F91A  D00B     BRA 0xF932
+F91C  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F91E  6ED9     MOVWF FSR2, ACCESS
+F920  6ADA     CLRF FSR2H, ACCESS
+F922  30DF     RRCF INDF2, W, ACCESS
+F924  32E8     RRCF WREG, F, ACCESS
+F926  32E8     RRCF WREG, F, ACCESS
+F928  0B07     ANDLW 0x7
+F92A  6E28     MOVWF logic, ACCESS
+F92C  0E07     MOVLW 0x7
+F92E  6428     CPFSGT logic, ACCESS
+F930  D003     BRA 0xF938
+93:                {
+94:                    ret = E_OK;
+F932  0E01     MOVLW 0x1
+F934  6E2C     MOVWF ret, ACCESS
+95:                }
+F936  D024     BRA 0xF980
+96:                else
+97:                {
+98:                    BIT_TOGGLE(*lat_reg[pinCon->port] , pinCon->pinIndex);
+F938  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F93A  6ED9     MOVWF FSR2, ACCESS
+F93C  6ADA     CLRF FSR2H, ACCESS
+F93E  30DF     RRCF INDF2, W, ACCESS
+F940  32E8     RRCF WREG, F, ACCESS
+F942  32E8     RRCF WREG, F, ACCESS
+F944  0B07     ANDLW 0x7
+F946  6E28     MOVWF logic, ACCESS
+F948  0E01     MOVLW 0x1
+F94A  6E29     MOVWF 0x29, ACCESS
+F94C  2A28     INCF logic, F, ACCESS
+F94E  D002     BRA 0xF954
+F950  90D8     BCF STATUS, 0, ACCESS
+F952  3629     RLCF 0x29, F, ACCESS
+F954  2E28     DECFSZ logic, F, ACCESS
+F956  D7FC     BRA 0xF950
+F958  5027     MOVF __pcstackCOMRAM, W, ACCESS
+F95A  6ED9     MOVWF FSR2, ACCESS
+F95C  6ADA     CLRF FSR2H, ACCESS
+F95E  50DF     MOVF INDF2, W, ACCESS
+F960  0B07     ANDLW 0x7
+F962  0D02     MULLW 0x2
+F964  50F3     MOVF PROD, W, ACCESS
+F966  0F0B     ADDLW 0xB
+F968  6ED9     MOVWF FSR2, ACCESS
+F96A  6ADA     CLRF FSR2H, ACCESS
+F96C  CFDE     MOVFF POSTINC2, 0x2A
+F96E  F02A     NOP
+F970  CFDD     MOVFF POSTDEC2, 0x2B
+F972  F02B     NOP
+F974  C02A     MOVFF 0x2A, FSR2
+F976  FFD9     NOP
+F978  C02B     MOVFF 0x2B, FSR2H
+F97A  FFDA     NOP
+F97C  5029     MOVF 0x29, W, ACCESS
+F97E  1ADF     XORWF INDF2, F, ACCESS
+99:                }
+100:               return ret;
+F980  502C     MOVF ret, W, ACCESS
+101:           }
+F982  0012     RETURN 0
+102:           
+103:           Std_ReturnType gpio_pin_intialize( const pinConfig_t* pinCon)
+104:           {
+105:             Std_ReturnType ret = E_OK;
+106:             if(!(pinCon) || pinCon->port > MAX_PORT_INDEX || pinCon->pinIndex > MAX_PIN_INDEX)
+F850  502F     MOVF pinCon, W, ACCESS
+F852  B4D8     BTFSC STATUS, 2, ACCESS
+F854  D014     BRA 0xF87E
+F856  502F     MOVF pinCon, W, ACCESS
+F858  6ED9     MOVWF FSR2, ACCESS
+F85A  6ADA     CLRF FSR2H, ACCESS
+F85C  50DF     MOVF INDF2, W, ACCESS
+F85E  0B07     ANDLW 0x7
+F860  6E30     MOVWF ret, ACCESS
+F862  0E05     MOVLW 0x5
+F864  6030     CPFSLT ret, ACCESS
+F866  D00B     BRA 0xF87E
+F868  502F     MOVF pinCon, W, ACCESS
+F86A  6ED9     MOVWF FSR2, ACCESS
+F86C  6ADA     CLRF FSR2H, ACCESS
+F86E  30DF     RRCF INDF2, W, ACCESS
+F870  32E8     RRCF WREG, F, ACCESS
+F872  32E8     RRCF WREG, F, ACCESS
+F874  0B07     ANDLW 0x7
+F876  6E30     MOVWF ret, ACCESS
+F878  0E07     MOVLW 0x7
+F87A  6430     CPFSGT ret, ACCESS
+F87C  D002     BRA 0xF882
+107:               {
+108:                 ret = E_NOT;
+F87E  0E00     MOVLW 0x0
+F880  D010     BRA 0xF8A2
+109:               }
+110:             else
+111:               {
+112:                 ret = gpio_pin_direction_intialize (pinCon);
+F882  C02F     MOVFF pinCon, __pcstackCOMRAM
+F884  F027     NOP
+F886  EC7D     CALL 0xFEFA, 0
+F888  F07F     NOP
+F88A  6E31     MOVWF ret, ACCESS
+113:                 ret = gpio_pin_write_logic (pinCon , pinCon->logic);
+F88C  C02F     MOVFF pinCon, __pcstackCOMRAM
+F88E  F027     NOP
+F890  502F     MOVF pinCon, W, ACCESS
+F892  6ED9     MOVWF FSR2, ACCESS
+F894  6ADA     CLRF FSR2H, ACCESS
+F896  0E00     MOVLW 0x0
+F898  BEDF     BTFSC INDF2, 7, ACCESS
+F89A  0E01     MOVLW 0x1
+F89C  6E28     MOVWF logic, ACCESS
+F89E  EC01     CALL 0xFE02, 0
+F8A0  F07F     NOP
+F8A2  6E31     MOVWF ret, ACCESS
+114:               }
+115:             return ret;
+F8A4  5031     MOVF ret, W, ACCESS
+116:           }
+F8A6  0012     RETURN 0
+117:           /*-------------port------------------------*/
+118:           Std_ReturnType gpio_port_direction_intialize( const PortIndex_t port , uint8_t dir){
+119:             Std_ReturnType ret = E_OK;
+120:             if(port> MAX_PORT_INDEX  || dir > input)
+121:               {
+122:                 ret = E_NOT;
+123:               }
+124:             else
+125:                 *tris_reg[port] = dir;
+126:             return ret;
+127:           }
+128:           Std_ReturnType gpio_port_get_direction_stat(const PortIndex_t port , uint8_t* dir_status){
+129:               Std_ReturnType ret = E_OK;
+130:               if(port > MAX_PORT_INDEX)
+131:                 {
+132:                   ret = E_NOT;
+133:                 }
+134:               else
+135:                   *dir_status = *tris_reg[port];
+136:               
+137:               return ret;
+138:               
+139:           }
+140:           Std_ReturnType gpio_port_write_logic(const PortIndex_t port ,uint8_t logic){
+141:               Std_ReturnType ret = E_OK;
+142:               if(port > MAX_PORT_INDEX)
+143:                 ret = E_NOT;
+144:               else
+145:                 *lat_reg[port] = logic;
+146:               return ret;
+147:           }
+148:           Std_ReturnType gpio_port_read_logic(const PortIndex_t port ,uint8_t *ret_logic){
+149:               Std_ReturnType ret = E_OK;
+150:               if(port > MAX_PORT_INDEX || !(ret_logic))
+151:                 ret = E_NOT;
+152:               else
+153:                 *ret_logic = *lat_reg[port];
+154:               return ret;
+155:           }
+156:           Std_ReturnType gpio_port_toggle_logic(const PortIndex_t port){
+157:               Std_ReturnType ret = E_OK;
+158:               if(port > MAX_PORT_INDEX)
+159:                 ret = E_NOT;
+160:               else
+161:                 PORT_TOGGLE(*lat_reg[port]);
+162:               return ret;
+163:           }
+164:           
+165:           
+166:           
+167:           
+---  D:/Yossef/PIC18F4620/ECU_layer/led/ECU_led.c  ------------------------------------------------------
+1:             /* 
+2:              * File:   ECU_led.h
+3:              * Author: yossef.h
+4:              *
+5:              * Created on January 30, 2023, 11:49 PM
+6:              */
+7:             
+8:             
+9:             /*------------Includes----------------*/
+10:            #include"ECU_led.h"
+11:            
+12:            
+13:            
+14:            
+15:            
+16:            
+17:            
+18:            
+19:            
+20:            
+21:            
+22:            
+23:            
+24:            
+25:            /*------------function defination--------------*/
+26:            Std_ReturnType ecu_led_inistialize(const led_t* led)
+27:            {
+28:              Std_ReturnType ret = E_OK;
+29:              pinConfig_t pinCfg = {
+FB44  C03F     MOVFF F2873, pinCfg
+FB46  F035     NOP
+FB48  5032     MOVF dir, W, ACCESS
+FB4A  6ED9     MOVWF FSR2, ACCESS
+FB4C  6ADA     CLRF FSR2H, ACCESS
+FB4E  50DF     MOVF INDF2, W, ACCESS
+FB50  0B07     ANDLW 0x7
+FB52  6E33     MOVWF read_pin_logic, ACCESS
+FB54  5035     MOVF pinCfg, W, ACCESS
+FB56  1833     XORWF read_pin_logic, W, ACCESS
+FB58  0BF8     ANDLW 0xF8
+FB5A  1833     XORWF read_pin_logic, W, ACCESS
+FB5C  6E35     MOVWF pinCfg, ACCESS
+FB5E  5032     MOVF dir, W, ACCESS
+FB60  6ED9     MOVWF FSR2, ACCESS
+FB62  6ADA     CLRF FSR2H, ACCESS
+FB64  30DF     RRCF INDF2, W, ACCESS
+FB66  32E8     RRCF WREG, F, ACCESS
+FB68  32E8     RRCF WREG, F, ACCESS
+FB6A  0B07     ANDLW 0x7
+FB6C  6E33     MOVWF read_pin_logic, ACCESS
+FB6E  4633     RLNCF read_pin_logic, F, ACCESS
+FB70  4633     RLNCF read_pin_logic, F, ACCESS
+FB72  4633     RLNCF read_pin_logic, F, ACCESS
+FB74  5035     MOVF pinCfg, W, ACCESS
+FB76  1833     XORWF read_pin_logic, W, ACCESS
+FB78  0BC7     ANDLW 0xC7
+FB7A  1833     XORWF read_pin_logic, W, ACCESS
+FB7C  6E35     MOVWF pinCfg, ACCESS
+FB7E  9C35     BCF pinCfg, 6, ACCESS
+FB80  5032     MOVF dir, W, ACCESS
+FB82  6ED9     MOVWF FSR2, ACCESS
+FB84  6ADA     CLRF FSR2H, ACCESS
+FB86  ACDF     BTFSS INDF2, 6, ACCESS
+FB88  D002     BRA 0xFB8E
+FB8A  8E35     BSF pinCfg, 7, ACCESS
+FB8C  D001     BRA 0xFB90
+FB8E  9E35     BCF pinCfg, 7, ACCESS
+30:                .port = led->port_idx,
+31:                .pinIndex = led->pin_idx,
+32:                .direction = output,
+33:                .logic = led->led_stat
+34:              };
+35:              if(!(led) || (led->port_idx > MAX_PORT_INDEX) || (led->pin_idx > MAX_PIN_INDEX) || (led->led_stat > 1))
+FB90  5032     MOVF dir, W, ACCESS
+FB92  B4D8     BTFSC STATUS, 2, ACCESS
+FB94  D020     BRA 0xFBD6
+FB96  5032     MOVF dir, W, ACCESS
+FB98  6ED9     MOVWF FSR2, ACCESS
+FB9A  6ADA     CLRF FSR2H, ACCESS
+FB9C  50DF     MOVF INDF2, W, ACCESS
+FB9E  0B07     ANDLW 0x7
+FBA0  6E33     MOVWF read_pin_logic, ACCESS
+FBA2  0E05     MOVLW 0x5
+FBA4  6033     CPFSLT read_pin_logic, ACCESS
+FBA6  D017     BRA 0xFBD6
+FBA8  5032     MOVF dir, W, ACCESS
+FBAA  6ED9     MOVWF FSR2, ACCESS
+FBAC  6ADA     CLRF FSR2H, ACCESS
+FBAE  30DF     RRCF INDF2, W, ACCESS
+FBB0  32E8     RRCF WREG, F, ACCESS
+FBB2  32E8     RRCF WREG, F, ACCESS
+FBB4  0B07     ANDLW 0x7
+FBB6  6E33     MOVWF read_pin_logic, ACCESS
+FBB8  0E08     MOVLW 0x8
+FBBA  6033     CPFSLT read_pin_logic, ACCESS
+FBBC  D00C     BRA 0xFBD6
+FBBE  5032     MOVF dir, W, ACCESS
+FBC0  6ED9     MOVWF FSR2, ACCESS
+FBC2  6ADA     CLRF FSR2H, ACCESS
+FBC4  ACDF     BTFSS INDF2, 6, ACCESS
+FBC6  D003     BRA 0xFBCE
+FBC8  6A33     CLRF read_pin_logic, ACCESS
+FBCA  2A33     INCF read_pin_logic, F, ACCESS
+FBCC  D001     BRA 0xFBD0
+FBCE  6A33     CLRF read_pin_logic, ACCESS
+FBD0  0E01     MOVLW 0x1
+FBD2  6433     CPFSGT read_pin_logic, ACCESS
+FBD4  D002     BRA 0xFBDA
+36:                    ret = E_NOT;
+FBD6  0E00     MOVLW 0x0
+FBD8  D004     BRA 0xFBE2
+37:              else
+38:                  ret = gpio_pin_intialize (&pinCfg);
+FBDA  0E35     MOVLW 0x35
+FBDC  6E2F     MOVWF pinCon, ACCESS
+FBDE  EC28     CALL 0xF850, 0
+FBE0  F07C     NOP
+FBE2  6E34     MOVWF ret, ACCESS
+39:                
+40:              return ret;
+FBE4  5034     MOVF ret, W, ACCESS
+41:            }
+FBE6  0012     RETURN 0
+42:            Std_ReturnType ecu_led_turn_on(const led_t* led)
+43:            {
+44:              Std_ReturnType ret = E_OK;
+45:              pinConfig_t pinCfg = {
+FC98  C03E     MOVFF F2878, read_pin_logic
+FC9A  F033     NOP
+FC9C  502F     MOVF pinCon, W, ACCESS
+FC9E  6ED9     MOVWF FSR2, ACCESS
+FCA0  6ADA     CLRF FSR2H, ACCESS
+FCA2  50DF     MOVF INDF2, W, ACCESS
+FCA4  0B07     ANDLW 0x7
+FCA6  6E30     MOVWF ret, ACCESS
+FCA8  5033     MOVF read_pin_logic, W, ACCESS
+FCAA  1830     XORWF ret, W, ACCESS
+FCAC  0BF8     ANDLW 0xF8
+FCAE  1830     XORWF ret, W, ACCESS
+FCB0  6E33     MOVWF read_pin_logic, ACCESS
+FCB2  502F     MOVF pinCon, W, ACCESS
+FCB4  6ED9     MOVWF FSR2, ACCESS
+FCB6  6ADA     CLRF FSR2H, ACCESS
+FCB8  30DF     RRCF INDF2, W, ACCESS
+FCBA  32E8     RRCF WREG, F, ACCESS
+FCBC  32E8     RRCF WREG, F, ACCESS
+FCBE  0B07     ANDLW 0x7
+FCC0  6E30     MOVWF ret, ACCESS
+FCC2  4630     RLNCF ret, F, ACCESS
+FCC4  4630     RLNCF ret, F, ACCESS
+FCC6  4630     RLNCF ret, F, ACCESS
+FCC8  5033     MOVF read_pin_logic, W, ACCESS
+FCCA  1830     XORWF ret, W, ACCESS
+FCCC  0BC7     ANDLW 0xC7
+FCCE  1830     XORWF ret, W, ACCESS
+FCD0  6E33     MOVWF read_pin_logic, ACCESS
+FCD2  9C33     BCF read_pin_logic, 6, ACCESS
+FCD4  8E33     BSF read_pin_logic, 7, ACCESS
+46:                .port = led->port_idx,
+47:                .pinIndex = led->pin_idx,
+48:                .direction = output,
+49:                .logic = LED_ON
+50:              };
+51:              direction_t dir = input;
+FCD6  0E01     MOVLW 0x1
+FCD8  6E32     MOVWF dir, ACCESS
+52:              ret = gpio_pin_get_direction (&pinCfg , &dir);
+FCDA  0E33     MOVLW 0x33
+FCDC  6E27     MOVWF __pcstackCOMRAM, ACCESS
+FCDE  0E32     MOVLW 0x32
+FCE0  6E28     MOVWF logic, ACCESS
+FCE2  ECC2     CALL 0xF984, 0
+FCE4  F07C     NOP
+53:              if(!(led) || (led->port_idx > MAX_PORT_INDEX) || (led->pin_idx > MAX_PIN_INDEX) || (led->led_stat > 1) || ( dir != output))
+FCE6  502F     MOVF pinCon, W, ACCESS
+FCE8  B4D8     BTFSC STATUS, 2, ACCESS
+FCEA  D023     BRA 0xFD32
+FCEC  502F     MOVF pinCon, W, ACCESS
+FCEE  6ED9     MOVWF FSR2, ACCESS
+FCF0  6ADA     CLRF FSR2H, ACCESS
+FCF2  50DF     MOVF INDF2, W, ACCESS
+FCF4  0B07     ANDLW 0x7
+FCF6  6E30     MOVWF ret, ACCESS
+FCF8  0E05     MOVLW 0x5
+FCFA  6030     CPFSLT ret, ACCESS
+FCFC  D01A     BRA 0xFD32
+FCFE  502F     MOVF pinCon, W, ACCESS
+FD00  6ED9     MOVWF FSR2, ACCESS
+FD02  6ADA     CLRF FSR2H, ACCESS
+FD04  30DF     RRCF INDF2, W, ACCESS
+FD06  32E8     RRCF WREG, F, ACCESS
+FD08  32E8     RRCF WREG, F, ACCESS
+FD0A  0B07     ANDLW 0x7
+FD0C  6E30     MOVWF ret, ACCESS
+FD0E  0E08     MOVLW 0x8
+FD10  6030     CPFSLT ret, ACCESS
+FD12  D00F     BRA 0xFD32
+FD14  502F     MOVF pinCon, W, ACCESS
+FD16  6ED9     MOVWF FSR2, ACCESS
+FD18  6ADA     CLRF FSR2H, ACCESS
+FD1A  ACDF     BTFSS INDF2, 6, ACCESS
+FD1C  D003     BRA 0xFD24
+FD1E  6A30     CLRF ret, ACCESS
+FD20  2A30     INCF ret, F, ACCESS
+FD22  D001     BRA 0xFD26
+FD24  6A30     CLRF ret, ACCESS
+FD26  0E02     MOVLW 0x2
+FD28  6030     CPFSLT ret, ACCESS
+FD2A  D003     BRA 0xFD32
+FD2C  5032     MOVF dir, W, ACCESS
+FD2E  B4D8     BTFSC STATUS, 2, ACCESS
+FD30  D002     BRA 0xFD36
+54:                    ret = E_NOT;
+FD32  0E00     MOVLW 0x0
+FD34  D006     BRA 0xFD42
+55:              else
+56:                {      
+57:                  ret = gpio_pin_write_logic (&pinCfg , high);
+FD36  0E33     MOVLW 0x33
+FD38  6E27     MOVWF __pcstackCOMRAM, ACCESS
+FD3A  0E01     MOVLW 0x1
+FD3C  6E28     MOVWF logic, ACCESS
+FD3E  EC01     CALL 0xFE02, 0
+FD40  F07F     NOP
+FD42  6E31     MOVWF ret, ACCESS
+58:                }
+59:              return ret;  
+FD44  5031     MOVF ret, W, ACCESS
+60:            }
+FD46  0012     RETURN 0
+61:            Std_ReturnType ecu_led_turn_off(const led_t* led)
+62:            {
+63:              Std_ReturnType ret = E_OK;
+64:              pinConfig_t pinCfg = {
+FBE8  C03D     MOVFF F2884, read_pin_logic
+FBEA  F033     NOP
+FBEC  502F     MOVF pinCon, W, ACCESS
+FBEE  6ED9     MOVWF FSR2, ACCESS
+FBF0  6ADA     CLRF FSR2H, ACCESS
+FBF2  50DF     MOVF INDF2, W, ACCESS
+FBF4  0B07     ANDLW 0x7
+FBF6  6E30     MOVWF ret, ACCESS
+FBF8  5033     MOVF read_pin_logic, W, ACCESS
+FBFA  1830     XORWF ret, W, ACCESS
+FBFC  0BF8     ANDLW 0xF8
+FBFE  1830     XORWF ret, W, ACCESS
+FC00  6E33     MOVWF read_pin_logic, ACCESS
+FC02  502F     MOVF pinCon, W, ACCESS
+FC04  6ED9     MOVWF FSR2, ACCESS
+FC06  6ADA     CLRF FSR2H, ACCESS
+FC08  30DF     RRCF INDF2, W, ACCESS
+FC0A  32E8     RRCF WREG, F, ACCESS
+FC0C  32E8     RRCF WREG, F, ACCESS
+FC0E  0B07     ANDLW 0x7
+FC10  6E30     MOVWF ret, ACCESS
+FC12  4630     RLNCF ret, F, ACCESS
+FC14  4630     RLNCF ret, F, ACCESS
+FC16  4630     RLNCF ret, F, ACCESS
+FC18  5033     MOVF read_pin_logic, W, ACCESS
+FC1A  1830     XORWF ret, W, ACCESS
+FC1C  0BC7     ANDLW 0xC7
+FC1E  1830     XORWF ret, W, ACCESS
+FC20  6E33     MOVWF read_pin_logic, ACCESS
+FC22  9C33     BCF read_pin_logic, 6, ACCESS
+FC24  9E33     BCF read_pin_logic, 7, ACCESS
+65:                .port = led->port_idx,
+66:                .pinIndex = led->pin_idx,
+67:                .direction = output,
+68:                .logic = LED_OFF
+69:              };
+70:              direction_t dir = input;
+FC26  0E01     MOVLW 0x1
+FC28  6E32     MOVWF dir, ACCESS
+71:              ret = gpio_pin_get_direction (&pinCfg , &dir);
+FC2A  0E33     MOVLW 0x33
+FC2C  6E27     MOVWF __pcstackCOMRAM, ACCESS
+FC2E  0E32     MOVLW 0x32
+FC30  6E28     MOVWF logic, ACCESS
+FC32  ECC2     CALL 0xF984, 0
+FC34  F07C     NOP
+72:              if(!(led) || (led->port_idx > MAX_PORT_INDEX) || (led->pin_idx > MAX_PIN_INDEX) || (led->led_stat > 1) || ( dir != output))
+FC36  502F     MOVF pinCon, W, ACCESS
+FC38  B4D8     BTFSC STATUS, 2, ACCESS
+FC3A  D023     BRA 0xFC82
+FC3C  502F     MOVF pinCon, W, ACCESS
+FC3E  6ED9     MOVWF FSR2, ACCESS
+FC40  6ADA     CLRF FSR2H, ACCESS
+FC42  50DF     MOVF INDF2, W, ACCESS
+FC44  0B07     ANDLW 0x7
+FC46  6E30     MOVWF ret, ACCESS
+FC48  0E05     MOVLW 0x5
+FC4A  6030     CPFSLT ret, ACCESS
+FC4C  D01A     BRA 0xFC82
+FC4E  502F     MOVF pinCon, W, ACCESS
+FC50  6ED9     MOVWF FSR2, ACCESS
+FC52  6ADA     CLRF FSR2H, ACCESS
+FC54  30DF     RRCF INDF2, W, ACCESS
+FC56  32E8     RRCF WREG, F, ACCESS
+FC58  32E8     RRCF WREG, F, ACCESS
+FC5A  0B07     ANDLW 0x7
+FC5C  6E30     MOVWF ret, ACCESS
+FC5E  0E08     MOVLW 0x8
+FC60  6030     CPFSLT ret, ACCESS
+FC62  D00F     BRA 0xFC82
+FC64  502F     MOVF pinCon, W, ACCESS
+FC66  6ED9     MOVWF FSR2, ACCESS
+FC68  6ADA     CLRF FSR2H, ACCESS
+FC6A  ACDF     BTFSS INDF2, 6, ACCESS
+FC6C  D003     BRA 0xFC74
+FC6E  6A30     CLRF ret, ACCESS
+FC70  2A30     INCF ret, F, ACCESS
+FC72  D001     BRA 0xFC76
+FC74  6A30     CLRF ret, ACCESS
+FC76  0E02     MOVLW 0x2
+FC78  6030     CPFSLT ret, ACCESS
+FC7A  D003     BRA 0xFC82
+FC7C  5032     MOVF dir, W, ACCESS
+FC7E  B4D8     BTFSC STATUS, 2, ACCESS
+FC80  D002     BRA 0xFC86
+73:                    ret = E_NOT;
+FC82  0E00     MOVLW 0x0
+FC84  D006     BRA 0xFC92
+74:              else
+75:                {      
+76:                  ret = gpio_pin_write_logic (&pinCfg , low);
+FC86  0E33     MOVLW 0x33
+FC88  6E27     MOVWF __pcstackCOMRAM, ACCESS
+FC8A  0E00     MOVLW 0x0
+FC8C  6E28     MOVWF logic, ACCESS
+FC8E  EC01     CALL 0xFE02, 0
+FC90  F07F     NOP
+FC92  6E31     MOVWF ret, ACCESS
+77:                }
+78:              return ret;  
+FC94  5031     MOVF ret, W, ACCESS
+79:              
+80:            }
+FC96  0012     RETURN 0
+81:            Std_ReturnType ecu_led_toggle(const led_t* led)
+82:            {
+83:              Std_ReturnType ret = E_OK;
+84:              pinConfig_t pinCfg = {
+FD48  C03C     MOVFF __pbssCOMRAM, dir
+FD4A  F032     NOP
+FD4C  502E     MOVF ret, W, ACCESS
+FD4E  6ED9     MOVWF FSR2, ACCESS
+FD50  6ADA     CLRF FSR2H, ACCESS
+FD52  50DF     MOVF INDF2, W, ACCESS
+FD54  0B07     ANDLW 0x7
+FD56  6E2F     MOVWF pinCon, ACCESS
+FD58  5032     MOVF dir, W, ACCESS
+FD5A  182F     XORWF pinCon, W, ACCESS
+FD5C  0BF8     ANDLW 0xF8
+FD5E  182F     XORWF pinCon, W, ACCESS
+FD60  6E32     MOVWF dir, ACCESS
+FD62  502E     MOVF ret, W, ACCESS
+FD64  6ED9     MOVWF FSR2, ACCESS
+FD66  6ADA     CLRF FSR2H, ACCESS
+FD68  30DF     RRCF INDF2, W, ACCESS
+FD6A  32E8     RRCF WREG, F, ACCESS
+FD6C  32E8     RRCF WREG, F, ACCESS
+FD6E  0B07     ANDLW 0x7
+FD70  6E2F     MOVWF pinCon, ACCESS
+FD72  462F     RLNCF pinCon, F, ACCESS
+FD74  462F     RLNCF pinCon, F, ACCESS
+FD76  462F     RLNCF pinCon, F, ACCESS
+FD78  5032     MOVF dir, W, ACCESS
+FD7A  182F     XORWF pinCon, W, ACCESS
+FD7C  0BC7     ANDLW 0xC7
+FD7E  182F     XORWF pinCon, W, ACCESS
+FD80  6E32     MOVWF dir, ACCESS
+FD82  9C32     BCF dir, 6, ACCESS
+FD84  502E     MOVF ret, W, ACCESS
+FD86  6ED9     MOVWF FSR2, ACCESS
+FD88  6ADA     CLRF FSR2H, ACCESS
+FD8A  ACDF     BTFSS INDF2, 6, ACCESS
+FD8C  D002     BRA 0xFD92
+FD8E  8E32     BSF dir, 7, ACCESS
+FD90  D001     BRA 0xFD94
+FD92  9E32     BCF dir, 7, ACCESS
+85:                .port = led->port_idx,
+86:                .pinIndex = led->pin_idx,
+87:                .direction = output,
+88:                .logic = led->led_stat
+89:              };
+90:              direction_t dir = input;
+FD94  0E01     MOVLW 0x1
+FD96  6E31     MOVWF ret, ACCESS
+91:              ret = gpio_pin_get_direction (&pinCfg , &dir);
+FD98  0E32     MOVLW 0x32
+FD9A  6E27     MOVWF __pcstackCOMRAM, ACCESS
+FD9C  0E31     MOVLW 0x31
+FD9E  6E28     MOVWF logic, ACCESS
+FDA0  ECC2     CALL 0xF984, 0
+FDA2  F07C     NOP
+92:              if(!(led) || (led->port_idx > MAX_PORT_INDEX) || (led->pin_idx > MAX_PIN_INDEX) || (led->led_stat > 1) || ( dir != output))
+FDA4  502E     MOVF ret, W, ACCESS
+FDA6  B4D8     BTFSC STATUS, 2, ACCESS
+FDA8  D023     BRA 0xFDF0
+FDAA  502E     MOVF ret, W, ACCESS
+FDAC  6ED9     MOVWF FSR2, ACCESS
+FDAE  6ADA     CLRF FSR2H, ACCESS
+FDB0  50DF     MOVF INDF2, W, ACCESS
+FDB2  0B07     ANDLW 0x7
+FDB4  6E2F     MOVWF pinCon, ACCESS
+FDB6  0E05     MOVLW 0x5
+FDB8  602F     CPFSLT pinCon, ACCESS
+FDBA  D01A     BRA 0xFDF0
+FDBC  502E     MOVF ret, W, ACCESS
+FDBE  6ED9     MOVWF FSR2, ACCESS
+FDC0  6ADA     CLRF FSR2H, ACCESS
+FDC2  30DF     RRCF INDF2, W, ACCESS
+FDC4  32E8     RRCF WREG, F, ACCESS
+FDC6  32E8     RRCF WREG, F, ACCESS
+FDC8  0B07     ANDLW 0x7
+FDCA  6E2F     MOVWF pinCon, ACCESS
+FDCC  0E08     MOVLW 0x8
+FDCE  602F     CPFSLT pinCon, ACCESS
+FDD0  D00F     BRA 0xFDF0
+FDD2  502E     MOVF ret, W, ACCESS
+FDD4  6ED9     MOVWF FSR2, ACCESS
+FDD6  6ADA     CLRF FSR2H, ACCESS
+FDD8  ACDF     BTFSS INDF2, 6, ACCESS
+FDDA  D003     BRA 0xFDE2
+FDDC  6A2F     CLRF pinCon, ACCESS
+FDDE  2A2F     INCF pinCon, F, ACCESS
+FDE0  D001     BRA 0xFDE4
+FDE2  6A2F     CLRF pinCon, ACCESS
+FDE4  0E02     MOVLW 0x2
+FDE6  602F     CPFSLT pinCon, ACCESS
+FDE8  D003     BRA 0xFDF0
+FDEA  5031     MOVF ret, W, ACCESS
+FDEC  B4D8     BTFSC STATUS, 2, ACCESS
+FDEE  D002     BRA 0xFDF4
+93:                    ret = E_NOT;
+FDF0  0E00     MOVLW 0x0
+FDF2  D004     BRA 0xFDFC
+94:              else
+95:                {
+96:                  ret = gpio_pin_toggle_logic (&pinCfg);
+FDF4  0E32     MOVLW 0x32
+FDF6  6E27     MOVWF __pcstackCOMRAM, ACCESS
+FDF8  EC80     CALL 0xF900, 0
+FDFA  F07C     NOP
+FDFC  6E30     MOVWF ret, ACCESS
+97:                }
+98:              return ret;   
+FDFE  5030     MOVF ret, W, ACCESS
+99:            }
+FE00  0012     RETURN 0
+100:           
+---  C:/Users/yosse/AppData/Local/Temp/xcAsc2g.s  -------------------------------------------------------
+F7DA  0EB4     MOVLW 0xB4
+F7DC  6EF6     MOVWF TBLPTR, ACCESS
+F7DE  0EF7     MOVLW 0xF7
+F7E0  6EF7     MOVWF TBLPTRH, ACCESS
+F7E2  0E00     MOVLW 0x0
+F7E4  6EF8     MOVWF TBLPTRU, ACCESS
+F7E6  EE00     LFSR 0, 0x1
+F7EA  EE10     LFSR 1, 0x26
+F7EE  0009     TBLRD*+
+F7F0  CFF5     MOVFF TABLAT, POSTINC0
+F7F4  50E5     MOVF POSTDEC1, W, ACCESS
+F7F6  50E1     MOVF FSR1, W, ACCESS
+F7F8  E1FA     BNZ 0xF7EE
+F7FA  6A3F     CLRF F2873, ACCESS
+F7FC  6A3E     CLRF F2878, ACCESS
+F7FE  6A3D     CLRF F2884, ACCESS
+F800  6A3C     CLRF __pbssCOMRAM, ACCESS
+F802  0E00     MOVLW 0x0
+F804  6EF8     MOVWF TBLPTRU, ACCESS
+F806  0100     MOVLB 0x0
+F808  EF54     GOTO 0xF8A8
